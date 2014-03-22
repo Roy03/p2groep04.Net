@@ -1,0 +1,36 @@
+﻿@model p2groep04.Models.LogInResponse
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thanks</title>
+</head>
+    <body>
+        @{
+            try
+            {
+                WebMail.SmtpServer = "smtp.example.com";
+                WebMail.SmtpPort = 587;
+                WebMail.EnableSsl = true;
+                WebMail.UserName = "mySmtpUsername";
+                WebMail.Password = "mySmtpPassword";
+                WebMail.From = "rsvp@example.com";
+
+                WebMail.Send("party-host@example.com", "Forgotten Password Notification", "");
+            }
+            catch (Exception)
+            {
+                @:<b>Sorry - we couldn't send the email to confirm your RSVP.</b>
+            }
+        }
+        <div>
+            <h1>Thank you, @Model.Name!</h1>
+        </div>
+    </body>
+</html>
