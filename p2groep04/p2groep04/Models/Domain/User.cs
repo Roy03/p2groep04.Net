@@ -8,92 +8,20 @@ namespace p2groep04
 {
     public abstract class User
     {
-        public String FirstName
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public String FirstName { get; set; }
 
-        public String LastName
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public String LastName { get; set; }
 
-        public String Username
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public String Username { get; set; }
 
-        public String Email
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public String Email { get; set; }
 
-        public String Salt
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public String Salt { get; set; }
 
-        public String Password
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public String Password { get; set; }
 
-        public DateTime LastLogin
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public DateTime LastLogin { get; set; }
 
-        public String LastIp
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public String LastIp { get; set; }
     }
 }

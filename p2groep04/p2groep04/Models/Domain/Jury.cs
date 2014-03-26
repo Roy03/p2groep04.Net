@@ -9,15 +9,6 @@ namespace p2groep04
     public class Jury : User
     {
 
-        public String Company
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public String Company{get; set; }
     }
 }

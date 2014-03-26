@@ -9,6 +9,6 @@ namespace p2groep04.Models.Domain
     interface ISuggestionRepository
     {
         IQueryable<Suggestion> FindAll();
-        Suggestion FindBy(String subject);
+        Suggestion FindBy(int id);
     }
 }

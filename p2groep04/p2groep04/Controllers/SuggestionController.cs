@@ -3,31 +3,15 @@ using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
+using p2groep04.Models.Domain;
+using System.Web.Mvc;
 
 namespace p2groep04
 {
-    public class SuggestionController
+    public class SuggestionController : Controller
     {
-        public SuggestionRepository SuggestionRepository
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        private ISuggestionRepository suggestionRepository;
 
-        public SuggestionRepository SuggestionRepository1
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+
     }
 }

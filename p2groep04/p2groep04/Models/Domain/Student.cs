@@ -8,26 +8,8 @@ namespace p2groep04
 {
     public class Student : User
     {
-        public Suggestion Suggestion
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public Suggestion Suggestion { get; set; }
 
-        public Jury Jury
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public Jury Jury { get; set; }
     }
 }

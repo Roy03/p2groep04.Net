@@ -9,6 +9,6 @@ namespace p2groep04.Models.Domain
     interface IResearchDomainRepository
     {
         IQueryable<ResearchDomain> FindAll();
-        ResearchDomain FindBy(String name);
+        ResearchDomain FindBy(int id);
     }
 }

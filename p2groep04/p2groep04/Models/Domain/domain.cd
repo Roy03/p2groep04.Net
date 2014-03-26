@@ -3,7 +3,7 @@
   <Class Name="p2groep04.Suggestion">
     <Position X="11.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAgAAAAAAAIAAAAAAgAAQAAAAAACAABAQgAA=</HashCode>
+      <HashCode>AQACAAAAAgAAAAAAAIAAAAAAgAAQAAAAAACAABAQgAA=</HashCode>
       <FileName>Models\Domain\Suggestion.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -52,7 +52,7 @@
   <Class Name="p2groep04.ResearchDomain">
     <Position X="14.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\ResearchDomain.cs</FileName>
     </TypeIdentifier>
   </Class>
