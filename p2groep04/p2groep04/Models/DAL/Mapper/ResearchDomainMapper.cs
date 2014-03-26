@@ -10,8 +10,7 @@ namespace p2groep04.Models.DAL.Mapper
     {
         public ResearchDomainMapper()
         {
-            this.HasKey(r => r.Id);
-            
+            HasKey(r => r.Id);
         }
     }
 }

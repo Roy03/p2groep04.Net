@@ -23,5 +23,16 @@ namespace p2groep04
         public DateTime LastLogin { get; set; }
 
         public String LastIp { get; set; }
+
+        public int Id
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
     }
 }
