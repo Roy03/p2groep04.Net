@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="p2groep04.Suggestion">
+  <Class Name="p2groep04.Models.Domain.Suggestion">
     <Position X="11.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQACAAAAAgAAAAAAAIAAAAAAgAAQAAAAAACAABAQgAA=</HashCode>
@@ -13,11 +13,11 @@
   <Class Name="p2groep04.User">
     <Position X="8" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAEAAACACAAAAAQAAAAAAAEAAAAACAAAAAAAAAAg=</HashCode>
+      <HashCode>AABCAEAAACACAAAAAQAAAAAAAEAAAAACAAAAAAAAAAg=</HashCode>
       <FileName>Models\Domain\User.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="p2groep04.Student">
+  <Class Name="p2groep04.Models.Domain.Student">
     <Position X="9" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
@@ -28,28 +28,28 @@
       <Property Name="Jury" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="p2groep04.BPCoordinator">
+  <Class Name="p2groep04.Models.Domain.BPCoordinator">
     <Position X="5.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\BPCoordinator.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="p2groep04.Promotor">
+  <Class Name="p2groep04.Models.Domain.Promotor">
     <Position X="7.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\Promotor.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="p2groep04.Jury">
+  <Class Name="p2groep04.Models.Domain.Jury">
     <Position X="11.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Models\Domain\Jury.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="p2groep04.ResearchDomain">
+  <Class Name="p2groep04.Models.Domain.ResearchDomain">
     <Position X="14.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>

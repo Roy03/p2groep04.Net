@@ -6,7 +6,7 @@ using System.ComponentModel;
 using p2groep04.Models.Domain;
 using System.Web.Mvc;
 
-namespace p2groep04
+namespace p2groep04.Controllers
 {
     public class SuggestionController : Controller
     {
