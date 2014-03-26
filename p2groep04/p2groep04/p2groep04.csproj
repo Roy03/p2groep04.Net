@@ -108,24 +108,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BPCoordinator.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\Domain\BPCoordinator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Jury.cs" />
-    <Compile Include="Manager.cs" />
+    <Compile Include="Models\Domain\Jury.cs" />
     <Compile Include="Models\LogInResponse.cs" />
-    <Compile Include="Promotor.cs" />
+    <Compile Include="Models\Domain\Promotor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository.cs" />
-    <Compile Include="ResearchDomain.cs" />
-    <Compile Include="Student.cs" />
-    <Compile Include="Suggestion.cs" />
-    <Compile Include="SuggestionController.cs" />
-    <Compile Include="SuggestionManager.cs" />
+    <Compile Include="Models\Domain\ResearchDomain.cs" />
+    <Compile Include="Models\Domain\Student.cs" />
+    <Compile Include="Models\Domain\Suggestion.cs" />
+    <Compile Include="Controllers\SuggestionController.cs" />
     <Compile Include="SuggestionStatus.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="Models\Domain\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -146,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\DAL\Mapper\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -4,7 +4,7 @@
     <Position X="11.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAgAAAAAAAIAAAAAAgAAQAAAAAACAABAQgAA=</HashCode>
-      <FileName>Suggestion.cs</FileName>
+      <FileName>Models\Domain\Suggestion.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="ResearchDomain" />
@@ -14,14 +14,14 @@
     <Position X="8" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAEAAACACAAAAAQAAAAAAAEAAAAACAAAAAAAAAAg=</HashCode>
-      <FileName>User.cs</FileName>
+      <FileName>Models\Domain\User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="p2groep04.Student">
     <Position X="9" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
-      <FileName>Student.cs</FileName>
+      <FileName>Models\Domain\Student.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Suggestion" />
@@ -32,28 +32,28 @@
     <Position X="5.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BPCoordinator.cs</FileName>
+      <FileName>Models\Domain\BPCoordinator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="p2groep04.Promotor">
     <Position X="7.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Promotor.cs</FileName>
+      <FileName>Models\Domain\Promotor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="p2groep04.Jury">
     <Position X="11.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Jury.cs</FileName>
+      <FileName>Models\Domain\Jury.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="p2groep04.ResearchDomain">
     <Position X="14.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ResearchDomain.cs</FileName>
+      <FileName>Models\Domain\ResearchDomain.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="p2groep04.SuggestionStatus">
