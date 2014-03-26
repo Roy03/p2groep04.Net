@@ -134,7 +134,10 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DAL\BPCoordinatorRepository.cs" />
+    <Compile Include="Models\DAL\Mapper\BPCoordinatorMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\PromotorMapper.cs" />
     <Compile Include="Models\DAL\Mapper\ResearchDomainMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\StudentMapper.cs" />
     <Compile Include="Models\DAL\Mapper\SuggestionMapper.cs" />
     <Compile Include="Models\DAL\ProjectContext.cs" />
     <Compile Include="Models\DAL\PromotorRepository.cs" />
