@@ -39,6 +39,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -109,11 +115,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\DAL\ProjectContext.cs" />
+    <Compile Include="Models\DAL\ResearchDomainRepository.cs" />
+    <Compile Include="Models\DAL\SuggestionRepository.cs" />
     <Compile Include="Models\Domain\BPCoordinator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Domain\IResearchDomainRepository.cs" />
+    <Compile Include="Models\Domain\ISuggestionRepository.cs" />
     <Compile Include="Models\Domain\Jury.cs" />
     <Compile Include="Models\LogInResponse.cs" />
     <Compile Include="Models\Domain\Promotor.cs" />

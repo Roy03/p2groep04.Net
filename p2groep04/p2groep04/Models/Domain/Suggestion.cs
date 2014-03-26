@@ -106,5 +106,16 @@ namespace p2groep04
             {
             }
         }
+
+        public int Id
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
     }
 }
