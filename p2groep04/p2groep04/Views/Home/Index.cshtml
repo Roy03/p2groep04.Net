@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Projecten 2 - Groep 4</title>
+    </head>
+    <body>
+        
+        <header>
+            <div class="wrapper">
+                <nav id="header-nav" class="clearfix">
+                    <ul id="main-nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Home</a></li>
+                    </ul>				
+                    <div id="account-nav" class="dropdown">
+                        <a class="thumb-sm avatar" data-toggle="dropdown" href="#">
+                            <img src="https://chamilo.hogent.be/application/bamaflex/php/webservices/foto_call.class.php?user_id=34307"/> Maxim <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu animated fadeInRight" role="menu" aria-labelledby="dLabel">
+                            <li><a href="#">Change password</a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
+        </header>
+
+        <div class="wrapper">
+            <section id="dashboard" class="pane">
+            </section>
+
+            <!-- Voorstel beheer -->
+            <section id="tools">
+                <div class="category fadeInRight">
+                    <h2 class="category-header">Voorstellen</h2>
+                    <div class="category-content pane">
+                        <ul class="category-menu">
+                            <li><a href="#">Voorstel indienen</a></li>
+                            <li><a href="#">Voorstel bekijken</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <div class="wrapper">
+                <p>&copy; 2014 - This is a project made by a group consisting out of 4 members for University College Ghent</p>
+                <ul class="credit-contact">
+                    <li>					
+                        <div class="credit-contact-container clearfix">
+                            <span class="credit-contact-name">Maxim Geerinck</span>
+                            <ul class="credit-contact-social">
+                                <li class="symbol-email"><a href="mailto:maximgeerinck@hotmail.com"><span class="symbol">&#xe024;</span></a></li>
+                                <li class="symbol-gplus"><a href="https://plus.google.com/+MaximGeerinck"><span class="symbol">&#xe039;</span></a></li>
+                                <li class="symbol-twitter"><a href="https://twitter.com/c4d3r"><span class="symbol">&#xe087;</span></a></li>
+                                <li class="symbol-linkedin"><a href="http://www.linkedin.com/profile/view?id=188053464"><span class="symbol">&#xe052;</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>					
+                        <div class="credit-contact-container clearfix">
+                            <span class="credit-contact-name">Bram Baert</span>
+                            <ul class="credit-contact-social">
+                                <li class="symbol-email"><a href="#"><span class="symbol">&#xe024;</span></a></li>
+                                <li class="symbol-gplus"><a href="#"><span class="symbol">&#xe039;</span></a></li>
+                                <li class="symbol-twitter"><a href="#"><span class="symbol">&#xe087;</span></a></li>
+                                <li class="symbol-linkedin"><a href="#"><span class="symbol">&#xe052;</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>					
+                        <div class="credit-contact-container clearfix">
+                            <span class="credit-contact-name">Roy Hollanders</span>
+                            <ul class="credit-contact-social">
+                                <li class="symbol-email"><a href="#"><span class="symbol">&#xe024;</span></a></li>
+                                <li class="symbol-gplus"><a href="#"><span class="symbol">&#xe039;</span></a></li>
+                                <li class="symbol-twitter"><a href="#"><span class="symbol">&#xe087;</span></a></li>
+                                <li class="symbol-linkedin"><a href="#"><span class="symbol">&#xe052;</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>					
+                        <div class="credit-contact-container clearfix">
+                            <span class="credit-contact-name">Logan Dupont</span>
+                            <ul class="credit-contact-social">
+                                <li class="symbol-email"><a href="#"><span class="symbol">&#xe024;</span></a></li>
+                                <li class="symbol-gplus"><a href="#"><span class="symbol">&#xe039;</span></a></li>
+                                <li class="symbol-twitter"><a href="#"><span class="symbol">&#xe087;</span></a></li>
+                                <li class="symbol-linkedin"><a href="#"><span class="symbol">&#xe052;</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="plugins/bootstrap-modified/js/bootstrap.min.js" type="text/javascript"></script>
+        <script>
+            $(function () {
+                $(".credit-contact-social > li > a").hover(function () {
+                    var _parent = $(this).parent();
+                    _parent.addClass('animated pulse');
+
+                    _parent.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                        _parent.removeClass('animated pulse');
+                    });
+                })
+            });
+        </script>
+    </body>
+</html>
+
