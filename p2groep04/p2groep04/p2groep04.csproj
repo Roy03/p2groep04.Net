@@ -133,27 +133,23 @@
       <DependentUpon>201403261622596_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\DAL\BPCoordinatorRepository.cs" />
     <Compile Include="Models\DAL\Mapper\BPCoordinatorMapper.cs" />
     <Compile Include="Models\DAL\Mapper\PromotorMapper.cs" />
     <Compile Include="Models\DAL\Mapper\ResearchDomainMapper.cs" />
     <Compile Include="Models\DAL\Mapper\StudentMapper.cs" />
     <Compile Include="Models\DAL\Mapper\SuggestionMapper.cs" />
     <Compile Include="Models\DAL\ProjectContext.cs" />
-    <Compile Include="Models\DAL\PromotorRepository.cs" />
     <Compile Include="Models\DAL\ResearchDomainRepository.cs" />
-    <Compile Include="Models\DAL\StudentRepository.cs" />
     <Compile Include="Models\DAL\SuggestionRepository.cs" />
+    <Compile Include="Models\DAL\UserRepository.cs" />
     <Compile Include="Models\Domain\BPCoordinator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Domain\IBPCoordinatorRepository.cs" />
-    <Compile Include="Models\Domain\IPromotorRepository.cs" />
-    <Compile Include="Models\Domain\IStudentRepository.cs" />
     <Compile Include="Models\Domain\IResearchDomainRepository.cs" />
     <Compile Include="Models\Domain\ISuggestionRepository.cs" />
+    <Compile Include="Models\Domain\IUserRepository.cs" />
     <Compile Include="Models\Domain\Jury.cs" />
     <Compile Include="Models\LogInResponse.cs" />
     <Compile Include="Models\Domain\Promotor.cs" />
