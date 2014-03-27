@@ -133,11 +133,10 @@
       <DependentUpon>201403261622596_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\DAL\Mapper\BPCoordinatorMapper.cs" />
-    <Compile Include="Models\DAL\Mapper\PromotorMapper.cs" />
     <Compile Include="Models\DAL\Mapper\ResearchDomainMapper.cs" />
     <Compile Include="Models\DAL\Mapper\StudentMapper.cs" />
     <Compile Include="Models\DAL\Mapper\SuggestionMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\UserMapper.cs" />
     <Compile Include="Models\DAL\ProjectContext.cs" />
     <Compile Include="Models\DAL\ResearchDomainRepository.cs" />
     <Compile Include="Models\DAL\SuggestionRepository.cs" />
@@ -150,7 +149,6 @@
     <Compile Include="Models\Domain\IResearchDomainRepository.cs" />
     <Compile Include="Models\Domain\ISuggestionRepository.cs" />
     <Compile Include="Models\Domain\IUserRepository.cs" />
-    <Compile Include="Models\Domain\Jury.cs" />
     <Compile Include="Models\LogInResponse.cs" />
     <Compile Include="Models\Domain\Promotor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
