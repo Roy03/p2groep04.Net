@@ -9,7 +9,5 @@ namespace p2groep04.Models.Domain
     public class Student : User
     {
         public Suggestion Suggestion { get; set; }
-
-        public Jury Jury { get; set; }
     }
 }

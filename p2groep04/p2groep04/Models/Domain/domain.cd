@@ -25,7 +25,6 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Suggestion" />
-      <Property Name="Jury" />
     </ShowAsAssociation>
   </Class>
   <Class Name="p2groep04.Models.Domain.BPCoordinator">
@@ -40,13 +39,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\Promotor.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="p2groep04.Models.Domain.Jury">
-    <Position X="11.25" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Models\Domain\Jury.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="p2groep04.Models.Domain.ResearchDomain">

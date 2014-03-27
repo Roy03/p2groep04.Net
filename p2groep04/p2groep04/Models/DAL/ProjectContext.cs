@@ -13,8 +13,6 @@ namespace p2groep04.Models.DAL
 
         public DbSet<Suggestion> Suggestions { get; set; }
         public DbSet<ResearchDomain> ResearchDomains{ get; set; }
-        public DbSet<Promotor> Promotors { get; set; }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<BPCoordinator> BpCoordinators { get; set; } 
+        public DbSet<User> Users { get; set; } 
     }
 }

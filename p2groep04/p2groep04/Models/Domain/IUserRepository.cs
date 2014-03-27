@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
 namespace p2groep04.Models.Domain
 {
-    interface IUserRepository
+    public interface IUserRepository
     {
-        User FindBy(string username);
-        void SaveChanges();
-        void Add(User user);
+        IQueryable<User> FindAll();
+        User FindBy(int id);
     }
 }
