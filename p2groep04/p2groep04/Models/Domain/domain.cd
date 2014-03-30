@@ -2,8 +2,17 @@
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="p2groep04.Models.Domain.Suggestion">
     <Position X="10.25" Y="6.75" Width="2" />
+    <AssociationLine Name="ResearchDomains" Type="p2groep04.Models.Domain.ResearchDomain" FixedToPoint="true">
+      <Path>
+        <Point X="10.812" Y="13.564" />
+        <Point X="10.812" Y="15" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.2" Y="0.18" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AQgCAAAAQgQAAAAAAIEAECAAgAAQAABABACCQRIQgIA=</HashCode>
+      <HashCode>AYgCAAAAQgQAAABAAIEAECAggAAQAABJBACCARIQgIA=</HashCode>
       <FileName>Models\Domain\Suggestion.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -50,11 +59,19 @@
     </TypeIdentifier>
   </Class>
   <Class Name="p2groep04.Models.Domain.ResearchDomain">
-    <Position X="10.5" Y="12.75" Width="1.5" />
+    <Position X="10.5" Y="15" Width="1.5" />
+    <AssociationLine Name="Suggestions" Type="p2groep04.Models.Domain.Suggestion">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.19" Y="0.186" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQCAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\ResearchDomain.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Suggestions" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="p2groep04.Models.Domain.SuggestionState">
     <Position X="17.75" Y="7" Width="2" />

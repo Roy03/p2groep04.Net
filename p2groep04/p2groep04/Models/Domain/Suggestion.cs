@@ -26,6 +26,7 @@ namespace p2groep04.Models.Domain
         public String[] References { get; set; }
         public int Id { get; set; }
         public SuggestionState CurrentState { get; set; }
+        public Student Student { get; set; }
 
         public Suggestion()
         {

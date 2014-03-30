@@ -13,7 +13,12 @@ namespace p2groep04.Models.DAL.Mapper
         {
             HasKey(s => s.Id);
             Property(s => s.Subject).IsRequired().HasMaxLength(100);
-            HasRequired(s => s.ResearchDomain).WithMany().Map(m => m.MapKey("researchdomain_id")).WillCascadeOnDelete(false);
+            HasMany(s => s.ResearchDomains).WithMany(r => r.Suggestions).Map(m =>
+            {
+                m.ToTable("suggestion_researchdomain");
+                m.MapLeftKey("suggestion_id");
+                m.MapRightKey("researchdomain_id");
+            });            
         }
     }
 }

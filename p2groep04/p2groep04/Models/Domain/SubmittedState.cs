@@ -26,7 +26,7 @@ namespace p2groep04.Models.Domain
 
         protected void RequestAdvice()
         {
-            Suggestion.ToAdviceBPCState();
+            Suggestion.ToAdviceBpcState();
         }
 
         protected void ApproveWithRemarks(string feedback)
