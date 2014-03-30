@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="p2groep04.Models.Domain.Suggestion">
-    <Position X="11.25" Y="6.75" Width="1.5" />
+    <Position X="10.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQACAAAAAgAAAAAAAIAAAAAAgAAQAAAAAACAABAQgAA=</HashCode>
+      <HashCode>AQgCAAAAQgQAAAAAAIEAECAAgAAQAABABACCQRIQgIA=</HashCode>
       <FileName>Models\Domain\Suggestion.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -20,7 +20,7 @@
   <Class Name="p2groep04.Models.Domain.Student">
     <Position X="9" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
       <FileName>Models\Domain\Student.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -46,6 +46,48 @@
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\ResearchDomain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="p2groep04.SuggestionState">
+    <Position X="14.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAQAAAAAAAEAEAAAAAAAAAAAAAAAAQIAgIA=</HashCode>
+      <FileName>SuggestionState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="p2groep04.NewState">
+    <Position X="12.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>NewState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="p2groep04.SubmittedState">
+    <Position X="14" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAAAIAAIA=</HashCode>
+      <FileName>SubmittedState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="p2groep04.AdviceBPCState">
+    <Position X="15.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AdviceBPCState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="p2groep04.ApprovedState">
+    <Position X="17.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApprovedState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="p2groep04.ApprovedWithRemarksState">
+    <Position X="19.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApprovedWithRemarksState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="p2groep04.SuggestionStatus">
