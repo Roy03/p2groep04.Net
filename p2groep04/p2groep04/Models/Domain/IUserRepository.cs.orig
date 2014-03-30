@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+<<<<<<< HEAD
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p2groep04.Models.Domain
+{
+    interface IUserRepository
+    {
+        User FindBy(string username);
+        void SaveChanges();
+        void Add(User user);
+    }
+}
+=======
+using System.Web;
+
+namespace p2groep04.Models.Domain
+{
+    public interface IUserRepository
+    {
+        IQueryable<User> FindAll();
+        User FindBy(int id);
+    }
+}
+>>>>>>> 28141dfdd10958d0dfd4324a15769177e4bc1cd1

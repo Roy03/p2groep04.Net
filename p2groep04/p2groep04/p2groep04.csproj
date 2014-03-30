@@ -141,6 +141,7 @@
     <Compile Include="Models\DAL\Mapper\SuggestionMapper.cs" />
     <Compile Include="Models\DAL\Mapper\UserMapper.cs" />
     <Compile Include="Models\DAL\ProjectContext.cs" />
+    <Compile Include="Models\DAL\ProjectInitializer.cs" />
     <Compile Include="Models\DAL\ResearchDomainRepository.cs" />
     <Compile Include="Models\DAL\SuggestionRepository.cs" />
     <Compile Include="Models\DAL\UserRepository.cs" />

@@ -5,10 +5,12 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 
-namespace p2groep04
+namespace p2groep04.Models.Domain
 {
     public abstract class User
     {
+        //TPH is default
+
         [Column("first_name")]
         public String FirstName { get; set; }
 
@@ -32,6 +34,9 @@ namespace p2groep04
 
         [Column("last_ip")]
         public String LastIp { get; set; }
+
+        [Column("role")] 
+        public int Role;
 
         [Column("id")]
         public int Id
