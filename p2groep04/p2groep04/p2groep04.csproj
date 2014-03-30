@@ -126,9 +126,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdviceBPCState.cs" />
-    <Compile Include="ApprovedState.cs" />
-    <Compile Include="ApprovedWithRemarksState.cs" />
+    <Compile Include="Models\Domain\AdviceBPCState.cs" />
+    <Compile Include="Models\Domain\ApprovedState.cs" />
+    <Compile Include="Models\Domain\ApprovedWithRemarksState.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Migrations\201403261622596_InitialCreate.cs" />
@@ -161,8 +161,8 @@
     <Compile Include="Models\Domain\Student.cs" />
     <Compile Include="Models\Domain\Suggestion.cs" />
     <Compile Include="Controllers\SuggestionController.cs" />
-    <Compile Include="SubmittedState.cs" />
-    <Compile Include="SuggestionState.cs" />
+    <Compile Include="Models\Domain\SubmittedState.cs" />
+    <Compile Include="Models\Domain\SuggestionState.cs" />
     <Compile Include="SuggestionStatus.cs" />
     <Compile Include="Models\Domain\User.cs" />
   </ItemGroup>

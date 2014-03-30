@@ -5,12 +5,13 @@ using System.Web.Services.Protocols;
 using System.ComponentModel;
 using p2groep04.Models.Domain;
 
-namespace p2groep04
+namespace p2groep04.Models.Domain
 {
     public abstract class SuggestionState
     {
 
         protected Suggestion Suggestion { get; set; }
+
 
         protected SuggestionState(Suggestion suggestion)
         {
@@ -23,6 +24,11 @@ namespace p2groep04
         }
 
         public void Approve()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Approve(String feedback)
         {
             throw new System.NotImplementedException();
         }

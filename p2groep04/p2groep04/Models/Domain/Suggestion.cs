@@ -10,49 +10,55 @@ namespace p2groep04.Models.Domain
     public class Suggestion
     {
 
+        private readonly SuggestionState _adviceBpcState;
+        private readonly SuggestionState _approvedState;
+        private readonly SuggestionState _approvedWithRemarksState;
+        private readonly SuggestionState _submittedState;
+        private readonly SuggestionState _newState;
+
         public String Titel { get; set; }
-
         public String[] Keywords { get; set; }
-
         public String Context { get; set; }
-
         public String Subject { get; set; }
-
         public String Goal { get; set; }
-
         public String ResearchQuestion { get; set; }
-
         public String Motivation { get; set; }
-
         public String[] References { get; set; }
-
         public int Id { get; set; }
-
         public SuggestionState CurrentState { get; set; }
+
+        public Suggestion()
+        {
+            _adviceBpcState = new AdviceBPCState(this);
+            _approvedState = new ApprovedState(this);
+            _approvedWithRemarksState = new ApprovedWithRemarksState(this);
+            _submittedState = new SubmittedState(this);
+            _newState = new NewState(this);
+        }
 
         public void ToNewState()
         {
-            CurrentState = new NewState(this.CurrentState);
+            CurrentState = _newState;
         }
 
         public void ToSubmittedState()
         {
-            CurrentState = new SubmittedState(this.CurrentState);
+            CurrentState = _submittedState;
         }
 
-        public void ToAdviceBPCState()
+        public void ToAdviceBpcState()
         {
-            CurrentState = new AdviceBPCState(this.CurrentState);
+            CurrentState = _adviceBpcState;
         }
 
         public void ToApprovedState()
         {
-            CurrentState = new ApprovedState(this.CurrentState);
+            CurrentState = _approvedState;
         }
 
         public void ToApprovedWithRemarksState()
         {
-            CurrentState = new ApprovedWithRemarksState(this.CurrentState);
+            CurrentState = _approvedWithRemarksState;
         }
 
         public void Submit()
