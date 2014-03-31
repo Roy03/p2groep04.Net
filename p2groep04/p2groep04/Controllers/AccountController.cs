@@ -78,39 +78,39 @@ namespace p2groep04.Controllers
         //
         // POST: /Account/Register
 
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                // Attempt to register the user
-                try
-                {
-                    User c = new User()
-                    {
-                        Username = model.UserName,
-                        Email = model.Email,
-                        FirstName = model.FirstName,
-                        LastName = model.Name
-                    };
-                    repos.Add(c);
-                    repos.SaveChanges();
-                    WebSecurity.CreateAccount(model.UserName, model.Password);
-                    //WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
-                }
-                catch (MembershipCreateUserException e)
-                {
-                    ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
-                }
-            }
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Register(RegisterModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        // Attempt to register the user
+        //        try
+        //        {
+        //            User c = new User()
+        //            {
+        //                Username = model.UserName,
+        //                Email = model.Email,
+        //                FirstName = model.FirstName,
+        //                LastName = model.Name
+        //            };
+        //            repos.Add(c);
+        //            repos.SaveChanges();
+        //            WebSecurity.CreateAccount(model.UserName, model.Password);
+        //            //WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+        //            WebSecurity.Login(model.UserName, model.Password);
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //        catch (MembershipCreateUserException e)
+        //        {
+        //            ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
+        //        }
+        //    }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
 
         //
         // POST: /Account/Disassociate
