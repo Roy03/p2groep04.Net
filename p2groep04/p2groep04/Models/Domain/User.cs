@@ -31,6 +31,8 @@ namespace p2groep04.Models.Domain
         [Column("password")]
         public String Password { get; set; }
 
+        public String PlainPassword { get; set; }
+
         [Column("last_login")]
         public DateTime LastLogin { get; set; }
 
