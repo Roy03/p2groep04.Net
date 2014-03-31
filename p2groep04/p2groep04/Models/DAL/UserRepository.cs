@@ -27,5 +27,10 @@ namespace p2groep04.Models.DAL
         {
             return users.FirstOrDefault(u => u.Id == id);
         }
+
+        public void SaveChanges()
+        {
+            context.SaveChanges();
+        }
     }
 }

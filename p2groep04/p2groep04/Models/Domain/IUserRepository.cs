@@ -9,5 +9,7 @@ namespace p2groep04.Models.Domain
     {
         IQueryable<User> FindAll();
         User FindBy(int id);
+        void SaveChanges();
+        
     }
 }
