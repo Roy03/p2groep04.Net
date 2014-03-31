@@ -126,6 +126,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Domain\AdviceBPCState.cs" />
     <Compile Include="Models\Domain\ApprovedState.cs" />
     <Compile Include="Models\Domain\ApprovedWithRemarksState.cs" />
