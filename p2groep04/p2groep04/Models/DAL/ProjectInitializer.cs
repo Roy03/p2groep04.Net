@@ -8,7 +8,7 @@ using p2groep04.Models.Domain;
 
 namespace p2groep04.Models.DAL
 {
-    public class ProjectInitializer : DropCreateDatabaseAlways<ProjectContext>
+    class ProjectInitializer : CreateAndMigrateDatabaseInitializer<ProjectContext, p2groep04.Migrations.Configuration>
     {
         protected override void Seed(ProjectContext context)
         {
@@ -24,11 +24,15 @@ namespace p2groep04.Models.DAL
                     Salt = "Unknown",
                     Username = "209452mg"
                 };
-
+                
                 List<Student> studenten = (new Student[] {studentMaxim}).ToList();
                 studenten.ForEach(s => context.Studenten.Add(s));
 
+                studenten = context.Studenten.ToList();
+
                 context.SaveChanges();
+                Console.WriteLine("Database created!");
+                context.Database.Initialize(true);
             }
             catch (DbEntityValidationException ex)
             {

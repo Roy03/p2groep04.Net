@@ -40,7 +40,7 @@ namespace p2groep04.Models.Domain
         public String LastIp { get; set; }
 
         [Column("role")] 
-        public int Role;
+        public int Role { get; set; }
 
         [Column("id")]
         public int Id {get; set;}

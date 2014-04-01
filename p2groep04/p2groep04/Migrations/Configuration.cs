@@ -1,3 +1,5 @@
+using p2groep04.Models.DAL;
+
 namespace p2groep04.Migrations
 {
     using System;
@@ -5,7 +7,7 @@ namespace p2groep04.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<p2groep04.Models.DAL.ProjectContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ProjectContext>
     {
         public Configuration()
         {
