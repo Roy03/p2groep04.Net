@@ -65,6 +65,8 @@ namespace p2groep04.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
+            kernel.Bind<ISuggestionRepository>().To<SuggestionRepository>().InRequestScope();
+            kernel.Bind<ProjectContext>().ToSelf().InRequestScope();
         }        
     }
 }

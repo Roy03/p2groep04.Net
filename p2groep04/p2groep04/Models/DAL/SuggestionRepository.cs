@@ -27,5 +27,15 @@ namespace p2groep04.Models.DAL
         {
             return suggestions.SingleOrDefault(s => s.Id == id);
         }
+
+        public IQueryable<Suggestion> FindByUser(int id)
+        {
+            return suggestions.OrderBy(s => s.Student.Id == id);
+        }
+
+        public void SaveChanges()
+        {
+            context.SaveChanges();
+        }
     }
 }
