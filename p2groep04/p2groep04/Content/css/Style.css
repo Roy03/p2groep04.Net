@@ -11,7 +11,7 @@ body {
 	color: #717171;
 	-webkit-font-smoothing: antialiased;
 }
-
+h2 { margin: 0; }
 .wrapper {
 	width: 1020px;
 	margin: 0 auto;	
@@ -34,16 +34,48 @@ body {
 section + section {
 	margin-top:20px;
 }
-.absolute-center {
-    margin: auto;
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
+
+/* input */
+input[type="text"], input[type="password"], textarea {
+    border: 1px solid rgb(194, 194, 194);
+    padding: 10px 10px;
+    border-radius: 3px;
+}
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+    border-color: #000;
+    color: #000;
+    outline: none;
 }
 
+.form-group + .form-group {
+    margin-top: 5px;
+}
+.form-group > label {
+    display: block;
+}
+.form-group > .form-control {
+    width: 100%;
+}
+/* buttons */
+.button {
+    background: rgb(96, 189, 241);
+    border: 1px solid rgb(79, 141, 182);
+    border-radius: 5px;
+    padding: 7px 10px;
+    color: white;
+}
+.button:hover {
+    background-color: rgb(80, 163, 209);
+}
 /* Login */
 #container-login {
-    height: 200px;
-    width: 500px;
+    height: 234px;
+    width: 400px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(207, 207, 207);
+    box-sizing: border-box;
 }
 /* Dropdown */
 .dropdown-menu { 
