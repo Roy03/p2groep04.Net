@@ -1,4 +1,4 @@
-﻿@model p2groep04.Models.Domain.Suggestion
+﻿@model IEnumerable<p2groep04.Models.Domain.Suggestion>
 
 @{
     ViewBag.Title = "Suggestions";
@@ -7,4 +7,14 @@
 
 <h2>Suggestions</h2>
 
+@foreach (var Suggestion in Model)
+{
+    <div>
+        <p>Suggestion.Titel</p>
+        Suggestion.Subject
+        Suggestion.ResearchQuestion
+        Suggestion.CurrentState
 
+    </div>
+    
+}
