@@ -1,13 +1,8 @@
 ﻿@using System.Web.Optimization
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Projecten 2 - Groep 4</title>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    @Styles.Render("~/Content/plugins/css")
-    @Styles.Render("~/Content/css")
-</head>
-<body>
+@{
+    Layout = "~/Views/Shared/_LayoutPlain.cshtml";
+}
+@section Main {
     <header>
         <div class="wrapper">
             <nav id="header-nav" class="clearfix">
@@ -32,7 +27,7 @@
     </header>
 
     <div class="wrapper">
-        @RenderBody()        
+        @RenderBody()
     </div>
 
     <footer>
@@ -89,23 +84,22 @@
             </ul>
         </div>
     </footer>
-    
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Content/plugins/js")
-    
-    @RenderSection("scripts", required: false)
 
-    <script>
-        $(function () {
-            $(".credit-contact-social > li > a").hover(function () {
-                var _parent = $(this).parent();
-                _parent.addClass('animated pulse');
+    @section scripts {
+        <script>
+            $(function () {
+                $(".credit-contact-social > li > a").hover(function () {
+                    var _parent = $(this).parent();
+                    _parent.addClass('animated pulse');
 
-                _parent.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-                    _parent.removeClass('animated pulse');
-                });
-            })
-        });
-    </script>
-</body>
-</html>
+                    _parent.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                        _parent.removeClass('animated pulse');
+                    });
+                })
+            });
+        </script>
+    } 
+}

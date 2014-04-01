@@ -216,6 +216,7 @@
     <Compile Include="Models\Domain\IResearchDomainRepository.cs" />
     <Compile Include="Models\Domain\ISuggestionRepository.cs" />
     <Compile Include="Models\Domain\IUserRepository.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\LogInResponse.cs" />
     <Compile Include="Models\Domain\Promotor.cs" />
     <Compile Include="Models\Domain\NewState.cs" />
@@ -267,6 +268,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_LayoutPlain.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -292,10 +294,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\LoginForm.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\ForgotPasswordForm.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Thanks.cshtml" />

@@ -21,13 +21,7 @@ namespace p2groep04.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        //
-        // GET: /Account/Login
         private IUserRepository repos;
-        public AccountController(IUserRepository repos)
-        {
-            this.repos = repos;
-        }
 
         //
         // POST: /Account/LogOff
@@ -39,6 +33,20 @@ namespace p2groep04.Controllers
             WebSecurity.Logout();
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [AllowAnonymous]
+        public ActionResult Login()
+        {
+            return View("Login");
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginModel model)
+        {
+            throw new NotImplementedException();
         }
 
     }

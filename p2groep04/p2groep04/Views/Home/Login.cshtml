@@ -1,0 +1,61 @@
+﻿@model p2groep04.Models.LoginModel
+@{
+    ViewBag.Title = "LoginForm";
+    Layout = "~/Views/Shared/_LayoutPlain.cshtml";
+}
+<div id="container-login" class="absolute-center">
+    <h2>Login</h2>
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count() > 0)
+        {
+            <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                @Html.ValidationSummary(true, "Errors: ")
+            </div>
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.UserName)
+
+            @Html.TextBoxFor(m => m.UserName)
+            @Html.ValidationMessageFor(m => m.UserName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password)
+
+            @Html.TextBoxFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+
+        <div class="form-group">
+            <div class="checkbox">
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe)
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Log in" class="btn btn-default" />
+        </div>
+    }
+</div>
+
+@section scripts {
+    <script>
+        $(window).resize(function () {
+
+            $('#container-login').css({
+                position: 'absolute',
+                left: ($(window).width() - $('#container-login').outerWidth()) / 2,
+                top: ($(window).height() - $('#container-login').outerHeight()) / 2
+            });
+
+        });
+
+        // To initially run the function:
+        $(window).resize();
+    </script>
+}
