@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
@@ -29,6 +31,8 @@ namespace p2groep04.Models.Domain
         [Column("password")]
         public String Password { get; set; }
 
+        public String PlainPassword { get; set; }
+
         [Column("last_login")]
         public DateTime LastLogin { get; set; }
 
@@ -39,15 +43,22 @@ namespace p2groep04.Models.Domain
         public int Role;
 
         [Column("id")]
-        public int Id
+        public int Id {get; set;}
+
+        public String SaltGenerator()
         {
-            get
+            char[] saltComponents = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789").ToCharArray();
+            Random random = new Random();
+            
+            string salt = "";
+
+            for (int i = 0; i <= 15; i++)
             {
-                throw new System.NotImplementedException();
+                int randomComponent = random.Next(0, saltComponents.Length + 1);
+                salt += saltComponents[randomComponent];
             }
-            set
-            {
-            }
+            return salt;
+
         }
     }
 }

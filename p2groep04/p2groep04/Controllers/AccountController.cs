@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities.Statements;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -12,6 +13,8 @@ using p2groep04.Models.DAL;
 using p2groep04.Models.Domain;
 using WebMatrix.WebData;
 using p2groep04.Models;
+using IsolationLevel = System.Transactions.IsolationLevel;
+using TransactionScope = System.Transactions.TransactionScope;
 
 namespace p2groep04.Controllers
 {
