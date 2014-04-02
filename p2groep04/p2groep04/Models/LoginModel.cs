@@ -9,7 +9,7 @@ namespace p2groep04.Models
     public class LoginModel
     {
         [Required]
-        [Display(Name = "Username:")]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required]

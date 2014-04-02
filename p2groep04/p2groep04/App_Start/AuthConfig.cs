@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Web.WebPages.OAuth;
 using p2groep04.Models;
+using WebMatrix.WebData;
 
 namespace p2groep04.App_Start
 {
@@ -27,6 +28,8 @@ namespace p2groep04.App_Start
             //    appSecret: "");
 
             //OAuthWebSecurity.RegisterGoogleClient();
+
+            
         }
     }
 }

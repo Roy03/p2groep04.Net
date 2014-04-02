@@ -21,7 +21,7 @@ namespace p2groep04.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private IUserRepository repos;
+        
 
         //
         // POST: /Account/LogOff
@@ -48,10 +48,10 @@ namespace p2groep04.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return Redirect()
+                //return Redirect();
             }
 
-            ModelState.AddModelError("", "De login naam of wachtwoord die u heeft ingegeven is incorrect");
+            //ModelState.AddModelError("", "De login naam of wachtwoord die u heeft ingegeven is incorrect");
             return View(model);
         }
 
