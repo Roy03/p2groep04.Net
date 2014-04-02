@@ -5,14 +5,17 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using p2groep04.Models.Domain;
+using WebMatrix.WebData;
 
 namespace p2groep04.Models.DAL
 {
     //class ProjectInitializer : CreateAndMigrateDatabaseInitializer<ProjectContext, p2groep04.Migrations.Configuration>
     public class ProjectInitializer : DropCreateDatabaseAlways<ProjectContext>
     {
+
         protected override void Seed(ProjectContext context)
         {
+            
             Console.WriteLine("TEST");
             try
             {

@@ -26,7 +26,7 @@ namespace p2groep04
             Database.SetInitializer<ProjectContext>(new ProjectInitializer());
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            WebSecurity.InitializeDatabaseConnection("Projecten2", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            WebSecurity.InitializeDatabaseConnection("projecten2", "UserProfile", "UserId", "UserName", autoCreateTables: true);
         }
     }
 }
