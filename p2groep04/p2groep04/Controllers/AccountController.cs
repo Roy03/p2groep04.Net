@@ -49,6 +49,11 @@ namespace p2groep04.Controllers
             throw new NotImplementedException();
         }
 
+        public JsonResult CheckUsername(String username)
+        {
+            var result = Membership.FindUsersByName(username).Count == 0;
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }
 

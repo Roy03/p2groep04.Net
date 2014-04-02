@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace p2groep04.Models.Domain
         public String LastName { get; set; }
 
         [Column("username")]
+        [Remote("CheckUsername", "Account")]
         public String Username { get; set; }
 
         [Column("email")]
