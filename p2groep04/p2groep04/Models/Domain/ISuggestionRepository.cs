@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace p2groep04.Models.Domain
 {
-    interface ISuggestionRepository
+    public interface ISuggestionRepository
     {
         IQueryable<Suggestion> FindAll();
         Suggestion FindBy(int id);
+        IQueryable<Suggestion> FindByUser(int id);
     }
 }

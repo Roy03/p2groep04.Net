@@ -1,61 +1,68 @@
-﻿@using System.Web.Optimization
+﻿@using System.Web.WebPages
+@using System.Web.Mvc.Html
 @model p2groep04.Models.LoginModel
-
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = "LoginForm";
+    Layout = "~/Views/Shared/_LayoutPlain.cshtml";
 }
+@section Main
+{
+    <div id="container-login" class="absolute-center">
+        <h2>Login</h2>
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
 
-    <h2>@ViewBag.Title</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count() > 0)
             {
-                @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
-                <hr />
-                @Html.ValidationSummary(true)
-                <div class="form-group">
-                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.UserName)
-                    </div>
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    @Html.ValidationSummary(true, "Errors: ")
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password)
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
-                    </div>
-                </div>
-                <p>
-                    @Html.ActionLink("Register", "Register") if you don't have a local account.
-                </p>
             }
-        </section>
-    </div>
-    <div class="col-md-4">
-    <section id="socialLoginForm">
-        <h4>Use another service to log in.</h4>
-        <hr/>
-        @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-    </section>
-        </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName)
+
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password)
+
+                @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe)
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Log in" class="button" />
+            </div>
+        }
+    </div>
+}
+@section scripts {
+    <script>
+        $(window).resize(function () {
+
+            $('.absolute-center').css({
+                position: 'absolute',
+                left: '50%',
+                top: '50%',
+                'margin-left': -$('#container-login').width() / 2,
+                'margin-top': -$('#container-login').height() / 1.2
+
+                
+            });
+
+        });
+        // To initially run the function:
+        $(window).resize();
+    </script>
 }

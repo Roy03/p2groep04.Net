@@ -8,10 +8,12 @@ using p2groep04.Models.Domain;
 
 namespace p2groep04.Models.DAL
 {
+    //class ProjectInitializer : CreateAndMigrateDatabaseInitializer<ProjectContext, p2groep04.Migrations.Configuration>
     public class ProjectInitializer : DropCreateDatabaseAlways<ProjectContext>
     {
         protected override void Seed(ProjectContext context)
         {
+            Console.WriteLine("TEST");
             try
             {
                 Student studentMaxim = new Student()
@@ -24,11 +26,16 @@ namespace p2groep04.Models.DAL
                     Salt = "Unknown",
                     Username = "209452mg"
                 };
-
+                
                 List<Student> studenten = (new Student[] {studentMaxim}).ToList();
                 studenten.ForEach(s => context.Studenten.Add(s));
 
+                studenten = context.Studenten.ToList();
+
                 context.SaveChanges();
+                Console.WriteLine("Database created!");
+                context.Database.Initialize(true);
+                base.Seed(context);
             }
             catch (DbEntityValidationException ex)
             {

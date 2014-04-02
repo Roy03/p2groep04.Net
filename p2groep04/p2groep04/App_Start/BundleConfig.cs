@@ -1,53 +1,43 @@
 ﻿using System.Web;
 using System.Web.Optimization;
+using Microsoft.Ajax.Utilities;
 
-namespace p2groep04.App_Start
+namespace p2groep04
 {
     public class BundleConfig
     {
+        /// --- IMPORTANT NOTICE ---
+        /// Based on the debug setting, (mostly web.config)
+        /// debug="true" - the non minified version will be used.
+        /// debug="false" - *.min.css will be searched, and if not found, the current will be minified
+
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            bundles.UseCdn = true;   //enable CDN support
+            var jqueryCdnPath = "http://code.jquery.com/jquery-1.11.0.js";
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/jquery-ui-{version}.js"));
+            //main style
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/css/Style.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
+            //jquery
+            bundles.Add(new ScriptBundle("~/bundles/jquery", jqueryCdnPath).Include(
+                "~/Scripts/jquery-{version}.js"
+            ));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+            //plugins
+            bundles.Add(new StyleBundle("~/Content/plugins/css").Include(
+                "~/Content/plugins/animate/css/animate.css",
+                "~/Content/plugins/bootstrap-modified/css/bootstrap.css",
+                "~/Content/plugins/bootstrap-modified/css/bootstrap-theme.css",
+                "~/Content/plugins/mono-social-icons/css/MonoSocialIconsFont.css"
+            ));
 
-            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
-                        "~/Content/themes/base/jquery.ui.core.css",
-                        "~/Content/themes/base/jquery.ui.resizable.css",
-                        "~/Content/themes/base/jquery.ui.selectable.css",
-                        "~/Content/themes/base/jquery.ui.accordion.css",
-                        "~/Content/themes/base/jquery.ui.autocomplete.css",
-                        "~/Content/themes/base/jquery.ui.button.css",
-                        "~/Content/themes/base/jquery.ui.dialog.css",
-                        "~/Content/themes/base/jquery.ui.slider.css",
-                        "~/Content/themes/base/jquery.ui.tabs.css",
-                        "~/Content/themes/base/jquery.ui.datepicker.css",
-                        "~/Content/themes/base/jquery.ui.progressbar.css",
-                        "~/Content/themes/base/jquery.ui.theme.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/js").Include(
-               "~/Scripts/jquery-{version}.js",
-               "~/Scripts/jquery.unobtrusive*",
-               "~/Scripts/jquery.validate*",
-               "~/Scripts/bootstrap.js"
-                           ));
+            bundles.Add(new ScriptBundle("~/Content/plugins/js").Include(
+                "~/Content/plugins/bootstrap-modified/js/bootstrap.js"
+            ));
 
-            bundles.Add(new StyleBundle("~/content/css").Include(
-                "~/Content/bootstrap.css",
-              "~/Content/site.css"
-                            ));
         }
     }
 }

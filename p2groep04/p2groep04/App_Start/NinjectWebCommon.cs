@@ -1,3 +1,6 @@
+using p2groep04.Models.DAL;
+using p2groep04.Models.Domain;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(p2groep04.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(p2groep04.App_Start.NinjectWebCommon), "Stop")]
 
@@ -61,6 +64,9 @@ namespace p2groep04.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
+            kernel.Bind<ISuggestionRepository>().To<SuggestionRepository>().InRequestScope();
+            kernel.Bind<ProjectContext>().ToSelf().InRequestScope();
         }        
     }
 }

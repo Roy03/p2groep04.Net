@@ -83,13 +83,6 @@
       <Property Name="Suggestion" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="p2groep04.NewState">
-    <Position X="14.25" Y="10.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
-      <FileName>NewState.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="p2groep04.Models.Domain.AdviceBPCState">
     <Position X="18" Y="10.5" Width="1.5" />
     <TypeIdentifier>
@@ -116,6 +109,13 @@
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAAAIAAIA=</HashCode>
       <FileName>Models\Domain\SubmittedState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="p2groep04.Models.Domain.NewState">
+    <Position X="14.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\Domain\NewState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="p2groep04.SuggestionStatus">
