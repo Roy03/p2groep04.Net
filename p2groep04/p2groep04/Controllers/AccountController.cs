@@ -46,14 +46,15 @@ namespace p2groep04.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model)
         {
-            throw new NotImplementedException();
+            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            {
+                return Redirect()
+            }
+
+            ModelState.AddModelError("", "De login naam of wachtwoord die u heeft ingegeven is incorrect");
+            return View(model);
         }
 
-        public JsonResult CheckUsername(String username)
-        {
-            var result = Membership.FindUsersByName(username).Count == 0;
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
     }
 }
 
