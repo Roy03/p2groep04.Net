@@ -10,7 +10,7 @@ namespace p2groep04.Models.Domain
 {
     public class ResearchDomain
     {
-        public String Name{get;set;}
+        public String Name {get;set;}
 
         public int Id { get; set; }
 

@@ -23,10 +23,10 @@ namespace p2groep04
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             //Database.SetInitializer(new CreateAndMigrateDatabaseInitializer<ProjectContext, p2groep04.Migrations.Configuration>());
-            Database.SetInitializer<ProjectContext>(new ProjectInitializer());
+            Database.SetInitializer(new ProjectInitializer());
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            WebSecurity.InitializeDatabaseConnection("projecten2", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            new ProjectContext().Studenten.ToList();
+            //WebSecurity.InitializeDatabaseConnection("projecten2", "UserProfile", "UserId", "UserName", autoCreateTables: true);
         }
     }
 }

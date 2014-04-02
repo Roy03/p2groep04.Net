@@ -11,7 +11,7 @@ namespace p2groep04.Models.DAL.Mapper
     {
         public StudentMapper()
         {
-            HasMany(s => s.Suggestions).WithRequired(s => s.Student).HasForeignKey(s => s.Student);
+           // HasMany(t => t.Suggestions).WithRequired(t => t.Student).HasForeignKey(t => t.Student);
         }
     }
 }

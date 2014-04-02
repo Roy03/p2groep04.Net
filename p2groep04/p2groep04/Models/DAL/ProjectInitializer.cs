@@ -15,8 +15,6 @@ namespace p2groep04.Models.DAL
 
         protected override void Seed(ProjectContext context)
         {
-            
-            Console.WriteLine("TEST");
             try
             {
                 Student studentMaxim = new Student()

@@ -14,7 +14,7 @@ namespace p2groep04.Models.DAL.Mapper
             ToTable("research");
 
             HasKey(r => r.Id);
-            Property(t => t.Name).IsRequired();
+            Property(t => t.Name).IsRequired().HasMaxLength(255);
             HasMany(s => s.Suggestions).WithMany(r => r.ResearchDomains).Map(m =>
             {
                 m.ToTable("suggestion_researchdomain");
