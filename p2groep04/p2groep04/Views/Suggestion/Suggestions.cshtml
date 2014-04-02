@@ -1,20 +1,68 @@
-﻿@model IEnumerable<p2groep04.Models.Domain.Suggestion>
+﻿@using System.Web.Mvc.Html
+@model p2groep04.Models.Domain.Suggestion
 
 @{
     ViewBag.Title = "Suggestions";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Suggestions</h2>
+<h2>Voorstel Indienen</h2>
+@using (Html.BeginForm("SubmitSuggestion", "Suggestion", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
 
-@foreach (var suggestion in Model)
-{
-    <div>
-        <p>Suggestion.Titel</p>
-        Suggestion.Subject
-        Suggestion.ResearchQuestion
-        Suggestion.CurrentState
-        suggestion
-    </div>
-    
-}
+            if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count() > 0)
+            {
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-d ismiss="alert">×</button>
+                    @Html.ValidationSummary(true, "Errors: ")
+                </div>
+            }
+            <div class="form-group">
+                @Html.LabelFor(m => m.Titel )
+
+                @Html.TextBoxFor(m => m.Titel, new { @class = "form-control" })
+                
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Subject )
+
+                @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+                
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ResearchDomains )
+
+                <!---TODO ComboBox--->
+                
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ResearchQuestion )
+
+                @Html.TextBoxFor(m => m.ResearchQuestion, new { @class = "form-control" })
+                
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Motivation )
+
+                @Html.TextBoxFor(m => m.Motivation, new { @class = "form-control" })
+                
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Goal )
+
+                @Html.TextBoxFor(m => m.Goal, new { @class = "form-control" })
+                
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Keywords )
+
+                @Html.TextBoxFor(m => m.Keywords, new { @class = "form-control" })
+                
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.References )
+
+                @Html.TextBoxFor(m => m.References, new { @class = "form-control" })
+                
+            </div>
