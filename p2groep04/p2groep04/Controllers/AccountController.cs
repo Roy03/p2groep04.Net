@@ -21,8 +21,12 @@ namespace p2groep04.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        
+        private IUserRepository userRepository;
 
+        public AccountController(IUserRepository userRepository)
+        {
+            this.userRepository = userRepository;
+        }
         //
         // POST: /Account/LogOff
 
@@ -46,6 +50,7 @@ namespace p2groep04.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model)
         {
+            User user = userRepository.FindBy(1);
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
                 //return Redirect();

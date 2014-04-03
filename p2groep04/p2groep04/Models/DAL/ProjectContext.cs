@@ -16,7 +16,6 @@ namespace p2groep04.Models.DAL
         {            
         }
 
-        public DbSet<Student> Studenten { get; set; }
         public DbSet<Suggestion> Suggestions { get; set; }
         public DbSet<ResearchDomain> ResearchDomains{ get; set; }
         public DbSet<User> Users { get; set; }
@@ -24,16 +23,16 @@ namespace p2groep04.Models.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             Console.WriteLine("TEST");
-            modelBuilder.Configurations.Add(new ResearchDomainMapper());
-            modelBuilder.Configurations.Add(new SuggestionMapper());
+           // modelBuilder.Configurations.Add(new ResearchDomainMapper());
+            //modelBuilder.Configurations.Add(new SuggestionMapper());
             modelBuilder.Configurations.Add(new UserMapper());
-            modelBuilder.Configurations.Add(new StudentMapper());
+            //modelBuilder.Configurations.Add(new StudentMapper());
             modelBuilder.Ignore<SuggestionState>();
 
-            modelBuilder.Entity<User>()
+            /*modelBuilder.Entity<User>()
                 .Map<Student>(m => m.Requires("Role").HasValue(1))
                 .Map<Promotor>(m => m.Requires("Role").HasValue(2))
-                .Map<BPCoordinator>(m => m.Requires("Role").HasValue(3));
+                .Map<BPCoordinator>(m => m.Requires("Role").HasValue(3));*/
         }
     }
 }

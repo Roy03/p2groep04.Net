@@ -14,37 +14,38 @@ namespace p2groep04.Models.Domain
     {
         //TPH is default
 
-        [Column("first_name")]
+    //    [Column("first_name")]
         public String FirstName { get; set; }
 
-        [Column("last_name")]
+      //  [Column("last_name")]
         public String LastName { get; set; }
 
-        [Column("username")]
-        [Remote("CheckUsername", "Account")]
+     //   [Column("username")]
+      //  [Remote("CheckUsername", "Account")]
         public String Username { get; set; }
 
-        [Column("email")]
+     //   [Column("email")]
         public String Email { get; set; }
 
-        [Column("salt")]
+       // [Column("salt")]
         public String Salt { get; set; }
 
-        [Column("password")]
+      //  [Column("password")]
         public String Password { get; set; }
 
+        [NotMapped]
         public String PlainPassword { get; set; }
 
-        [Column("last_login")]
+     //   [Column("last_login")]
         public DateTime LastLogin { get; set; }
 
-        [Column("last_ip")]
+      //  [Column("last_ip")]
         public String LastIp { get; set; }
 
-        [Column("role")] 
+       // [Column("role")] 
         public int Role { get; set; }
 
-        [Column("id")]
+//        [Column("id")]
         public int Id {get; set;}
 
         public String SaltGenerator()

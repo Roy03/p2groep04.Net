@@ -17,13 +17,6 @@ namespace p2groep04.Controllers
         private ISuggestionRepository suggestionRepository;
         private IUserRepository userRepository;
 
-        public SuggestionController(ISuggestionRepository suggestionRep, IUserRepository userRep)
-        {
-            this.suggestionRepository = suggestionRep;
-            this.userRepository = userRep;
-        }
-
-
         public ActionResult SubmitSuggestion()
         {
             return View("SubmitSuggestion");
@@ -32,7 +25,7 @@ namespace p2groep04.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult SubmitSuggestion(SuggestionModel model)
+        public ActionResult Submit(SuggestionModel model)
         {
             return View(model);
         }
@@ -40,7 +33,7 @@ namespace p2groep04.Controllers
         public ActionResult Suggestions(int id)
         {
             IEnumerable<Suggestion> suggestions = suggestionRepository.FindByUser(id).ToList();
-            return View(suggestions);
+            return View();
         }
 
     }

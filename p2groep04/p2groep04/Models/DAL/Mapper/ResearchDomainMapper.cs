@@ -15,12 +15,7 @@ namespace p2groep04.Models.DAL.Mapper
 
             HasKey(r => r.Id);
             Property(t => t.Name).IsRequired().HasMaxLength(255);
-            HasMany(s => s.Suggestions).WithMany(r => r.ResearchDomains).Map(m =>
-            {
-                m.ToTable("suggestion_researchdomain");
-                m.MapLeftKey("suggestion_id");
-                m.MapRightKey("researchdomain_id");
-            });  
+             
         }
     }
 }

@@ -14,7 +14,7 @@ namespace p2groep04.Models.DAL
     {
 
         protected override void Seed(ProjectContext context)
-        {
+        {            
             try
             {
                 Student studentMaxim = new Student()
@@ -29,14 +29,13 @@ namespace p2groep04.Models.DAL
                 };
                 
                 List<Student> studenten = (new Student[] {studentMaxim}).ToList();
-                studenten.ForEach(s => context.Studenten.Add(s));
-
-                studenten = context.Studenten.ToList();
+                studenten.ForEach(s => context.Users.Add(s));
 
                 context.SaveChanges();
+                
+              //  context.Database.Initialize(true);
                 Console.WriteLine("Database created!");
-                context.Database.Initialize(true);
-                base.Seed(context);
+
             }
             catch (DbEntityValidationException ex)
             {

@@ -69,7 +69,8 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 /* Login */
 #container-login {
-    height: 234px;
+    min-height: 234px;
+    height: auto;
     width: 400px;
     background: white;
     padding: 10px;
@@ -84,6 +85,19 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 	-moz-animation-duration: 750ms;
 	animation-duration: 750ms;
 	/* animation */
+}
+
+/* validation */
+.field-validation-error {
+    font-style: italic;
+    background: rgb(255, 76, 90);
+    width: 100%;
+    display: block;
+    border-radius: 3px;
+    color: white;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-top: 2px;
 }
 /* NAV */
 header {
@@ -248,4 +262,36 @@ footer {
 }
 .symbol-linkedin > a > span {
 	color: #ebf4f9 !important;
+}
+
+
+/* PLUGIN OVERRIDES */
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
 }

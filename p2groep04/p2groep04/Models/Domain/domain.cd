@@ -25,7 +25,7 @@
   <Class Name="p2groep04.Models.Domain.User">
     <Position X="7.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABCAEAAACACAAAAEQAAAAAAAEAAAAACAAAAAAAAAAg=</HashCode>
+      <HashCode>AABCAEAAACACAAAAEQAgAAAAAEIAAAACAAAAAAAAAAg=</HashCode>
       <FileName>Models\Domain\User.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -60,18 +60,10 @@
   </Class>
   <Class Name="p2groep04.Models.Domain.ResearchDomain">
     <Position X="10.5" Y="15" Width="1.5" />
-    <AssociationLine Name="Suggestions" Type="p2groep04.Models.Domain.Suggestion">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-1.19" Y="0.186" />
-      </MemberNameLabel>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAQCAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\ResearchDomain.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Suggestions" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="p2groep04.Models.Domain.SuggestionState">
     <Position X="17.75" Y="7" Width="2" />
