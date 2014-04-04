@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 using p2groep04.Models.DAL.Mapper;
@@ -22,17 +23,11 @@ namespace p2groep04.Models.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            Console.WriteLine("TEST");
-           // modelBuilder.Configurations.Add(new ResearchDomainMapper());
-            //modelBuilder.Configurations.Add(new SuggestionMapper());
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Configurations.Add(new ResearchDomainMapper());
+            modelBuilder.Configurations.Add(new SuggestionMapper());
             modelBuilder.Configurations.Add(new UserMapper());
-            //modelBuilder.Configurations.Add(new StudentMapper());
-            modelBuilder.Ignore<SuggestionState>();
-
-            /*modelBuilder.Entity<User>()
-                .Map<Student>(m => m.Requires("Role").HasValue(1))
-                .Map<Promotor>(m => m.Requires("Role").HasValue(2))
-                .Map<BPCoordinator>(m => m.Requires("Role").HasValue(3));*/
+            modelBuilder.Configurations.Add(new StudentMapper());
         }
     }
 }

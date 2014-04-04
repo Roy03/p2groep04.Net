@@ -26,6 +26,10 @@ namespace p2groep04.Models.DAL.Mapper
             Property(u => u.LastLogin);
             Property(u => u.LastIp);
             Property(u => u.Role).IsRequired();
+
+            /*Map<Student>(m => m.Requires("Role").HasValue(0));
+            Map<Promotor>(m => m.Requires("Role").HasValue(1));
+            Map<BPCoordinator>(m => m.Requires("Role").HasValue(2));*/
         }        
     }
 }

@@ -11,10 +11,10 @@ namespace p2groep04.Models.DAL.Mapper
     {
         public ResearchDomainMapper()
         {
-            ToTable("research");
+            ToTable("researchdomains");
 
             HasKey(r => r.Id);
-            Property(t => t.Name).IsRequired().HasMaxLength(255);
+            Property(t => t.Name).IsRequired();
              
         }
     }

@@ -18,12 +18,12 @@ namespace p2groep04.Models.DAL.Mapper
             Property(s => s.ResearchQuestion).IsRequired().HasMaxLength(100);
             Property(s => s.Motivation).IsRequired().HasMaxLength(150);
             //Property(s => s.CurrentState).IsRequired();
-            HasMany(s => s.ResearchDomains).WithOptional().Map(m =>
+            /*HasMany(s => s.ResearchDomains).WithOptional().Map(m =>
             {
                 m.ToTable("suggestion_researchdomain");
                 m.MapLeftKey("suggestion_id");
                 m.MapRightKey("researchdomain_id");
-            });            
+            });   */         
         }
     }
 }

@@ -17,6 +17,8 @@ namespace p2groep04.Models.DAL
         {            
             try
             {
+                // initialize database
+                //context.Database.Initialize(true);
                 Student studentMaxim = new Student()
                 {
                     Id = 1,
@@ -30,11 +32,8 @@ namespace p2groep04.Models.DAL
                 
                 List<Student> studenten = (new Student[] {studentMaxim}).ToList();
                 studenten.ForEach(s => context.Users.Add(s));
-
                 context.SaveChanges();
-                
-              //  context.Database.Initialize(true);
-                Console.WriteLine("Database created!");
+                System.Diagnostics.Debug.WriteLine("Database created!");                                
 
             }
             catch (DbEntityValidationException ex)

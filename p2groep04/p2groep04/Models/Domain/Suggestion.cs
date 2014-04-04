@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
@@ -25,7 +26,12 @@ namespace p2groep04.Models.Domain
         public String Motivation { get; set; }
         public String[] References { get; set; }
         public int Id { get; set; }
+
+        [NotMapped]
         public SuggestionState CurrentState { get; set; }
+
+        public int CurrentStateId { get; set; }
+
         public Student Student { get; set; }
 
         public Suggestion()

@@ -213,11 +213,6 @@
     <Compile Include="Models\Domain\ApprovedWithRemarksState.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Migrations\201403261622596_InitialCreate.cs" />
-    <Compile Include="Migrations\201403261622596_InitialCreate.Designer.cs">
-      <DependentUpon>201403261622596_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DAL\Mapper\ResearchDomainMapper.cs" />
     <Compile Include="Models\DAL\Mapper\StudentMapper.cs" />
     <Compile Include="Models\DAL\Mapper\SuggestionMapper.cs" />
@@ -322,11 +317,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\Domain\domain.cd" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201403261622596_InitialCreate.resx">
-      <DependentUpon>201403261622596_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
