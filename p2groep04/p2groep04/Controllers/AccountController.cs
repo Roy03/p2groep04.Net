@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
+using p2groep04.Helpers;
 using p2groep04.Models.DAL;
 using p2groep04.Models.Domain;
 using WebMatrix.WebData;
@@ -22,21 +23,71 @@ namespace p2groep04.Controllers
     public class AccountController : Controller
     {
         private IUserRepository userRepository;
+        private UserHelper userHelper;
 
-        public AccountController(IUserRepository userRepository)
+        public AccountController(IUserRepository userRepository, UserHelper userHelper)
         {
             this.userRepository = userRepository;
+            this.userHelper = userHelper;
         }
-        //
-        // POST: /Account/LogOff
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Account");
+        }
+
+        /* Change password */
+
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
+        public ActionResult ChangePassword(ChangePasswordModel model)
         {
-            WebSecurity.Logout();
+            if (ModelState.IsValid)
+            {
+                string username = HttpContext.User.Identity.Name;
+                try
+                {
+                    //verify old password
+                    if (!userHelper.IsValid(username, model.OldPlainPassword))
+                    {
+                        ModelState.AddModelError("OldPlainPassword", "Password is not correct");
+                    }
 
-            return RedirectToAction("Index", "Home");
+                    //password same
+                    if (!model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
+                    {
+                        ModelState.AddModelError("ConfirmNewPlainPassword", "Both passwords do not match.");
+                    }
+
+                    String salt = userRepository.FindSaltByUsername(username);
+                    string newPassHash = UserHelper.Encrypt(model.NewPlainPassword + salt);
+
+                    bool success = userRepository.ChangePassword(username, newPassHash);
+
+                    
+                    if (!success)
+                    {
+                        //failed to change pass
+                        TempData["Error"] = "Failed to change password";
+                    }
+                    else
+                    {
+                        TempData["Success"] = "Your password has been changed succesfully";
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return View();
         }
 
         [AllowAnonymous]
@@ -49,17 +100,20 @@ namespace p2groep04.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model)
-        {
-            User user = userRepository.FindBy(1);
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+        {            
+            if (ModelState.IsValid && userHelper.IsValid(model.UserName, model.Password))
             {
-                //return Redirect();
+                System.Diagnostics.Debug.WriteLine("Logged in!");     
+                if (model.RememberMe)
+                {
+                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                }
+                return RedirectToAction("Dashboard", "Home");
             }
 
-            //ModelState.AddModelError("", "De login naam of wachtwoord die u heeft ingegeven is incorrect");
+            ModelState.AddModelError("", "De login naam of wachtwoord die u heeft ingegeven is incorrect");
             return View(model);
         }
-
     }
 }
 

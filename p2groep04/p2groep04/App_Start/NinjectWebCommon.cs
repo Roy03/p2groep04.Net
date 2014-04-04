@@ -1,3 +1,4 @@
+using p2groep04.Helpers;
 using p2groep04.Models.DAL;
 using p2groep04.Models.Domain;
 
@@ -67,6 +68,7 @@ namespace p2groep04.App_Start
             kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
             kernel.Bind<ISuggestionRepository>().To<SuggestionRepository>().InRequestScope();
             kernel.Bind<ProjectContext>().ToSelf().InRequestScope();
+            kernel.Bind<UserHelper>().ToSelf().InRequestScope();
         }        
     }
 }

@@ -28,6 +28,40 @@ namespace p2groep04.Models.DAL
             return users.FirstOrDefault(u => u.Id == id);
         }
 
+        public User FindBy(string name)
+        {
+            return users.FirstOrDefault(u => u.Username.ToLower() == name.ToLower());
+        }
+
+        public string FindSaltByUsername(string username)
+        {
+            User user = users.FirstOrDefault(u => u.Username.ToLower().Equals(username.ToLower()));
+            if (user == null)
+            {
+                return null;
+            }
+            return user.Salt;            
+        }
+
+        public User FindByUsernameAndPassword(string username, string password)
+        {
+            return
+                users.FirstOrDefault(u => u.Username.ToLower().Equals(username.ToLower()) && u.Password.Equals(password));
+        }
+
+        public bool ChangePassword(string username, string newpass)
+        {
+            User user = FindBy(username);
+
+            if (user == null)
+                return false;
+
+            user.Password = newpass;
+            SaveChanges();
+
+            return true;
+        }
+
         public void SaveChanges()
         {
             context.SaveChanges();

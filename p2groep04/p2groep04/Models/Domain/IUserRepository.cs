@@ -9,6 +9,10 @@ namespace p2groep04.Models.Domain
     {
         IQueryable<User> FindAll();
         User FindBy(int id);
+        User FindBy(string name);
+        string FindSaltByUsername(string username);
+        User FindByUsernameAndPassword(string username, string password);
+        bool ChangePassword(string username, string newpass);
         void SaveChanges();
         
     }

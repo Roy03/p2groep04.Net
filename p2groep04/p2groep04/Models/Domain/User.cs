@@ -48,7 +48,7 @@ namespace p2groep04.Models.Domain
 //        [Column("id")]
         public int Id {get; set;}
 
-        public String SaltGenerator()
+        public string SaltGenerator()
         {
             char[] saltComponents = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789").ToCharArray();
             Random random = new Random();

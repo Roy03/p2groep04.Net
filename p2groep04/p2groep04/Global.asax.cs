@@ -7,7 +7,9 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using p2groep04.Infrastructure;
 using p2groep04.Models.DAL;
+using p2groep04.Models.Domain;
 using WebMatrix.WebData;
 
 namespace p2groep04
@@ -26,7 +28,8 @@ namespace p2groep04
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Database.SetInitializer<ProjectContext>(new ProjectInitializer());
             new ProjectContext().Database.Initialize(true);
-            //WebSecurity.InitializeDatabaseConnection("projecten2", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            
+            ModelBinders.Binders.Add(typeof(User), new UserModelBinder());
         }
     }
 }

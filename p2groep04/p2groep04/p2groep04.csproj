@@ -206,7 +206,10 @@
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Helpers\UserHelper.cs" />
+    <Compile Include="Infrastructure\UserModelBinder.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ChangePasswordModel.cs" />
     <Compile Include="Models\DAL\CreateAndMigrateDatabaseInitializer.cs" />
     <Compile Include="Models\Domain\AdviceBPCState.cs" />
     <Compile Include="Models\Domain\ApprovedState.cs" />
@@ -263,14 +266,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Content\plugins\iconfont\MonoSocialIconsFont-1.10.eot" />
     <Content Include="Content\plugins\iconfont\MonoSocialIconsFont-1.10.otf" />
     <Content Include="Content\plugins\iconfont\MonoSocialIconsFont-1.10.ttf" />
@@ -285,6 +280,9 @@
     <Content Include="Views\Shared\_LayoutPlain.cshtml" />
     <Content Include="Views\Suggestion\Suggestions.cshtml" />
     <Content Include="Views\Suggestion\Submit.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

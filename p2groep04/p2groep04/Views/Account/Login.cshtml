@@ -16,8 +16,7 @@
             if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count() > 0)
             {
                 <div class="alert alert-error">
-                    <button type="button" class="close" data-d ismiss="alert">×</button>
-                    @Html.ValidationSummary(true, "Errors: ")
+                    @Html.ValidationSummary(true)
                 </div>
             }
 
@@ -31,7 +30,7 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.Password)
 
-                @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Password)
             </div>
 
@@ -65,7 +64,7 @@
         // To initially run the function:
         $(window).resize();
 
-        $('.field-validation-error').each(function() {
+        $('.field-validation-error, .alert').each(function() {
             $(this).addClass('animated fadeInDown');
         });
     </script>

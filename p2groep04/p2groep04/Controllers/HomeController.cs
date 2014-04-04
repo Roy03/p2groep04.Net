@@ -29,6 +29,11 @@ namespace p2groep04.Controllers
             return View();
         }
 
+        public ViewResult Dashboard()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ViewResult ForgotPasswordForm(LogInResponse logInResponse)
         {
