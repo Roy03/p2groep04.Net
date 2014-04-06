@@ -29,8 +29,19 @@ namespace p2groep04.Models.DAL
                     Salt = "Unknown",
                     Username = "209452mg"
                 };
+
+                Student studentLogan = new Student()
+                {
+                    Id = 2,
+                    Email = "logandupont@hotmail.com",
+                    FirstName = "Logan",
+                    LastName = "Dupont",
+                    Password = "ef3c52f55940f352278b8595073c074ea91507b06e429892d8b116b90d4dbdb6d986870cec242e584327bda2a53d4174f52fe799207495101fccf2191ed38675",
+                    Salt = "Unknown",
+                    Username = "208134ld"
+                };
                 
-                List<Student> studenten = (new Student[] {studentMaxim}).ToList();
+                List<Student> studenten = (new Student[] {studentMaxim, studentLogan}).ToList();
                 studenten.ForEach(s => context.Users.Add(s));
                 context.SaveChanges();
                 System.Diagnostics.Debug.WriteLine("Database created!");                                
