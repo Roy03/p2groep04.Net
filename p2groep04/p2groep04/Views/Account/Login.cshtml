@@ -1,5 +1,6 @@
-﻿@using System.Web.WebPages
-@using System.Web.Mvc.Html
+﻿@using System.Web.Mvc.Html
+@using p2groep04.Controllers
+@using p2groep04.Models
 @model p2groep04.Models.LoginModel
 @{
     ViewBag.Title = "LoginForm";
@@ -42,7 +43,11 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Log in" class="button" />
+                <div id="ForgotPassword">
+                    @Html.ActionLink("Forgot password?","ForgotPassword", "Account")
+                </div>
             </div>
+            
         }
     </div>
 }

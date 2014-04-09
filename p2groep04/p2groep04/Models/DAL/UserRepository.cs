@@ -49,6 +49,12 @@ namespace p2groep04.Models.DAL
                 users.FirstOrDefault(u => u.Username.ToLower().Equals(username.ToLower()) && u.Password.Equals(password));
         }
 
+        public User FindByUsernameAndEmail(string username, string email)
+        {
+            return
+                users.FirstOrDefault(u => u.Username.ToLower().Equals(username.ToLower()) && u.Email.Equals(email));
+        }
+
         public bool ChangePassword(string username, string newpass)
         {
             User user = FindBy(username);

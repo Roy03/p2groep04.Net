@@ -16,7 +16,7 @@ namespace p2groep04.Helpers
             this._userRepository = userRepository;
         }
 
-        public bool IsValid(string username, string password)
+        public bool IsValidPassword(string username, string password)
         {
             //get salt of this username
             String salt = _userRepository.FindSaltByUsername(username);
@@ -31,6 +31,14 @@ namespace p2groep04.Helpers
 
             //check if user can be found with this salt
             User user = _userRepository.FindByUsernameAndPassword(username, saltPassword);
+
+            return user != null;
+        }
+
+        public bool IsValidEmail(string username, string email)
+        {
+            //check if user can be found with email
+            User user = _userRepository.FindByUsernameAndEmail(username, email);
 
             return user != null;
         }

@@ -54,7 +54,7 @@ namespace p2groep04.Controllers
                 try
                 {
                     //verify old password
-                    if (!userHelper.IsValid(username, model.OldPlainPassword))
+                    if (!userHelper.IsValidPassword(username, model.OldPlainPassword))
                     {
                         ModelState.AddModelError("OldPlainPassword", "Password is not correct");
                     }
@@ -101,7 +101,7 @@ namespace p2groep04.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model)
         {            
-            if (ModelState.IsValid && userHelper.IsValid(model.UserName, model.Password))
+            if (ModelState.IsValid && userHelper.IsValidPassword(model.UserName, model.Password))
             {
                 System.Diagnostics.Debug.WriteLine("Logged in!");     
                 if (model.RememberMe)
@@ -112,6 +112,27 @@ namespace p2groep04.Controllers
             }
 
             ModelState.AddModelError("", "De login naam of wachtwoord die u heeft ingegeven is incorrect");
+            return View(model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult ForgotPassword()
+        {
+            return View("ForgotPassword");
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult ForgotPassword(ForgotPasswordModel model)
+        {
+            if (ModelState.IsValid && userHelper.IsValidEmail(model.UserName, model.Email))
+            {
+                System.Diagnostics.Debug.WriteLine("Email sent!");
+                return RedirectToAction("Login", "Account");
+            }
+
+            ModelState.AddModelError("", "De login naam of Email die u heeft ingegeven is incorrect");
             return View(model);
         }
     }

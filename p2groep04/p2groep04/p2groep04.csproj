@@ -233,8 +233,8 @@
     <Compile Include="Models\Domain\IResearchDomainRepository.cs" />
     <Compile Include="Models\Domain\ISuggestionRepository.cs" />
     <Compile Include="Models\Domain\IUserRepository.cs" />
+    <Compile Include="Models\ForgotPasswordModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\LogInResponse.cs" />
     <Compile Include="Models\Domain\Promotor.cs" />
     <Compile Include="Models\Domain\NewState.cs" />
     <Compile Include="Models\SuggestionModel.cs" />
@@ -263,7 +263,6 @@
     <Content Include="Content\plugins\iconfont\MonoSocialIconsFont-1.10.svg" />
     <Content Include="Content\plugins\mono-social-icons\css\MonoSocialIconsFont.css" />
     <Content Include="Content\plugins\mono-social-icons\MonoSocialIconsFont-1.10.svg" />
-    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Content\plugins\iconfont\MonoSocialIconsFont-1.10.eot" />
@@ -283,6 +282,7 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Account\ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -309,9 +309,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\Login.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\Thanks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\Domain\domain.cd" />

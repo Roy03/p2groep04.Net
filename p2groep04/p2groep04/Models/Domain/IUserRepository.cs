@@ -12,6 +12,7 @@ namespace p2groep04.Models.Domain
         User FindBy(string name);
         string FindSaltByUsername(string username);
         User FindByUsernameAndPassword(string username, string password);
+        User FindByUsernameAndEmail(string username, string email);
         bool ChangePassword(string username, string newpass);
         void SaveChanges();
         
