@@ -35,10 +35,10 @@ namespace p2groep04.Helpers
             return user != null;
         }
 
-        public bool IsValidEmail(string username, string email)
+        public bool IsValidEmail(string email)
         {
             //check if user can be found with email
-            User user = _userRepository.FindByUsernameAndEmail(username, email);
+            User user = _userRepository.FindByEmail(email);
 
             return user != null;
         }

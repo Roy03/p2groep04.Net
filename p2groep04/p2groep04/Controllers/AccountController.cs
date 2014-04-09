@@ -126,13 +126,13 @@ namespace p2groep04.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ForgotPassword(ForgotPasswordModel model)
         {
-            if (ModelState.IsValid && userHelper.IsValidEmail(model.UserName, model.Email))
+            if (ModelState.IsValid && userHelper.IsValidEmail(model.Email))
             {
                 System.Diagnostics.Debug.WriteLine("Email sent!");
                 return RedirectToAction("Login", "Account");
             }
 
-            ModelState.AddModelError("", "De login naam of Email die u heeft ingegeven is incorrect");
+            ModelState.AddModelError("", "De Email die u heeft ingegeven is incorrect");
             return View(model);
         }
     }
