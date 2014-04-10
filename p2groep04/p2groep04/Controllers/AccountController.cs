@@ -87,7 +87,7 @@ namespace p2groep04.Controllers
                     Console.WriteLine(ex.Message);
                 }
             }
-            return View();
+            return RedirectToAction("Dashboard","Home");
         }
 
         [AllowAnonymous]
@@ -108,7 +108,7 @@ namespace p2groep04.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                 }
-                return RedirectToAction("Dashboard", "Home");
+                return RedirectToAction("DashBoard", "Home");
             }
 
             ModelState.AddModelError("", "De login naam of wachtwoord die u heeft ingegeven is incorrect");
@@ -129,6 +129,11 @@ namespace p2groep04.Controllers
             if (ModelState.IsValid && userHelper.IsValidEmail(model.Email))
             {
                 System.Diagnostics.Debug.WriteLine("Email sent!");
+                string password = userHelper.generatePassword(model.Email);
+                string newPassHash = userHelper.generateSaltPassword(password, model.Email);
+                string username = userRepository.FindByEmail(model.Email).Username;
+                userRepository.ChangePassword(username, newPassHash);
+                userHelper.sendMail(password, model.Email);
                 return RedirectToAction("Login", "Account");
             }
 
