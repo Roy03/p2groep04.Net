@@ -2,6 +2,7 @@
 	margin:0;
 	top:0;
 	padding:0;
+    height:100%;
 }
 
 body {
@@ -16,7 +17,13 @@ h2 { margin: 0; }
 	width: 1020px;
 	margin: 0 auto;	
 }
-
+#wrapper {
+	min-height:100%;
+	position:relative;
+}
+#content {
+    padding-bottom: 120px;
+}
 .pane {
 	background: #fff;
 	min-height:100px;
@@ -82,7 +89,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     float: right;
 }
 /* Forgot Password */
-#container-forgotpassword {
+.container {
     min-height: 234px;
     height: auto;
     width: 400px;
@@ -213,14 +220,13 @@ header {
 
 footer {
 	position: absolute;
-	left: 0;
 	bottom: 0;
 	clear: both;
 	margin-top: 10px;
 	height: 110px;
 	width: 100%;
 	background: rgb(214, 214, 214);
-    
+    margin-top: 10px;
 }
 .credit-contact {
 	margin:0;

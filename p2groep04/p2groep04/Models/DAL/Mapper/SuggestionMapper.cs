@@ -12,7 +12,7 @@ namespace p2groep04.Models.DAL.Mapper
         public SuggestionMapper()
         {
             HasKey(s => s.Id);
-            Property(s => s.Titel).IsRequired().HasMaxLength(50);
+            Property(s => s.Title).IsRequired().HasMaxLength(50);
             Property(s => s.Subject).IsRequired().HasMaxLength(100);
             Property(s => s.Goal).IsRequired().HasMaxLength(50);
             Property(s => s.ResearchQuestion).IsRequired().HasMaxLength(100);

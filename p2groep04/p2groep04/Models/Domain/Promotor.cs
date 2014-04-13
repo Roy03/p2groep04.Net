@@ -8,5 +8,6 @@ namespace p2groep04.Models.Domain
 {
     public class Promotor : User
     {
+        public String Company { get; set; }
     }
 }

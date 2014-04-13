@@ -16,9 +16,13 @@ namespace p2groep04
         {
             bundles.UseCdn = true;   //enable CDN support
             var jqueryCdnPath = "http://code.jquery.com/jquery-1.11.0.js";
+            var fueluxCDNPath = "http://www.fuelcdn.com/fuelux/2.6.0/loader.min.js";
 
             //main style
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/css/Style.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                "~/Content/css/Style.css",
+                "~/Content/css/pluginOverride.css"
+            ));
 
             //jquery
             bundles.Add(new ScriptBundle("~/bundles/jquery", jqueryCdnPath).Include(
@@ -30,12 +34,16 @@ namespace p2groep04
                 "~/Content/plugins/animate/css/animate.css",
                 "~/Content/plugins/bootstrap-modified/css/bootstrap.css",
                 "~/Content/plugins/bootstrap-modified/css/bootstrap-theme.css",
-                "~/Content/plugins/mono-social-icons/css/MonoSocialIconsFont.css"
+                "~/Content/plugins/mono-social-icons/css/MonoSocialIconsFont.css",
+                "~/Content/plugins/select2/select2.css",
+                "~/Content/plugins/tag-input/jquery.tagsinput.css"
             ));
 
 
             bundles.Add(new ScriptBundle("~/Content/plugins/js").Include(
-                "~/Content/plugins/bootstrap-modified/js/bootstrap.js"
+                "~/Content/plugins/bootstrap-modified/js/bootstrap.js",
+                "~/Content/plugins/select2/select2.js",
+                "~/Content/plugins/tag-input/jquery.tagsinput.js"
             ));
 
         }

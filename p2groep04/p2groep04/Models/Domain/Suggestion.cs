@@ -17,15 +17,22 @@ namespace p2groep04.Models.Domain
         private readonly SuggestionState _submittedState;
         private readonly SuggestionState _newState;
 
-        public String Titel { get; set; }
+        public String Title { get; set; }
         public String[] Keywords { get; set; }
         public String Context { get; set; }
+
+        //de probleemstelling
         public String Subject { get; set; }
+
+        //doelstelling
         public String Goal { get; set; }
         public String ResearchQuestion { get; set; }
+
+        //plan van aanpak
         public String Motivation { get; set; }
         public String[] References { get; set; }
         public int Id { get; set; }
+        public ICollection<ResearchDomain> ResearchDomains { get; set; }
 
         [NotMapped]
         public SuggestionState CurrentState { get; set; }
@@ -101,17 +108,6 @@ namespace p2groep04.Models.Domain
         public void ApproveWithRemarks(string feedback)
         {
             CurrentState.ApproveWithRemarks(feedback);
-        }
-
-        public ICollection<ResearchDomain> ResearchDomains
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
         }
     }
 }

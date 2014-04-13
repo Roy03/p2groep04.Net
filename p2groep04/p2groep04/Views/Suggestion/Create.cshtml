@@ -1,0 +1,151 @@
+﻿@using System.Web.Mvc.Html
+@model p2groep04.ViewModels.SuggestionViewModels.CreateViewModel
+
+@{
+    ViewBag.Title = "Submit";
+}
+
+<h2>Submit</h2>
+<div class="pane">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+        @*------------------------*@
+        @*         STUDENT        *@
+        @*------------------------*@
+        <h3>Student</h3>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Student.FirstName)
+
+            @Html.TextBoxFor(model => model.Student.FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Student.FirstName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Student.LastName)
+
+            @Html.TextBoxFor(model => model.Student.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Student.LastName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Student.Email)
+
+            @Html.TextBoxFor(model => model.Student.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Student.Email)
+        </div>
+
+        @*------------------------*@
+        @*       CO PROMOTOR      *@
+        @*------------------------*@
+
+        <h3>Co Promotor</h3>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CoPromotor.FirstName)
+
+            @Html.TextBoxFor(model => model.CoPromotor.FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CoPromotor.FirstName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CoPromotor.LastName)
+
+            @Html.TextBoxFor(model => model.CoPromotor.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CoPromotor.LastName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CoPromotor.Email)
+
+            @Html.TextBoxFor(model => model.CoPromotor.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CoPromotor.Email)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CoPromotor.Organisation)
+
+            @Html.TextBoxFor(model => model.CoPromotor.Organisation, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CoPromotor.Organisation)
+        </div>
+
+        @*------------------------*@
+        @*         DETAILS        *@
+        @*------------------------*@
+        <h3>Details</h3>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Suggestion.Title)
+
+            @Html.TextBoxFor(model => model.Suggestion.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Suggestion.Title)
+        </div>
+
+        @* PLACEHOLDER FOR RESEARCHDOMAINS *@   
+        <div class="form-group">
+            @Html.LabelFor(model => model.Suggestion.Keywords)
+             
+            @Html.TextBoxFor(model => model.Suggestion.Keywords, new { @class = "form-control tags", @id = "suggestion-keywords"})
+            @Html.ValidationMessageFor(model => model.Suggestion.Keywords)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Suggestion.Subject)
+
+            @Html.TextBoxFor(model => model.Suggestion.Subject, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Suggestion.Subject)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Suggestion.Goal)
+
+            @Html.TextAreaFor(model => model.Suggestion.Goal, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Suggestion.Goal)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Suggestion.Context)
+
+            @Html.TextAreaFor(model => model.Suggestion.Context, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Suggestion.Context)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Suggestion.ResearchQuestion)
+
+            @Html.TextBoxFor(model => model.Suggestion.ResearchQuestion, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Suggestion.ResearchQuestion)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Suggestion.Motivation)
+
+            @Html.TextAreaFor(model => model.Suggestion.Motivation, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Suggestion.Motivation)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Suggestion.References)
+
+            @Html.TextBoxFor(model => model.Suggestion.References, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Suggestion.References)
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Voorstel opslaan" class="button"/>
+            <input type="submit" value="Voorstel opslaan en indienen" class="button"/>
+        </div>
+
+    }
+</div>
+
+@section scripts {
+    <script>
+        $('.select2').select2();
+        $('.tags').tagsInput({
+            'height': '40px',
+            'width': '100%',
+            'defaultText': 'Voeg een keyword toe...',
+            'minChars': '3'
+        });
+    </script>
+}

@@ -1,0 +1,14 @@
+﻿.tagsinput {
+    width: 100% !important;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 3px;
+}
+.tagsinput:focus {
+    border-color: #000;
+}
+#suggestion-keywords_tag {
+    width: 100%;
+}
+#suggestion-keywords_addTag {
+    height: 28px;
+}

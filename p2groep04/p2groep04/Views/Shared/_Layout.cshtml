@@ -3,6 +3,12 @@
 @{
     Layout = "~/Views/Shared/_LayoutPlain.cshtml";
 }
+
+@section head {
+    <link href="//www.fuelcdn.com/fuelux/2.6.0/css/fuelux.min.css" rel="stylesheet" type="text/css">
+    <link href="//www.fuelcdn.com/fuelux/2.6.0/css/fuelux-responsive.css" rel="stylesheet" type="text/css">
+}
+
 @section Main {
     <header>
         <div class="wrapper">
@@ -25,7 +31,7 @@
         </div>
     </header>
 
-    <div class="wrapper">
+    <div id="content" class="wrapper">
         @if (TempData["Error"] != null)
         {
             <div class="alert alert-danger">@TempData["Message"]</div>
@@ -36,7 +42,8 @@
         }
         @RenderBody()
     </div>
-
+    
+    <div style="clear:both;"></div>
     <footer>
         <div class="wrapper">
             <p>&copy; 2014 - This is a project made by a group consisting out of 4 members for University College Ghent</p>
@@ -69,7 +76,7 @@
                     <div class="credit-contact-container clearfix">
                         <span class="credit-contact-name">Roy Hollanders</span>
                         <ul class="credit-contact-social">
-                            <li class="symbol-email"><a href="#"><span class="symbol">&#xe024;</span></a></li>
+                                <li class="symbol-email"><a href="#"><span class="symbol">&#xe024;</span></a></li>
                             <li class="symbol-gplus"><a href="#"><span class="symbol">&#xe039;</span></a></li>
                             <li class="symbol-twitter"><a href="#"><span class="symbol">&#xe087;</span></a></li>
                             <li class="symbol-linkedin"><a href="#"><span class="symbol">&#xe052;</span></a></li>
@@ -93,7 +100,7 @@
     </footer>
 }
 
-@section scripts {    
+@section scriptsMain {    
     <script>
         $(function () {
             $(".credit-contact-social > li > a").hover(function () {
@@ -105,5 +112,7 @@
                 });
             })
         });
-    </script>
+    </script>    
+    
+    @RenderSection("scripts", required: false)
 } 
