@@ -103,11 +103,8 @@ namespace p2groep04.Controllers
         {            
             if (ModelState.IsValid && userHelper.IsValidPassword(model.UserName, model.Password))
             {
-                System.Diagnostics.Debug.WriteLine("Logged in!");     
-                if (model.RememberMe)
-                {
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                }
+                System.Diagnostics.Debug.WriteLine("Logged in!");
+                FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                 return RedirectToAction("DashBoard", "Home");
             }
 

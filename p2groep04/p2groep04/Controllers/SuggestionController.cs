@@ -10,6 +10,7 @@ using p2groep04.Models;
 using p2groep04.Models.DAL;
 using p2groep04.Models.Domain;
 using System.Web.Mvc;
+using p2groep04.ViewModels.SuggestionViewModels;
 
 namespace p2groep04.Controllers
 {
@@ -34,13 +35,60 @@ namespace p2groep04.Controllers
             return View();
         }
 
-
         [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Submit(SuggestionModel model)
+        public ActionResult Create(CreateViewModel model, User user, string buttonSave, string buttonSaveSend)
         {
-            return View(model);
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Suggestion suggestion = new Suggestion();
+                    suggestion.Title = model.Suggestion.Title;
+                    suggestion.Keywords = model.Suggestion.Keywords;
+                    suggestion.Context = model.Suggestion.Context;
+                    suggestion.Subject = model.Suggestion.Subject;
+                    suggestion.Goal = model.Suggestion.Goal;                    
+                    suggestion.ResearchQuestion = model.Suggestion.ResearchQuestion;
+                    suggestion.Motivation = model.Suggestion.Motivation;
+                    suggestion.References = model.Suggestion.References;
+                    //researchdomains
+                    suggestion.Student = (Student)user;
+
+                    if (buttonSaveSend != null)
+                    {
+                        suggestion.ToSubmittedState();
+                        //notifieer stakeholders
+                    }
+
+                    ((Student)user).Suggestions.Add(suggestion);
+                    _suggestionRepository.SaveChanges();
+
+                    if (buttonSaveSend != null)
+                    {
+                        TempData["info"] = "Uw voorstel werd aangemaakt en ingediend!";
+                    }
+                    else
+                    {
+                        TempData["info"] = "Uw voorstel werd aangemaakt!";    
+                    }
+                    
+
+                    return RedirectToAction("DashBoard", "Home");
+                }
+                catch (ApplicationException e)
+                {
+                    ModelState.AddModelError("", e.Message); // shows in summary
+                }
+            }
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult Edit(int id)
+        {
+            Suggestion suggestion = _suggestionRepository.FindBy(id);
+            SuggestionViewModel suggestionViewModel = new SuggestionViewModel(){};
+            return View();
         }
 
         public ActionResult Suggestions(int id)

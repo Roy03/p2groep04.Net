@@ -11,5 +11,6 @@ namespace p2groep04.Models.Domain
         IQueryable<Suggestion> FindAll();
         Suggestion FindBy(int id);
         IQueryable<Suggestion> FindByUser(int id);
+        void SaveChanges();
     }
 }

@@ -334,7 +334,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_LayoutPlain.cshtml" />
-    <Content Include="Views\Suggestion\Suggestions.cshtml" />
+    <Content Include="Views\Suggestion\Index.cshtml" />
     <Content Include="Views\Suggestion\Create.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
@@ -352,6 +352,7 @@
     <Content Include="Content\plugins\select2\select2_locale_en.js.template" />
     <Content Include="Content\plugins\tag-input\bower.json" />
     <Content Include="Content\plugins\tag-input\README.md" />
+    <Content Include="Views\Suggestion\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

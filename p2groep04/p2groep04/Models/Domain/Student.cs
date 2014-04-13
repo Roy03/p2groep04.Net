@@ -10,7 +10,6 @@ namespace p2groep04.Models.Domain
 {
     public class Student : User
     {
-        public ICollection<Suggestion> Suggestions;
-
+        public ICollection<Suggestion> Suggestions;        
     }
 }

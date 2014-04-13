@@ -48,6 +48,8 @@ namespace p2groep04.Models.Domain
             _approvedWithRemarksState = new ApprovedWithRemarksState(this);
             _submittedState = new SubmittedState(this);
             _newState = new NewState(this);
+
+            CurrentState = _newState;
         }
 
         public void ToNewState()
