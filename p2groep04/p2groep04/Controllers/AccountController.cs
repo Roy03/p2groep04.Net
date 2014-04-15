@@ -38,7 +38,7 @@ namespace p2groep04.Controllers
         }
 
         /* Change password */
-
+        [AllowAnonymous]
         public ActionResult ChangePassword()
         {
             return View();
@@ -108,7 +108,7 @@ namespace p2groep04.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                 }
-                return RedirectToAction("DashBoard", "Home");
+                return RedirectToAction("Dashboard", "Home");
             }
 
             ModelState.AddModelError("", "De login naam of wachtwoord die u heeft ingegeven is incorrect");
