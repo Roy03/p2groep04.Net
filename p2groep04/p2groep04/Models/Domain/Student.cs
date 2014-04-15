@@ -12,7 +12,8 @@ namespace p2groep04.Models.Domain
     public class Student : User
     {
         public ICollection<Suggestion> Suggestions;
-
+        public Promotor Promotor { get; set; }
+        public Promotor CoPromotor { get; set; }
 
         public void ChangeDeadline(DateTime newDeadline, DateTime oldDateTime)
         {
@@ -23,6 +24,11 @@ namespace p2groep04.Models.Domain
                     suggestion.Deadline = oldDateTime;
                 }
             }
+        }
+
+        public void ChangePromotor(Promotor newPromotor)
+        {
+            Promotor = newPromotor;
         }
 
     }
