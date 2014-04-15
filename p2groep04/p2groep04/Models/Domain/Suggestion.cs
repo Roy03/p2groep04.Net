@@ -113,8 +113,18 @@ namespace p2groep04.Models.Domain
             CurrentState.ApproveWithRemarks(feedback);
         }
 
-        
+        public void ChangeResearchDomain(ResearchDomain newResearchDomain, ResearchDomain oldResearchDomain)
+        {
+            foreach (var researchDomain in ResearchDomains)
+            {
+                if (researchDomain.Name == oldResearchDomain.Name)
+                {
+                    researchDomain.Id = newResearchDomain.Id;
+                    researchDomain.Name = newResearchDomain.Name;
+                }
+            }
+        }
 
-        
+
     }
 }

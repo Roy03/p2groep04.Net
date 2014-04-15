@@ -14,13 +14,15 @@ namespace p2groep04.Models.Domain
         public ICollection<Suggestion> Suggestions;
 
 
-        public void ChangeDeadline(DateTime newDeadline)
+        public void ChangeDeadline(DateTime newDeadline, DateTime oldDateTime)
         {
-            Suggestions.Select(s =>
+            foreach (var suggestion in Suggestions)
             {
-                s.Deadline = newDeadline;
-                return s;
-            });
+                if (suggestion.Deadline == newDeadline)
+                {
+                    suggestion.Deadline = oldDateTime;
+                }
+            }
         }
 
     }
