@@ -31,5 +31,9 @@ namespace p2groep04.Models.Domain
             Promotor = newPromotor;
         }
 
+        public List<String> GetFeedbackStudent()
+        {
+            return (from suggestion in Suggestions from feedback in suggestion.Feedbacks where feedback.Visable == true select feedback.Inhoud).ToList();
+        }
     }
 }

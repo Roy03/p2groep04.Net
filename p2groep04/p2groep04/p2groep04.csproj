@@ -206,6 +206,7 @@
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Feedback.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Infrastructure\UserModelBinder.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />

@@ -34,7 +34,10 @@ namespace p2groep04.Models.Domain
         public String[] References { get; set; }
         public int Id { get; set; }
         public ICollection<ResearchDomain> ResearchDomains { get; set; }
-
+        
+        //Feedback
+        public ICollection<Feedback> Feedbacks { get; set; }
+        
         [NotMapped]
         public SuggestionState CurrentState { get; set; }
         
