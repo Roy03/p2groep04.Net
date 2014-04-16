@@ -211,6 +211,8 @@
     <Compile Include="Infrastructure\UserModelBinder.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
     <Compile Include="Models\DAL\CreateAndMigrateDatabaseInitializer.cs" />
+    <Compile Include="Models\DAL\FeedbackRepository.cs" />
+    <Compile Include="Models\DAL\Mapper\FeedbackMapper.cs" />
     <Compile Include="Models\Domain\AdviceBPCState.cs" />
     <Compile Include="Models\Domain\ApprovedState.cs" />
     <Compile Include="Models\Domain\ApprovedWithRemarksState.cs" />
@@ -230,6 +232,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Domain\IFeedbackRepository.cs" />
     <Compile Include="Models\Domain\IResearchDomainRepository.cs" />
     <Compile Include="Models\Domain\ISuggestionRepository.cs" />
     <Compile Include="Models\Domain\IUserRepository.cs" />
