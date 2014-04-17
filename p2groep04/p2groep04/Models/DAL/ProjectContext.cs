@@ -20,6 +20,7 @@ namespace p2groep04.Models.DAL
         public DbSet<Suggestion> Suggestions { get; set; }
         public DbSet<ResearchDomain> ResearchDomains{ get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; } 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -28,6 +29,7 @@ namespace p2groep04.Models.DAL
             modelBuilder.Configurations.Add(new SuggestionMapper());
             modelBuilder.Configurations.Add(new UserMapper());
             modelBuilder.Configurations.Add(new StudentMapper());
+            modelBuilder.Configurations.Add(new FeedbackMapper());
         }
     }
 }

@@ -1,0 +1,24 @@
+﻿@using System.Web.Mvc.Html
+@model IEnumerable<p2groep04.Models.Domain.Suggestion>
+
+@{
+    ViewBag.Title = "Voorstellen";
+}
+
+<h2>Voorstellen</h2>
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Id)</th>
+        <th>@Html.DisplayNameFor(model => model.Title)</th>
+        <th>@Html.DisplayNameFor(model => model.Subject)</th>
+        <th></th>
+    </tr>
+    @foreach (var suggestion in Model) {     
+    <tr>
+        <td>@Html.DisplayFor(modelItem => suggestion.Id)</td>
+        <td>@Html.DisplayFor(modelItem => suggestion.Title)</td>
+        <td>@Html.DisplayFor(modelItem => suggestion.Subject)</td>
+        <td>@Html.ActionLink("Bewerk", "Edit", new { id = suggestion.Id }) </td>
+    </tr>
+    }
+</table>

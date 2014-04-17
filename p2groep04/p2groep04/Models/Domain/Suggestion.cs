@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
@@ -33,10 +34,15 @@ namespace p2groep04.Models.Domain
         public String[] References { get; set; }
         public int Id { get; set; }
         public ICollection<ResearchDomain> ResearchDomains { get; set; }
-
+        
+        //Feedback
+        public ICollection<Feedback> Feedbacks { get; set; }
+        
         [NotMapped]
         public SuggestionState CurrentState { get; set; }
-
+        
+        public DateTime Deadline { get; set; }
+        
         public int CurrentStateId { get; set; }
 
         public Student Student { get; set; }
@@ -111,5 +117,19 @@ namespace p2groep04.Models.Domain
         {
             CurrentState.ApproveWithRemarks(feedback);
         }
+
+        public void ChangeResearchDomain(ResearchDomain newResearchDomain, ResearchDomain oldResearchDomain)
+        {
+            foreach (var researchDomain in ResearchDomains)
+            {
+                if (researchDomain.Name == oldResearchDomain.Name)
+                {
+                    researchDomain.Id = newResearchDomain.Id;
+                    researchDomain.Name = newResearchDomain.Name;
+                }
+            }
+        }
+
+
     }
 }
