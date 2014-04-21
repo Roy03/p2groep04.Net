@@ -7,11 +7,11 @@ using p2groep04.Models.Domain;
 
 namespace p2groep04.Models.DAL.Mapper
 {
-    public class StudentMapper: EntityTypeConfiguration<Student>
+    public class StudentMapper : EntityTypeConfiguration<Student>
     {
         public StudentMapper()
         {
-           // HasMany(t => t.Suggestions).WithRequired(t => t.Student).HasForeignKey(t => t.Student);
+            HasMany(t => t.Suggestions).WithRequired(t => t.Student);
         }
     }
 }

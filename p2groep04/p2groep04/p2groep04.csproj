@@ -209,6 +209,7 @@
     <Compile Include="Feedback.cs" />
     <Compile Include="Helpers\UserExtensions.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
+    <Compile Include="Infrastructure\StudentModelBinder.cs" />
     <Compile Include="Infrastructure\UserModelBinder.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
     <Compile Include="Models\DAL\CreateAndMigrateDatabaseInitializer.cs" />
@@ -233,6 +234,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Domain\Dossier.cs" />
     <Compile Include="Models\Domain\IFeedbackRepository.cs" />
     <Compile Include="Models\Domain\IResearchDomainRepository.cs" />
     <Compile Include="Models\Domain\ISuggestionRepository.cs" />
@@ -356,6 +358,8 @@
     <Content Include="Content\plugins\tag-input\bower.json" />
     <Content Include="Content\plugins\tag-input\README.md" />
     <Content Include="Views\Suggestion\Edit.cshtml" />
+    <Content Include="Views\Suggestion\View.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

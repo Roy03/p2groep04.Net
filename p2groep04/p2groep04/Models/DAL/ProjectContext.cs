@@ -20,7 +20,7 @@ namespace p2groep04.Models.DAL
         public DbSet<Suggestion> Suggestions { get; set; }
         public DbSet<ResearchDomain> ResearchDomains{ get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Feedback> Feedbacks { get; set; } 
+        public DbSet<Feedback> Feedbacks { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

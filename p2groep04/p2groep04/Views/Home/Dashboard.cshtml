@@ -1,4 +1,6 @@
 ﻿@using System.Web.Mvc.Html
+@using p2groep04.Helpers
+@using p2groep04.Models.Domain
 @{
     ViewBag.Title = "Dashboard";
 }
@@ -11,9 +13,39 @@
         <h2 class="category-header">Voorstellen</h2>
         <div class="category-content pane">
             <ul class="category-menu">
-                <li>@Html.ActionLink("Voorstel Aanmaken", "Create", "Suggestion")</li>
-                <li><a href="#">Voorstellen weergeven</a></li>
+                @if (Html.User().GetType() == typeof (Student))
+                {
+                    <li>@Html.ActionLink("Voorstel Aanmaken", "Create", "Suggestion")</li>
+                    <li>@Html.ActionLink("Voorstellen Weergeven", "Index", "Suggestion")</li> 
+                } 
+                else if (Html.User().GetType() == typeof (Promotor))
+                {
+                    <li>@Html.ActionLink("Voorstel Aanmaken", "Create", "Suggestion")</li>
+                    <li>@Html.ActionLink("Voorstellen Weergeven", "Index", "Suggestion")</li>
+                }
+                else if (Html.User().GetType() == typeof(BPCoordinator))
+                {
+                    <li>@Html.ActionLink("Voorstellen met status advies BPC weergeven", "Index", "Suggestion")</li>
+                    <li>@Html.ActionLink("Voorstellen Weergeven", "Index", "Suggestion")</li>
+                }
+                
+                @*maakt niet uit welke user het is*@
+                
             </ul>
         </div>
-    </div>
+        
+        <div class="category fadeInRight">
+            <h2 class="category-header">Voorstellen</h2>
+            <div class="category-content pane">
+                <ul class="category-menu">
+                    @if (Html.User().GetType() == typeof(Promotor))
+                    {
+                        <li>@Html.ActionLink("Gebruikers Weergeven", "Index", "User")</li>                        
+                    }
+
+                    @*maakt niet uit welke user het is*@
+
+                </ul>
+            </div>
+        </div>
 </section>

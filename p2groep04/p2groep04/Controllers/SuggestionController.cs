@@ -35,6 +35,11 @@ namespace p2groep04.Controllers
             return View();
         }
 
+        public ActionResult Index(Student student)
+        {
+            return View(student.Suggestions);
+        }
+
         [HttpPost]
         public ActionResult Create(CreateViewModel model, User user, string buttonSave, string buttonSaveSend)
         {
@@ -46,7 +51,7 @@ namespace p2groep04.Controllers
 
                     Suggestion suggestion = new Suggestion();
                     suggestion.Title = model.Suggestion.Title;
-                    //suggestion.Keywords = model.Suggestion.Keywords;
+                    suggestion.Keywords = model.Suggestion.Keywords;
                     suggestion.Context = model.Suggestion.Context;
                     suggestion.Subject = model.Suggestion.Subject;
                     suggestion.Goal = model.Suggestion.Goal;                    
@@ -99,6 +104,5 @@ namespace p2groep04.Controllers
             IEnumerable<Suggestion> suggestions = _suggestionRepository.FindByUser(id).ToList();
             return View();
         }
-
     }
 }

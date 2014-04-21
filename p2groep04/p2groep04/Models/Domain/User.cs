@@ -13,6 +13,8 @@ namespace p2groep04.Models.Domain
     public abstract class User
     {
         //TPH is default
+        public int Id { get; set; }
+
         public String FirstName { get; set; }
         public String LastName { get; set; }
         public String Username { get; set; }
@@ -22,9 +24,7 @@ namespace p2groep04.Models.Domain
         public String Password { get; set; }
         public DateTime LastLogin { get; set; }
         public String LastIp { get; set; }
-        public int Role { get; set; }
-        public int Id {get; set;}
-
+        
         [NotMapped]
         public String PlainPassword { get; set; }
 
@@ -43,5 +43,6 @@ namespace p2groep04.Models.Domain
             return salt;
 
         }
+        
     }
 }
