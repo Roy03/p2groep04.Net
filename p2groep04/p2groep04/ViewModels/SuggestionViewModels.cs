@@ -10,7 +10,7 @@ namespace p2groep04.ViewModels.SuggestionViewModels
 {
     public class CreateViewModel
     {
-        public SuggestionViewModel Suggestion { get; private set; }
+        public SuggestionViewModel Suggestion { get; set; }
         public StudentViewModel Student { get; set; }
         public PromotorViewModel CoPromotor { get; set; }
     }

@@ -1,5 +1,6 @@
 ﻿@using System.Web.Mvc.Html
 @using System.Web.Optimization
+@using p2groep04.Helpers
 @{
     Layout = "~/Views/Shared/_LayoutPlain.cshtml";
 }
@@ -18,7 +19,7 @@
                 </ul>
                 <div id="account-nav" class="dropdown">
                     <a class="thumb-sm avatar" data-toggle="dropdown" href="#">
-                        <img src="https://chamilo.hogent.be/application/bamaflex/php/webservices/foto_call.class.php?user_id=34307" /> Maxim <span class="caret"></span>
+                        <img src="https://chamilo.hogent.be/application/bamaflex/php/webservices/foto_call.class.php?user_id=@Html.User().Id" />@Html.User().FirstName @Html.User().LastName<span class="caret"></span>
                     </a>
 
                     <ul class="dropdown-menu animated fadeInRight" role="menu" aria-labelledby="dLabel">

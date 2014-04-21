@@ -42,34 +42,37 @@ namespace p2groep04.Controllers
             {
                 try
                 {
+                    Student student = (Student) user;
+
                     Suggestion suggestion = new Suggestion();
                     suggestion.Title = model.Suggestion.Title;
-                    suggestion.Keywords = model.Suggestion.Keywords;
+                    //suggestion.Keywords = model.Suggestion.Keywords;
                     suggestion.Context = model.Suggestion.Context;
                     suggestion.Subject = model.Suggestion.Subject;
                     suggestion.Goal = model.Suggestion.Goal;                    
                     suggestion.ResearchQuestion = model.Suggestion.ResearchQuestion;
                     suggestion.Motivation = model.Suggestion.Motivation;
                     suggestion.References = model.Suggestion.References;
+
                     //researchdomains
-                    suggestion.Student = (Student)user;
+                    suggestion.Student = student;
 
                     if (buttonSaveSend != null)
                     {
                         suggestion.ToSubmittedState();
                         //notifieer stakeholders
                     }
-
-                    ((Student)user).Suggestions.Add(suggestion);
-                    _suggestionRepository.SaveChanges();
+                    
+                    student.Suggestions.Add(suggestion);
+                    _userRepository.SaveChanges();
 
                     if (buttonSaveSend != null)
                     {
-                        TempData["info"] = "Uw voorstel werd aangemaakt en ingediend!";
+                        TempData["Success"] = "Uw voorstel werd aangemaakt en ingediend!";
                     }
                     else
                     {
-                        TempData["info"] = "Uw voorstel werd aangemaakt!";    
+                        TempData["Success"] = "Uw voorstel werd aangemaakt!";    
                     }
                     
 

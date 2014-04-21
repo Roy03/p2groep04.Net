@@ -1,4 +1,5 @@
 ﻿@using System.Web.Mvc.Html
+@using p2groep04.Helpers
 @model p2groep04.ViewModels.SuggestionViewModels.CreateViewModel
 
 @{
@@ -18,21 +19,21 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Student.FirstName)
 
-            @Html.TextBoxFor(model => model.Student.FirstName, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.Student.FirstName, new { @class = "form-control", @Value = Html.User().FirstName, @disabled = "disabled"})
             @Html.ValidationMessageFor(model => model.Student.FirstName)
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Student.LastName)
 
-            @Html.TextBoxFor(model => model.Student.LastName, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.Student.LastName, new { @class = "form-control", @Value = Html.User().LastName, @disabled = "disabled" })
             @Html.ValidationMessageFor(model => model.Student.LastName)
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Student.Email)
 
-            @Html.TextBoxFor(model => model.Student.Email, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.Student.Email, new { @class = "form-control", @Value = Html.User().Email, @disabled = "disabled" })
             @Html.ValidationMessageFor(model => model.Student.Email)
         </div>
 

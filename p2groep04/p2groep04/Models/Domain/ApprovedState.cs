@@ -11,7 +11,6 @@ namespace p2groep04.Models.Domain
     {
         public ApprovedState(Suggestion suggestion):base(suggestion)
         {
-            throw new System.NotImplementedException();
         }
     }
 }

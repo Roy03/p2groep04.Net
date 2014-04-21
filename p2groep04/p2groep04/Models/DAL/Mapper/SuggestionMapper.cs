@@ -30,7 +30,7 @@ namespace p2groep04.Models.DAL.Mapper
                 m.MapRightKey("researchdomain_id");
             });   */
 
-            HasMany(s => s.Feedbacks).WithOptional();
+            //HasMany(s => s.Feedbacks).WithMany(t => t.Suggestions);
 
         }
     }
