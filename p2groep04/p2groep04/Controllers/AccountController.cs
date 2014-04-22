@@ -38,7 +38,6 @@ namespace p2groep04.Controllers
         }
 
         /* Change password */
-
         public ActionResult ChangePassword()
         {
             return View();
@@ -105,7 +104,16 @@ namespace p2groep04.Controllers
             {
                 System.Diagnostics.Debug.WriteLine("Logged in!");
                 FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                return RedirectToAction("DashBoard", "Home");
+                User user = userRepository.FindBy(model.UserName);
+                /*if (user.LastPasswordChangedDate == user.CreationDate)
+                {
+                    return RedirectToAction("ChangePassword", "Account");
+                }
+                else
+                {*/
+                    return RedirectToAction("DashBoard", "Home");
+                //}
+                
             }
 
             ModelState.AddModelError("", "De login naam of wachtwoord die u heeft ingegeven is incorrect");
