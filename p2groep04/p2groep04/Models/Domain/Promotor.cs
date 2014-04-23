@@ -26,6 +26,7 @@ namespace p2groep04.Models.Domain
                 if (eenSuggestion == suggestion)
                 {
                     eenSuggestion.Feedbacks.Add(feedback);
+                    eenSuggestion.ToApprovedState();
                 }
             }
             
