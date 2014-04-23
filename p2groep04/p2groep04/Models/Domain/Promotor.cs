@@ -18,5 +18,18 @@ namespace p2groep04.Models.Domain
         {
             return (from s in Students where s.FirstName == student.FirstName && s.LastName == student.LastName from suggestion in s.Suggestions from feedback in suggestion.Feedbacks select feedback.Inhoud).ToList();
         }
+
+        public void Givefeedback(Feedback feedback, Student student, Suggestion suggestion)
+        {
+            foreach (var eenSuggestion in student.Suggestions)
+            {
+                if (eenSuggestion == suggestion)
+                {
+                    eenSuggestion.Feedbacks.Add(feedback);
+                    eenSuggestion.ToApprovedState();
+                }
+            }
+            
+        }
     }
 }

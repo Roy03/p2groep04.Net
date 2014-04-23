@@ -148,9 +148,11 @@ namespace p2groep04.Models.Domain
             List<User> stakeHoldersList = new List<User>();
             stakeHoldersList.Add(Student);
             stakeHoldersList.Add(Student.Promotor);
+
             string body = "Het onderzoeksdomein van " + Student.FirstName + " " + Student.LastName + " is gewijzigd van " + oldResearchDomain.Name +
             " naar " + newResearchDomain.Name + ".";
             const string subject = "Wijziging onderzoeksdomein";
+
             UserHelper.NotifyUsers(stakeHoldersList, body, subject);
         }
 
@@ -164,6 +166,7 @@ namespace p2groep04.Models.Domain
             string body = "De promotor van " + Student.FirstName + " " + Student.LastName + " is gewijzigd van " + oldPromotor.FirstName + " " + oldPromotor.LastName + 
             " naar " + newPromotor.FirstName + " " + newPromotor.LastName + ".";
             const string subject = "Wijziging promotor";
+
             UserHelper.NotifyUsers(stakeHoldersList, body, subject);
         }
 
