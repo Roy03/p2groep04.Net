@@ -38,6 +38,7 @@ namespace p2groep04.Controllers
         }
 
         /* Change password */
+        [Authorize]
         public ActionResult ChangePassword()
         {
             return View();
