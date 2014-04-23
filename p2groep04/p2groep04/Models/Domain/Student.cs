@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
+using p2groep04.Helpers;
 
 namespace p2groep04.Models.Domain
 {
@@ -32,14 +33,11 @@ namespace p2groep04.Models.Domain
             }
         }
 
-        public void ChangePromotor(Promotor newPromotor)
-        {
-            Promotor = newPromotor;
-        }
-
         public List<String> GetFeedbackListStudent()
         {
             return (from suggestion in Suggestions from feedback in suggestion.Feedbacks where feedback.Visable == true select feedback.Inhoud).ToList();
         }
+
+        
     }
 }

@@ -134,6 +134,14 @@ namespace p2groep04.Models.Domain
 
         }
 
+        public void ChangePromotor(Promotor newPromotor)
+        {
+            Promotor oldPromotor = Student.Promotor;
+            Student.Promotor = newPromotor;
+
+            NotifyStakeHolderChangePromotor(oldPromotor, newPromotor);
+        }
+
         public void NotifyStakeHolderChangeResearchDomain(ResearchDomain newResearchDomain,
             ResearchDomain oldResearchDomain)
         {
@@ -146,6 +154,18 @@ namespace p2groep04.Models.Domain
             UserHelper.NotifyUsers(stakeHoldersList, body, subject);
         }
 
+        public void NotifyStakeHolderChangePromotor(Promotor oldPromotor, Promotor newPromotor)
+        {
+            List<User> stakeHoldersList = new List<User>();
+            stakeHoldersList.Add(Student);
+            stakeHoldersList.Add(oldPromotor);
+            stakeHoldersList.Add(newPromotor);
+
+            string body = "De promotor van " + Student.FirstName + " " + Student.LastName + " is gewijzigd van " + oldPromotor.FirstName + " " + oldPromotor.LastName + 
+            " naar " + newPromotor.FirstName + " " + newPromotor.LastName + ".";
+            const string subject = "Wijziging promotor";
+            UserHelper.NotifyUsers(stakeHoldersList, body, subject);
+        }
 
     }
 }
