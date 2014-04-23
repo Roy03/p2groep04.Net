@@ -15,6 +15,13 @@ namespace p2groep04.ViewModels.SuggestionViewModels
         public PromotorViewModel CoPromotor { get; set; }
     }
 
+    public class EditViewModel
+    {
+        public SuggestionViewModel Suggestion { get; set; }
+        public StudentViewModel Student { get; set; }
+        public PromotorViewModel CoPromotor { get; set; }
+    }
+
     public class SuggestionViewModel
     {
         [Display(Name = "Titel")]

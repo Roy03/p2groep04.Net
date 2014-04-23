@@ -20,6 +20,8 @@ namespace p2groep04.Models.DAL.Mapper
             Property(s => s.Goal).IsRequired().HasMaxLength(50);
             Property(s => s.ResearchQuestion).IsRequired().HasMaxLength(100);
             Property(s => s.Motivation).IsRequired().HasMaxLength(150);
+            HasRequired(s => s.Student).WithMany(s => s.Suggestions);
+
             //Property(s => s.CurrentState).IsRequired();
 
             //Relations
