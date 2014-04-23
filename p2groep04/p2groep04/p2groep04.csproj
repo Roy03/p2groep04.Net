@@ -215,6 +215,7 @@
     <Compile Include="Models\DAL\CreateAndMigrateDatabaseInitializer.cs" />
     <Compile Include="Models\DAL\FeedbackRepository.cs" />
     <Compile Include="Models\DAL\Mapper\FeedbackMapper.cs" />
+    <Compile Include="Models\DAL\StudentRepository.cs" />
     <Compile Include="Models\Domain\AdviceBPCState.cs" />
     <Compile Include="Models\Domain\ApprovedState.cs" />
     <Compile Include="Models\Domain\ApprovedWithRemarksState.cs" />

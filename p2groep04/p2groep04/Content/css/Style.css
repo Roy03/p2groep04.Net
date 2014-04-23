@@ -63,6 +63,36 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 .form-group > .form-control {
     width: 100%;
 }
+
+/* table */
+.table td, .table th {
+    padding: 5px 10px;
+}
+.table td {
+    text-align: left;
+    border-right: 1px solid rgb(243, 243, 243);
+}
+.table tr td:last-child {
+    border-right: none;
+}
+.table th {
+    text-align: center;
+}
+.table {
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    width: 100%;
+}
+.table tr {
+    border-bottom: 1px solid rgb(213, 213, 213);
+}
+.tablew tr:last-child {
+    border: none;
+}
+.table tr:nth-child(even) {
+    background: rgb(248, 248, 248);
+}
+
 /* buttons */
 .button {
     background: rgb(96, 189, 241);
