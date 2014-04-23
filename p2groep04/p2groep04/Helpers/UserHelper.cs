@@ -112,7 +112,7 @@ namespace p2groep04.Helpers
             }
         }
 
-        public static void NotifyUser(List<User> users, string body, string subject)
+        public static void NotifyUsers(List<User> users, string body, string subject)
         {
             var fromAddress = new MailAddress("Uw gmail account");
             const string fromPassword = "Uw passwoord";

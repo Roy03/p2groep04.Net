@@ -7,6 +7,7 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using p2groep04.Helpers;
+using WebGrease.Css.Extensions;
 
 namespace p2groep04.Models.Domain
 {
@@ -129,9 +130,20 @@ namespace p2groep04.Models.Domain
                     researchDomain.Name = newResearchDomain.Name;
                 }
             }
+            NotifyStakeHolderChangeResearchDomain(newResearchDomain, oldResearchDomain);
 
-            UserHelper.NotifyUser();
+        }
 
+        public void NotifyStakeHolderChangeResearchDomain(ResearchDomain newResearchDomain,
+            ResearchDomain oldResearchDomain)
+        {
+            List<User> stakeHoldersList = new List<User>();
+            stakeHoldersList.Add(Student);
+            stakeHoldersList.Add(Student.Promotor);
+            string body = "Het onderzoeksdomein van " + Student.FirstName + " " + Student.LastName + " is gewijzigd van " + oldResearchDomain.Name +
+            " naar " + newResearchDomain.Name + ".";
+            const string subject = "Wijziging onderzoeksdomein";
+            UserHelper.NotifyUsers(stakeHoldersList, body, subject);
         }
 
 
