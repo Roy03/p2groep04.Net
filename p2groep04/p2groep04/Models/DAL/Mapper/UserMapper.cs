@@ -25,6 +25,8 @@ namespace p2groep04.Models.DAL.Mapper
             Property(u => u.Password).IsRequired();
             Property(u => u.LastLogin);
             Property(u => u.LastIp);
+            Property(u => u.CreationDate).IsRequired();
+            Property(u => u.LastPasswordChangedDate).IsRequired();
 
         }        
     }

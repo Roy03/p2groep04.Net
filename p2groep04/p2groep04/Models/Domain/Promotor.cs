@@ -19,7 +19,7 @@ namespace p2groep04.Models.Domain
             return (from s in Students where s.FirstName == student.FirstName && s.LastName == student.LastName from suggestion in s.Suggestions from feedback in suggestion.Feedbacks select feedback.Inhoud).ToList();
         }
 
-        public void Givefeedback(Feedback feedback, Student student, Suggestion suggestion)
+        public void GiveFeedback(Feedback feedback, Student student, Suggestion suggestion)
         {
             foreach (var eenSuggestion in student.Suggestions)
             {
@@ -30,6 +30,51 @@ namespace p2groep04.Models.Domain
                 }
             }
             
+        }
+
+        public void AskAdviseBpc(Student student, Suggestion suggestion)
+        {
+            foreach (var eenSuggestion in student.Suggestions)
+            {
+                if (eenSuggestion == suggestion)
+                {
+                    eenSuggestion.ToAdviceBpcState();
+                }
+            }
+        }
+
+        public void SuggestionDoesNotComply(Student student, Suggestion suggestion)
+        {
+            foreach (var eenSuggestion in student.Suggestions)
+            {
+                if (eenSuggestion == suggestion)
+                {
+                    eenSuggestion.ToNewState();
+                }
+            }
+        }
+
+        public void SuggestionAcceptedButWithRemark(Student student, Suggestion suggestion, Feedback remark)
+        {
+            foreach (var eenSuggestion in student.Suggestions)
+            {
+                if (eenSuggestion == suggestion)
+                {
+                    eenSuggestion.Feedbacks.Add(remark);
+                    eenSuggestion.ToApprovedWithRemarksState();
+                }
+            }
+        }
+
+        public void SuggestionWithBuildingFeedback(Student student, Suggestion suggestion, Feedback feedback)
+        {
+            foreach (var eenSuggestion in student.Suggestions)
+            {
+                if (eenSuggestion == suggestion)
+                {
+                    eenSuggestion.Feedbacks.Add(feedback);
+                }
+            }
         }
     }
 }

@@ -67,6 +67,8 @@ namespace p2groep04.Controllers
 
                     String salt = userRepository.FindSaltByUsername(username);
                     string newPassHash = UserHelper.Encrypt(model.NewPlainPassword + salt);
+                    User user = userRepository.FindBy(username);
+                    user.LastPasswordChangedDate = DateTime.Now;
 
                     bool success = userRepository.ChangePassword(username, newPassHash);
 
@@ -106,14 +108,14 @@ namespace p2groep04.Controllers
                 System.Diagnostics.Debug.WriteLine("Logged in!");
                 FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                 User user = userRepository.FindBy(model.UserName);
-                /*if (user.LastPasswordChangedDate == user.CreationDate)
+                if (user.LastPasswordChangedDate == user.CreationDate)
                 {
                     return RedirectToAction("ChangePassword", "Account");
                 }
                 else
-                {*/
+                {
                     return RedirectToAction("DashBoard", "Home");
-                //}
+                }
                 
             }
 

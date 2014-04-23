@@ -24,6 +24,8 @@ namespace p2groep04.Models.Domain
         public String Password { get; set; }
         public DateTime LastLogin { get; set; }
         public String LastIp { get; set; }
+        public DateTime LastPasswordChangedDate { get; set; }
+        public DateTime CreationDate { get; set; }
         
         [NotMapped]
         public String PlainPassword { get; set; }
