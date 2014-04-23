@@ -112,5 +112,31 @@ namespace p2groep04.Helpers
             }
         }
 
+        public void NotifyUser(User user, string email, string body, string subject)
+        {
+            var fromAddress = new MailAddress("Uw gmail account");
+            var toAddress = new MailAddress(email);
+            const string fromPassword = "Uw passwoord";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
+        }
+
+
     }
 }
