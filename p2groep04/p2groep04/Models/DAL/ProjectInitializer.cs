@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using p2groep04.Models.Domain;
 using WebMatrix.WebData;
 
@@ -44,7 +45,12 @@ namespace p2groep04.Models.DAL
                     CreationDate = new DateTime(2014, 4, 23),
                     LastPasswordChangedDate = new DateTime(2014, 4, 23)
                 };
-                
+                /*var roles = (SimpleRoleProvider) Roles.Provider;
+                roles.CreateRole("Admin");
+                roles.CreateRole("Promotor");
+                roles.CreateRole("Student");
+                roles.AddUsersToRoles(new string[] { "209452mg" }, new string[] { "Student" });
+                roles.AddUsersToRoles(new string[]{"208134ld"},new string[]{"Student"});*/
                 List<Student> studenten = (new Student[] {studentMaxim, studentLogan}).ToList();
                 studenten.ForEach(s => context.Users.Add(s));
                 context.SaveChanges();

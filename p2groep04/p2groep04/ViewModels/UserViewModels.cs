@@ -26,6 +26,12 @@ namespace p2groep04.ViewModels.UserViewModels
         [Display(Name = "Laatste IP")]
         public String LastIp { get; set; }
 
+        [Display(Name = "Datum creatie")]
+        public int CreationDate { get; set; }
+
+        [Display(Name = "Datum paswoord gewijzigd")]
+        public int LastPasswordChangedDate { get; set; }
+
         [Display(Name = "Rol")]
         public int Role { get; set; }
 
