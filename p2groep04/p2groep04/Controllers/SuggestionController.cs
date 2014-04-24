@@ -105,7 +105,7 @@ namespace p2groep04.Controllers
                 try
                 {
                     Student student = (Student)user;
-
+                    
                     suggestion.Title = model.Suggestion.Title;
                     suggestion.Keywords = model.Suggestion.Keywords;
                     suggestion.Context = model.Suggestion.Context;

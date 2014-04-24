@@ -20,22 +20,22 @@ namespace p2groep04.Models.DAL
 
         public IQueryable<Student> FindAll()
         {
-            return Students.OrderBy(u => u.LastName);
+            return Students.OrderBy(u => u.LastName).Include(s => s.Suggestions);
         }
 
         public Student FindBy(int id)
         {
-            return Students.FirstOrDefault(u => u.Id == id);
+            return Students.Include(s => s.Suggestions).FirstOrDefault(u => u.Id == id);
         }
 
         public Student FindBy(string name)
         {
-            return Students.FirstOrDefault(u => u.Username.ToLower() == name.ToLower());
+            return Students.Include(s => s.Suggestions).FirstOrDefault(u => u.Username.ToLower() == name.ToLower());
         }
 
         public string FindSaltByStudentname(string username)
         {
-            Student student = Students.FirstOrDefault(u => u.Username.ToLower().Equals(username.ToLower()));
+            Student student = Students.Include(s => s.Suggestions).FirstOrDefault(u => u.Username.ToLower().Equals(username.ToLower()));
             if (student == null)
             {
                 return null;
@@ -50,7 +50,7 @@ namespace p2groep04.Models.DAL
 
         public Student FindByEmail(string email)
         {
-            return Students.FirstOrDefault(u => u.Email.ToLower().Equals(email.ToLower()));
+            return Students.Include(s => s.Suggestions).FirstOrDefault(u => u.Email.ToLower().Equals(email.ToLower()));
         }
 
         public bool ChangePassword(string username, string newpass)

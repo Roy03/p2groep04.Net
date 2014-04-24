@@ -13,7 +13,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AYgCAAAAQgQAAEBAAIECECAggAAQBABJBCGCARIAgIA=</HashCode>
+      <HashCode>AYgCEAAAQgQCAEBAAIECECAggAAQBABJBCGCARIAgIA=</HashCode>
       <FileName>Models\Domain\Suggestion.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -28,7 +28,7 @@
   <Class Name="p2groep04.Models.Domain.User">
     <Position X="7.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABCAEAAACACAAAAEQAgAAAAAEIAAAACAAAAAAAAAAg=</HashCode>
+      <HashCode>QABCAEAAACAKAAAAAQAgAAAAAEIAAAACAAAAAAAAAAg=</HashCode>
       <FileName>Models\Domain\User.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -40,7 +40,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAIAAAAAAQBAAAAACAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAIAAAAAAQBAAAAAAAAAAAAACAAAAAAA=</HashCode>
       <FileName>Models\Domain\Student.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -48,7 +48,7 @@
       <Property Name="CoPromotor" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
-      <Field Name="Suggestions" />
+      <Property Name="Suggestions" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="p2groep04.Models.Domain.BPCoordinator">
@@ -61,7 +61,7 @@
   <Class Name="p2groep04.Models.Domain.Promotor">
     <Position X="7.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAIAAAAAAAIAEAAAAAACAAAAAAAAJCAAAAA=</HashCode>
       <FileName>Models\Domain\Promotor.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -69,7 +69,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="p2groep04.Models.Domain.ResearchDomain">
-    <Position X="10.5" Y="16.5" Width="1.5" />
+    <Position X="13.25" Y="16" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\ResearchDomain.cs</FileName>
