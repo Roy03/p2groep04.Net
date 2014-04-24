@@ -45,13 +45,27 @@ namespace p2groep04.Models.DAL
                     CreationDate = new DateTime(2014, 4, 23),
                     LastPasswordChangedDate = new DateTime(2014, 4, 23)
                 };
-                /*var roles = (SimpleRoleProvider) Roles.Provider;
-                roles.CreateRole("Admin");
+
+                Student studentBram = new Student()
+                {
+                    Id = 3,
+                    Email = "bram.baert@hotmail.com",
+                    FirstName = "Bram",
+                    LastName = "Baert",
+                    Password = "2b72cd97c1ae43dcdf60b6c89bbec0c056acff9bf97a6fec7cceb13d4cc95a4b8605d8a522d75b388d3fc434e6e2d7707ad9b63ea6414057cc9c884cdc9565e8",
+                    Salt = "Unknown",
+                    Username = "209197bb",
+                    CreationDate = new DateTime(2014, 4, 23),
+                    LastPasswordChangedDate = new DateTime(2014, 4, 23)
+                };
+
+                var roles = (SimpleRoleProvider) Roles.Provider;
+                /*roles.CreateRole("Admin");
                 roles.CreateRole("Promotor");
                 roles.CreateRole("Student");
                 roles.AddUsersToRoles(new string[] { "209452mg" }, new string[] { "Student" });
                 roles.AddUsersToRoles(new string[]{"208134ld"},new string[]{"Student"});*/
-                List<Student> studenten = (new Student[] {studentMaxim, studentLogan}).ToList();
+                List<Student> studenten = (new Student[] {studentMaxim, studentLogan, studentBram}).ToList();
                 studenten.ForEach(s => context.Users.Add(s));
                 context.SaveChanges();
                 System.Diagnostics.Debug.WriteLine("Database created!");                                

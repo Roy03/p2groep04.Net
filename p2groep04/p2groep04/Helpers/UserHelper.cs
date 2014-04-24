@@ -87,9 +87,9 @@ namespace p2groep04.Helpers
 
         public void sendMail(string password, string email)
         {
-            var fromAddress = new MailAddress("Uw gmail account");
+            var fromAddress = new MailAddress("logand497@gmail.com");
             var toAddress = new MailAddress(email);
-            const string fromPassword = "Uw passwoord";
+            const string fromPassword = "208134Ld";
             const string subject = "New Password";
             string body = "Password: " + password;
 
