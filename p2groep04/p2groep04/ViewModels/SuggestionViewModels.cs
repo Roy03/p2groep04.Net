@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using p2groep04.Models.Domain;
 using p2groep04.ViewModels.UserViewModels;
 
-namespace p2groep04.ViewModels.SuggestionViewModels
+namespace p2groep04.ViewModels
 {
     public class CreateViewModel
     {

@@ -10,7 +10,7 @@ using p2groep04.Models;
 using p2groep04.Models.DAL;
 using p2groep04.Models.Domain;
 using System.Web.Mvc;
-using p2groep04.ViewModels.SuggestionViewModels;
+using p2groep04.ViewModels;
 using p2groep04.ViewModels.UserViewModels;
 
 namespace p2groep04.Controllers
@@ -98,7 +98,7 @@ namespace p2groep04.Controllers
         [HttpPost]
         public ActionResult Edit(EditViewModel model, User user, string buttonSave, string buttonSaveSend)
         {
-            Suggestion suggestion = _suggestionRepository.FindBy(model.Suggestion.Id);
+            Suggestion suggestion = _suggestionRepository.FindBy(model.Suggestion.Id +1);
 
             if (ModelState.IsValid)
             {
