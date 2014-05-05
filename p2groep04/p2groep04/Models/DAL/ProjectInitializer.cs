@@ -72,6 +72,19 @@ namespace p2groep04.Models.DAL
                     LastPasswordChangedDate = new DateTime(2014, 4, 23)
                 };
 
+                Promotor promotor1 = new Promotor()
+                {
+                    Id = 5,
+                    Email = "roy_9852@hotmail.com",
+                    FirstName = "Jan",
+                    LastName = "Jaap",
+                    Password = "58dce73824cc8ddb13adaad2481525e0a1eaeb874fe7c525401e5adcb084367e544dc82bc40701fe96481f59ffc33e0a925ec762087d7b8ff4f8935d408b3247",
+                    Salt = "Unknown",
+                    Username = "JanJaap",
+                    CreationDate = new DateTime(2014, 4, 23),
+                    LastPasswordChangedDate = new DateTime(2014, 4, 23)
+                };
+
 
                 //var roles = (SimpleRoleProvider) Roles.Provider;
                 /*roles.CreateRole("Admin");
@@ -81,6 +94,8 @@ namespace p2groep04.Models.DAL
                 roles.AddUsersToRoles(new string[]{"208134ld"},new string[]{"Student"});*/
                 List<Student> studenten = (new Student[] {studentMaxim, studentLogan, studentBram,studentRoy}).ToList();
                 studenten.ForEach(s => context.Users.Add(s));
+                List<Promotor> promotors = (new Promotor[] { promotor1 }).ToList();
+                promotors.ForEach(p => context.Users.Add(p));
                 context.SaveChanges();
                 System.Diagnostics.Debug.WriteLine("Database created!");                                
 
