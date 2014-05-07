@@ -24,7 +24,16 @@ namespace p2groep04.Controllers
         public ActionResult Index(User user)
         {
             Promotor promotor;
+
+            Student student1 = new Student();
+
+            student1.FirstName = "Roy";
+            student1.LastName = "Hollanders";
+            student1.Email = "roy_9852@hotmail.com";
+            student1.Id = 1;
+
             promotor = (Promotor) userRepository.FindBy(user.Id);
+            promotor.Students.Add(student1);
             IEnumerable<Student> studenten = promotor.Students;
             return View(studenten);
         }
