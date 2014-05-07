@@ -16,6 +16,7 @@ namespace p2groep04.Models
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
+        [StringLength(20, MinimumLength = 6)]
         public string NewPlainPassword { get; set; }
 
         [Required]

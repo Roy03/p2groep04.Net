@@ -7,6 +7,7 @@ namespace p2groep04.Models
         [Required]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
+
         public string Email { get; set; }
     }
 }

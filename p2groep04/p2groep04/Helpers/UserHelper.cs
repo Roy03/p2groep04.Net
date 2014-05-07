@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Security;
 using p2groep04.Models.Domain;
@@ -63,12 +65,21 @@ namespace p2groep04.Helpers
         {
             //Create a random password between 6 and 20 characters
             Random generator = new Random();
-            int length = generator.Next(6,20);
-            int numberOfNonAlphanumericCharacters = generator.Next(1, length);
-            string password = Membership.GeneratePassword(length, numberOfNonAlphanumericCharacters);
+            string password;
+            while (true)
+            {
+                int length = generator.Next(6,20);
+                int numberOfNonAlphanumericCharacters = generator.Next(1, length);
+                password = Membership.GeneratePassword(length, numberOfNonAlphanumericCharacters);
 
+                Match match = Regex.Match(password, @"^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$");
+
+                if (match.Success)
+                {
+                    break;
+                }
+            }
             return password;
-            
         }
 
         public string generateSaltPassword(string password, string email)
@@ -87,9 +98,9 @@ namespace p2groep04.Helpers
 
         public void sendMail(string password, string email)
         {
-            var fromAddress = new MailAddress("logand497@gmail.com");
+            var fromAddress = new MailAddress("project2hogent@gmail.com");
             var toAddress = new MailAddress(email);
-            const string fromPassword = "208134Ld";
+            const string fromPassword = "C#Project";
             const string subject = "New Password";
             string body = "Password: " + password;
 
@@ -114,8 +125,8 @@ namespace p2groep04.Helpers
 
         public static void NotifyUsers(List<User> users, string body, string subject)
         {
-            var fromAddress = new MailAddress("Uw gmail account");
-            const string fromPassword = "Uw passwoord";
+            var fromAddress = new MailAddress("project2hogent@gmail.com");
+            const string fromPassword = "C#Project";
 
             var smtp = new SmtpClient
             {
