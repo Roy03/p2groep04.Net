@@ -72,7 +72,7 @@ namespace p2groep04.Helpers
                 int numberOfNonAlphanumericCharacters = generator.Next(1, length);
                 password = Membership.GeneratePassword(length, numberOfNonAlphanumericCharacters);
 
-                Match match = Regex.Match(password, @"/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z])$/");
+                Match match = Regex.Match(password, @"^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$");
 
                 if (match.Success)
                 {
@@ -125,8 +125,8 @@ namespace p2groep04.Helpers
 
         public static void NotifyUsers(List<User> users, string body, string subject)
         {
-            var fromAddress = new MailAddress("Uw gmail account");
-            const string fromPassword = "Uw passwoord";
+            var fromAddress = new MailAddress("project2hogent@gmail.com");
+            const string fromPassword = "C#Project";
 
             var smtp = new SmtpClient
             {
