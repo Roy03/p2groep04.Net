@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
+using Microsoft.Ajax.Utilities;
 using Microsoft.Web.WebPages.OAuth;
 using p2groep04.Helpers;
 using p2groep04.Models.DAL;
@@ -48,23 +49,12 @@ namespace p2groep04.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChangePassword(ChangePasswordModel model)
         {
-            if (ModelState.IsValid)
+            string username = HttpContext.User.Identity.Name;
+            if (ModelState.IsValid && userHelper.IsValidPassword(username, model.OldPlainPassword) &&
+                model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
             {
-                string username = HttpContext.User.Identity.Name;
                 try
                 {
-                    //verify old password
-                    if (!userHelper.IsValidPassword(username, model.OldPlainPassword))
-                    {
-                        ModelState.AddModelError("OldPlainPassword", "Password is not correct");
-                    }
-
-                    //password same
-                    if (!model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
-                    {
-                        ModelState.AddModelError("ConfirmNewPlainPassword", "Both passwords do not match.");
-                    }
-
                     String salt = userRepository.FindSaltByUsername(username);
                     string newPassHash = UserHelper.Encrypt(model.NewPlainPassword + salt);
                     User user = userRepository.FindBy(username);
@@ -72,7 +62,7 @@ namespace p2groep04.Controllers
 
                     bool success = userRepository.ChangePassword(username, newPassHash);
 
-                    
+
                     if (!success)
                     {
                         //failed to change pass
@@ -83,13 +73,32 @@ namespace p2groep04.Controllers
                         TempData["Success"] = "Your password has been changed succesfully";
                     }
 
+                    return RedirectToAction("Dashboard", "Home");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
             }
-            return RedirectToAction("Dashboard","Home");
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    //verify old password
+                    if (!userHelper.IsValidPassword(username, model.OldPlainPassword))
+                    {
+                        ModelState.AddModelError("", "Uw huidig paswoord is incorrect.");
+                    }
+                    else
+                    {
+                        //password same
+                        if (!model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
+                            ModelState.AddModelError("", "Uw bevestiging van het nieuwe wachtwoord is incorrect.");
+                    }   
+                }
+                
+            }
+            return View(model);
         }
 
         [AllowAnonymous]
@@ -108,16 +117,16 @@ namespace p2groep04.Controllers
                 System.Diagnostics.Debug.WriteLine("Logged in!");
                 FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                 User user = userRepository.FindBy(model.UserName);
-               /* if (user.LastPasswordChangedDate == user.CreationDate)
+                if (user.LastPasswordChangedDate == user.CreationDate)
                 {
                     return RedirectToAction("ChangePassword", "Account");
                 }
-*/
+
                 return RedirectToAction("DashBoard", "Home");
                 
             }
 
-            ModelState.AddModelError("", "De login naam of wachtwoord die u heeft ingegeven is incorrect");
+            ModelState.AddModelError("", "Uw gebruikersnaam of wachtwoord is incorrect.");
             return View(model);
         }
 
@@ -143,7 +152,7 @@ namespace p2groep04.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            ModelState.AddModelError("", "De Email die u heeft ingegeven is incorrect");
+            ModelState.AddModelError("", "Uw Email is incorrect.");
             return View(model);
         }
     }
