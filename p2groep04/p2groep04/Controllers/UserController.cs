@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using p2groep04.Models.DAL;
+using p2groep04.Models.Domain;
 
 namespace p2groep04.Controllers
 {
@@ -11,8 +13,14 @@ namespace p2groep04.Controllers
         //
         // GET: /User/
 
-        public ActionResult Index()
+        private IUserRepository userRepository;
+        private StudentRepository studentRepository;
+
+        public ActionResult Index(Promotor promotor)
         {
+            IEnumerable<Student> studenten = promotor.Students;
+
+
             return View();
         }
 

@@ -20,7 +20,7 @@ namespace p2groep04.ViewModels.UserViewModels
         [Display(Name = "Email")]
         public String Email { get; set; }
 
-        [Display(Name = "Laast ingelogd")]
+        [Display(Name = "Laatst ingelogd")]
         public DateTime LastLogin { get; set; }
 
         [Display(Name = "Laatste IP")]
