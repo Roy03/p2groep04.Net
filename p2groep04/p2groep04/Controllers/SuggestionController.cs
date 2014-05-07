@@ -96,16 +96,16 @@ namespace p2groep04.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult Edit(EditViewModel model, User user, string buttonSave, string buttonSaveSend)
+        public ActionResult Edit(int id, EditViewModel model, User user, string buttonSave, string buttonSaveSend)
         {
-            Suggestion suggestion = _suggestionRepository.FindBy(model.Suggestion.Id +1);
+            Suggestion suggestion = _suggestionRepository.FindBy(id);
 
             if (ModelState.IsValid)
             {
                 try
                 {
                     Student student = (Student)user;
-                    
+
                     suggestion.Title = model.Suggestion.Title;
                     suggestion.Keywords = model.Suggestion.Keywords;
                     suggestion.Context = model.Suggestion.Context;
