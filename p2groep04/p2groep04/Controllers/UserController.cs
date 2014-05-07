@@ -16,12 +16,17 @@ namespace p2groep04.Controllers
         private IUserRepository userRepository;
         private StudentRepository studentRepository;
 
-        public ActionResult Index(Promotor promotor)
+        public UserController(IUserRepository userRepository)
         {
+            this.userRepository = userRepository;
+        }
+
+        public ActionResult Index(User user)
+        {
+            Promotor promotor;
+            promotor = (Promotor) userRepository.FindBy(user.Id);
             IEnumerable<Student> studenten = promotor.Students;
-
-
-            return View();
+            return View(studenten);
         }
 
     }

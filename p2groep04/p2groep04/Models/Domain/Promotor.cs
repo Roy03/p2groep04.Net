@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -11,7 +12,7 @@ namespace p2groep04.Models.Domain
 {
     public class Promotor : User
     {
-        public ICollection<Student> Students; 
+        public ICollection<Student> Students = new Collection<Student>();
         public String Company { get; set; }
 
         public List<String> GetFeedbackList(Student student)

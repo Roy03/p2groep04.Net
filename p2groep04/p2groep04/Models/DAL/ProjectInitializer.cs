@@ -72,6 +72,7 @@ namespace p2groep04.Models.DAL
                     LastPasswordChangedDate = new DateTime(2014, 4, 23)
                 };
 
+                
                 Promotor promotor1 = new Promotor()
                 {
                     Id = 5,
@@ -83,8 +84,10 @@ namespace p2groep04.Models.DAL
                     Username = "JanJaap",
                     CreationDate = new DateTime(2014, 4, 23),
                     LastPasswordChangedDate = new DateTime(2014, 4, 23)
+
                 };
 
+                
 
                 //var roles = (SimpleRoleProvider) Roles.Provider;
                 /*roles.CreateRole("Admin");
@@ -94,6 +97,7 @@ namespace p2groep04.Models.DAL
                 roles.AddUsersToRoles(new string[]{"208134ld"},new string[]{"Student"});*/
                 List<Student> studenten = (new Student[] {studentMaxim, studentLogan, studentBram,studentRoy}).ToList();
                 studenten.ForEach(s => context.Users.Add(s));
+                studenten.ForEach(s => promotor1.Students.Add(s));
                 List<Promotor> promotors = (new Promotor[] { promotor1 }).ToList();
                 promotors.ForEach(p => context.Users.Add(p));
                 context.SaveChanges();
