@@ -3,6 +3,7 @@ using System.Activities.Statements;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
@@ -49,36 +50,47 @@ namespace p2groep04.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChangePassword(ChangePasswordModel model)
         {
+            Match match;
             string username = HttpContext.User.Identity.Name;
             if (ModelState.IsValid && userHelper.IsValidPassword(username, model.OldPlainPassword) &&
                 model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
             {
-                try
+                match = Regex.Match(model.NewPlainPassword,
+                @"^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
+                ^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$|
+                ^.*(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
+                ^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
+                ^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[^a-zA-Z0-9]).*$");
+                if (match.Success == true)
                 {
-                    String salt = userRepository.FindSaltByUsername(username);
-                    string newPassHash = UserHelper.Encrypt(model.NewPlainPassword + salt);
-                    User user = userRepository.FindBy(username);
-                    user.LastPasswordChangedDate = DateTime.Now;
-
-                    bool success = userRepository.ChangePassword(username, newPassHash);
-
-
-                    if (!success)
+                    try
                     {
-                        //failed to change pass
-                        TempData["Error"] = "Failed to change password";
-                    }
-                    else
-                    {
-                        TempData["Success"] = "Your password has been changed succesfully";
-                    }
+                        String salt = userRepository.FindSaltByUsername(username);
+                        string newPassHash = UserHelper.Encrypt(model.NewPlainPassword + salt);
+                        User user = userRepository.FindBy(username);
+                        user.LastPasswordChangedDate = DateTime.Now;
 
-                    return RedirectToAction("Dashboard", "Home");
+                        bool success = userRepository.ChangePassword(username, newPassHash);
+
+
+                        if (!success)
+                        {
+                            //failed to change pass
+                            TempData["Error"] = "Failed to change password";
+                        }
+                        else
+                        {
+                            TempData["Success"] = "Your password has been changed succesfully";
+                        }
+
+                        return RedirectToAction("Dashboard", "Home");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
+                
             }
             else
             {
@@ -91,9 +103,25 @@ namespace p2groep04.Controllers
                     }
                     else
                     {
-                        //password same
-                        if (!model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
-                            ModelState.AddModelError("", "Uw bevestiging van het nieuwe wachtwoord is incorrect.");
+                        //verify password characters
+                        match = Regex.Match(model.NewPlainPassword,
+                        @"^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
+                        ^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$|
+                        ^.*(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
+                        ^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
+                        ^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[^a-zA-Z0-9]).*$");
+                        if (match.Success != true)
+                        {
+                            ModelState.AddModelError("",
+                                "Uw nieuw wachtwoord moet een combinatie zijn van tenminste 3 van de volgende karakters: hoofdletters, kleine letters, getallen en overige symbolen.");
+                        }
+                        else
+                        {
+                            //password same
+                            if (!model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
+                                ModelState.AddModelError("", "Uw bevestiging van het nieuwe wachtwoord is incorrect.");
+                        }
+                        
                     }   
                 }
                 
@@ -111,8 +139,8 @@ namespace p2groep04.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model)
-        {            
-            if (ModelState.IsValid && userHelper.IsValidPassword(model.UserName, model.Password))
+        {   
+            if (ModelState.IsValid && userHelper.IsValidPassword(model.UserName, model.Password) )
             {
                 System.Diagnostics.Debug.WriteLine("Logged in!");
                 FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
@@ -141,7 +169,8 @@ namespace p2groep04.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ForgotPassword(ForgotPasswordModel model)
         {
-            if (ModelState.IsValid && userHelper.IsValidEmail(model.Email))
+            Match match = Regex.Match(model.Email, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.hogent.be$");
+            if (ModelState.IsValid && userHelper.IsValidEmail(model.Email) && match.Success == true)
             {
                 System.Diagnostics.Debug.WriteLine("Email sent!");
                 string password = userHelper.generatePassword(model.Email);

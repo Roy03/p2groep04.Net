@@ -23,7 +23,7 @@ namespace p2groep04.Models.DAL
                 Student studentMaxim = new Student()
                 {
                     Id = 1,
-                    Email = "maximgeerinck@hotmail.com",
+                    Email = "maxim.geerinck.t9452@student.hogent.be",
                     FirstName = "Maxim",
                     LastName = "Geerinck",
                     Password = "fb30c5bae9be9322fc844655e4cfc2078f5a20217e29b7247c1da194984a8deb67edfa8e174a8b554f96eaa3b27848bd33cbacee26b2dc1644c5803a16e44751",
@@ -36,7 +36,7 @@ namespace p2groep04.Models.DAL
                 Student studentLogan = new Student()
                 {
                     Id = 2,
-                    Email = "l.dupont@hotmail.be",
+                    Email = "logan.dupont.t8134@student.hogent.be",
                     FirstName = "Logan",
                     LastName = "Dupont",
                     Password = "ef3c52f55940f352278b8595073c074ea91507b06e429892d8b116b90d4dbdb6d986870cec242e584327bda2a53d4174f52fe799207495101fccf2191ed38675",
@@ -49,7 +49,7 @@ namespace p2groep04.Models.DAL
                 Student studentBram = new Student()
                 {
                     Id = 3,
-                    Email = "bram.baert@hotmail.com",
+                    Email = "bram.baert.t9197@student.hogent.be",
                     FirstName = "Bram",
                     LastName = "Baert",
                     Password = "2b72cd97c1ae43dcdf60b6c89bbec0c056acff9bf97a6fec7cceb13d4cc95a4b8605d8a522d75b388d3fc434e6e2d7707ad9b63ea6414057cc9c884cdc9565e8",
@@ -58,11 +58,11 @@ namespace p2groep04.Models.DAL
                     CreationDate = new DateTime(2014, 4, 23),
                     LastPasswordChangedDate = new DateTime(2014, 4, 23)
                 };
-               
+
                 Student studentRoy = new Student()
                 {
                     Id = 4,
-                    Email = "roy_9852@hotmail.com",
+                    Email = "roy.hollaners.t9164@student.hogent.be",
                     FirstName = "Roy",
                     LastName = "Hollanders",
                     Password = "082e1117b866e6de8a87c049e8b02a3455d633e5445ca4763591fe09a04139a5706088274d9d0d56f035988b1012930a0e69f773fe451845f9ec0fbf2adf9f29",
@@ -72,11 +72,10 @@ namespace p2groep04.Models.DAL
                     LastPasswordChangedDate = new DateTime(2014, 4, 23)
                 };
 
-                
                 Promotor promotor1 = new Promotor()
                 {
                     Id = 5,
-                    Email = "roy_9852@hotmail.com",
+                    Email = "roy.hollaners.t9164@student.hogent.be",
                     FirstName = "Jan",
                     LastName = "Jaap",
                     Password = "58dce73824cc8ddb13adaad2481525e0a1eaeb874fe7c525401e5adcb084367e544dc82bc40701fe96481f59ffc33e0a925ec762087d7b8ff4f8935d408b3247",
@@ -84,7 +83,6 @@ namespace p2groep04.Models.DAL
                     Username = "JanJaap",
                     CreationDate = new DateTime(2014, 4, 23),
                     LastPasswordChangedDate = new DateTime(2014, 4, 23)
-
                 };
 
                 
