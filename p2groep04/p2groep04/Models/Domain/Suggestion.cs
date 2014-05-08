@@ -49,17 +49,6 @@ namespace p2groep04.Models.Domain
 
         public Student Student { get; set; }
 
-        public Dossier Dossier
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
         public Suggestion()
         {
             _adviceBpcState = new AdviceBPCState(this);
