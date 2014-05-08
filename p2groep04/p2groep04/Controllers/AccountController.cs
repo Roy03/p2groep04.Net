@@ -49,84 +49,95 @@ namespace p2groep04.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ChangePassword(ChangePasswordModel model)
-        {
+        {   
             Match match;
-            string username = HttpContext.User.Identity.Name;
-            if (ModelState.IsValid && userHelper.IsValidPassword(username, model.OldPlainPassword) &&
-                model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
+            string newPassword = model.NewPlainPassword;
+            if (newPassword != null)
             {
-                match = Regex.Match(model.NewPlainPassword,
+                match = Regex.Match(newPassword,
                 @"^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
                 ^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$|
                 ^.*(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
                 ^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
                 ^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[^a-zA-Z0-9]).*$");
-                if (match.Success == true)
+                string username = HttpContext.User.Identity.Name;
+                if (ModelState.IsValid && userHelper.IsValidPassword(username, model.OldPlainPassword) &&
+                    model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword) && match.Success == true)
                 {
-                    try
+
+                    if (match.Success == true)
                     {
-                        String salt = userRepository.FindSaltByUsername(username);
-                        string newPassHash = UserHelper.Encrypt(model.NewPlainPassword + salt);
-                        User user = userRepository.FindBy(username);
-                        user.LastPasswordChangedDate = DateTime.Now;
-
-                        bool success = userRepository.ChangePassword(username, newPassHash);
-
-
-                        if (!success)
+                        try
                         {
-                            //failed to change pass
-                            TempData["Error"] = "Failed to change password";
+                            String salt = userRepository.FindSaltByUsername(username);
+                            string newPassHash = UserHelper.Encrypt(model.NewPlainPassword + salt);
+                            User user = userRepository.FindBy(username);
+                            user.LastPasswordChangedDate = DateTime.Now;
+
+                            bool success = userRepository.ChangePassword(username, newPassHash);
+
+
+                            if (!success)
+                            {
+                                //failed to change pass
+                                TempData["Error"] = "Failed to change password";
+                            }
+                            else
+                            {
+                                TempData["Success"] = "Your password has been changed succesfully";
+                            }
+
+                            return RedirectToAction("Dashboard", "Home");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                    }
+
+                }
+                else
+                {
+                    if (ModelState.IsValid)
+                    {
+                        //verify old password
+                        if (!userHelper.IsValidPassword(username, model.OldPlainPassword))
+                        {
+                            ModelState.AddModelError("", "Uw huidig paswoord is incorrect.");
                         }
                         else
                         {
-                            TempData["Success"] = "Your password has been changed succesfully";
-                        }
-
-                        return RedirectToAction("Dashboard", "Home");
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
-                }
-                
-            }
-            else
-            {
-                if (ModelState.IsValid)
-                {
-                    //verify old password
-                    if (!userHelper.IsValidPassword(username, model.OldPlainPassword))
-                    {
-                        ModelState.AddModelError("", "Uw huidig paswoord is incorrect.");
-                    }
-                    else
-                    {
-                        //verify password characters
-                        match = Regex.Match(model.NewPlainPassword,
-                        @"^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
+                            //verify password characters
+                            match = Regex.Match(model.NewPlainPassword,
+                            @"^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|                                                    
                         ^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$|
                         ^.*(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
                         ^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
                         ^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[^a-zA-Z0-9]).*$");
-                        if (match.Success != true)
-                        {
-                            ModelState.AddModelError("",
-                                "Uw nieuw wachtwoord moet een combinatie zijn van tenminste 3 van de volgende karakters: hoofdletters, kleine letters, getallen en overige symbolen.");
+                            if (match.Success != true)
+                            {
+                                ModelState.AddModelError("",
+                                    "Uw nieuw wachtwoord moet een combinatie zijn van tenminste 3 van de volgende karakters: hoofdletters, kleine letters, getallen en overige symbolen.");
+                            }
+                            else
+                            {
+                                //password same
+                                if (!model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
+                                    ModelState.AddModelError("", "Uw bevestiging van het nieuwe wachtwoord is incorrect.");
+                            }
+
                         }
-                        else
-                        {
-                            //password same
-                            if (!model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
-                                ModelState.AddModelError("", "Uw bevestiging van het nieuwe wachtwoord is incorrect.");
-                        }
-                        
-                    }   
+                    }
+
                 }
-                
+                return View(model);
             }
-            return View(model);
+            else if(!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            return null;
         }
 
         [AllowAnonymous]
