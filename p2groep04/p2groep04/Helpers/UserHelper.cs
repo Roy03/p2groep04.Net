@@ -153,6 +153,26 @@ namespace p2groep04.Helpers
             
         }
 
+        public HashSet<char> GiveSpecialCharacters()
+        {
+            HashSet<char> specialCharacters = new HashSet<char>();
+            specialCharacters.Add((char)33);
+            for (int i = 35; i <= 47; i++)
+            {
+                specialCharacters.Add((char)i);
+            }
+            for (int i = 91; i <= 95; i++)
+            {
+                specialCharacters.Add((char)i);
+            }
+            for (int i = 123; i <= 126; i++)
+            {
+                specialCharacters.Add((char)i);
+            }
+            return specialCharacters;
+
+        }
+
 
     }
 }

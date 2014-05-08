@@ -52,7 +52,8 @@ namespace p2groep04.Models.DAL
                     Email = "bram.baert.t9197@student.hogent.be",
                     FirstName = "Bram",
                     LastName = "Baert",
-                    Password = "2b72cd97c1ae43dcdf60b6c89bbec0c056acff9bf97a6fec7cceb13d4cc95a4b8605d8a522d75b388d3fc434e6e2d7707ad9b63ea6414057cc9c884cdc9565e8",
+                    //wanker123
+                    Password = "c8a85bf1e4b89b4fde9b9db777d9b9b842c4ab7f0492dfe72e6b33573062816428578264281f8153301c5e5aab31db02f6facd4df9a7bd0ae72e4de37049aed6",
                     Salt = "Unknown",
                     Username = "209197bb",
                     CreationDate = new DateTime(2014, 4, 23),

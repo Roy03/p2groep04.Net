@@ -49,23 +49,27 @@ namespace p2groep04.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ChangePassword(ChangePasswordModel model)
-        {   
-            Match match;
+        {
+            HashSet<char> specialCharacters = userHelper.GiveSpecialCharacters();
+            
             string newPassword = model.NewPlainPassword;
             if (newPassword != null)
             {
-                match = Regex.Match(newPassword,
-                @"^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
-                ^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$|
-                ^.*(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
-                ^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
-                ^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[^a-zA-Z0-9]).*$");
+                int conditionCount = 0;
+                if (newPassword.Any(char.IsLower))
+                    conditionCount++;
+                if (newPassword.Any(char.IsUpper))
+                    conditionCount++;
+                if (newPassword.Any(char.IsDigit))
+                    conditionCount++;
+                if (newPassword.Any(specialCharacters.Contains))
+                    conditionCount++;
+                
                 string username = HttpContext.User.Identity.Name;
                 if (ModelState.IsValid && userHelper.IsValidPassword(username, model.OldPlainPassword) &&
-                    model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword) && match.Success == true)
+                    model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword) && conditionCount >= 3)
                 {
-
-                    if (match.Success == true)
+                    if (conditionCount >= 3)
                     {
                         try
                         {
@@ -107,14 +111,8 @@ namespace p2groep04.Controllers
                         }
                         else
                         {
-                            //verify password characters
-                            match = Regex.Match(model.NewPlainPassword,
-                            @"^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|                                                    
-                        ^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$|
-                        ^.*(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
-                        ^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$|
-                        ^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[^a-zA-Z0-9]).*$");
-                            if (match.Success != true)
+
+                            if (conditionCount < 3)
                             {
                                 ModelState.AddModelError("",
                                     "Uw nieuw wachtwoord moet een combinatie zijn van tenminste 3 van de volgende karakters: hoofdletters, kleine letters, getallen en overige symbolen.");
