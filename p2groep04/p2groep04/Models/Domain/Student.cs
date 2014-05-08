@@ -13,29 +13,24 @@ namespace p2groep04.Models.Domain
 {
     public class Student : User
     {
-        public ICollection<Suggestion> Suggestions { get; set; }
         public Promotor Promotor { get; set; }
         public Promotor CoPromotor { get; set; }
 
-        public Student() : base()
+        public Dossier Dossier { get; set; }
+
+        
+        public void ChangeDeadline(DateTime newDeadline)
         {
-            Suggestions = new List<Suggestion>();
+            Dossier.Suggestion.Deadline = newDeadline;
         }
 
-        public void ChangeDeadline(DateTime newDeadline, DateTime oldDateTime)
+        public Feedback GetFeedbackListStudent()
         {
-            foreach (var suggestion in Suggestions)
+            foreach (var feedback in Dossier.Suggestion.Feedbacks)
             {
-                if (suggestion.Deadline == newDeadline)
-                {
-                    suggestion.Deadline = oldDateTime;
-                }
+                if (feedback.Visable == true)
+                    return feedback;
             }
-        }
-
-        public List<String> GetFeedbackListStudent()
-        {
-            return (from suggestion in Suggestions from feedback in suggestion.Feedbacks where feedback.Visable == true select feedback.Inhoud).ToList();
         }
 
         

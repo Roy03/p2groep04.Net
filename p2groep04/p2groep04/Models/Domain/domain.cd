@@ -7,9 +7,15 @@
         <Position X="0.2" Y="0.18" />
       </MemberNameLabel>
     </AssociationLine>
-    <AssociationLine Name="Student" Type="p2groep04.Models.Domain.Student">
+    <AssociationLine Name="Dossier" Type="p2groep04.Models.Domain.Dossier" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.156" Y="8.75" />
+        <Point X="12.156" Y="8.188" />
+        <Point X="14.25" Y="8.188" />
+        <Point X="14.25" Y="8.103" />
+      </Path>
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-0.911" Y="0.154" />
+        <Position X="-0.648" Y="0.235" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -18,7 +24,7 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="CurrentState" />
-      <Property Name="Student" />
+      <Property Name="Dossier" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="ResearchDomains" />
@@ -34,22 +40,15 @@
   </Class>
   <Class Name="p2groep04.Models.Domain.Student">
     <Position X="10.5" Y="5.5" Width="1.5" />
-    <AssociationLine Name="Suggestions" Type="p2groep04.Models.Domain.Suggestion">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.11" Y="0.279" />
-      </MemberNameLabel>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAIAAAAAAQBAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAgAAAIAAAAAAQBAAAAAAAAAAAAACAAAAAAA=</HashCode>
       <FileName>Models\Domain\Student.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Promotor" />
       <Property Name="CoPromotor" />
+      <Property Name="Dossier" />
     </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="Suggestions" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="p2groep04.Models.Domain.BPCoordinator">
     <Position X="5.5" Y="5.5" Width="1.5" />
@@ -126,6 +125,27 @@
       <HashCode>AAACAgAAAAAAAAAAAAAAAAAAAAAAAAAAiAAAAAAAAAA=</HashCode>
       <FileName>Feedback.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="p2groep04.Models.Domain.Dossier">
+    <Position X="13.25" Y="7" Width="1.5" />
+    <AssociationLine Name="Suggestion" Type="p2groep04.Models.Domain.Suggestion" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.25" Y="7.866" />
+        <Point X="11.562" Y="7.866" />
+        <Point X="11.562" Y="8.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.216" Y="0.183" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Models\Domain\Dossier.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Student" />
+      <Property Name="Suggestion" />
+    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
