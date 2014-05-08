@@ -9,7 +9,7 @@
     </AssociationLine>
     <AssociationLine Name="Student" Type="p2groep04.Models.Domain.Student">
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-0.911" Y="0.154" />
+        <Position X="-0.973" Y="0.133" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -34,11 +34,6 @@
   </Class>
   <Class Name="p2groep04.Models.Domain.Student">
     <Position X="10.5" Y="5.5" Width="1.5" />
-    <AssociationLine Name="Suggestions" Type="p2groep04.Models.Domain.Suggestion">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.11" Y="0.279" />
-      </MemberNameLabel>
-    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAIAAAAAAQBAAAAAAAAAAAAACAAAAAAA=</HashCode>
       <FileName>Models\Domain\Student.cs</FileName>
@@ -47,9 +42,6 @@
       <Property Name="Promotor" />
       <Property Name="CoPromotor" />
     </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="Suggestions" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="p2groep04.Models.Domain.BPCoordinator">
     <Position X="5.5" Y="5.5" Width="1.5" />
@@ -69,7 +61,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="p2groep04.Models.Domain.ResearchDomain">
-    <Position X="13.25" Y="16" Width="1.5" />
+    <Position X="14" Y="15.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\ResearchDomain.cs</FileName>
@@ -125,6 +117,13 @@
     <TypeIdentifier>
       <HashCode>AAACAgAAAAAAAAAAAAAAAAAAAAAAAAAAiAAAAAAAAAA=</HashCode>
       <FileName>Feedback.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="p2groep04.Models.Domain.Dossier">
+    <Position X="14.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Domain\Dossier.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
