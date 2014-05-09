@@ -18,6 +18,7 @@ namespace p2groep04.Models.DAL
             users = context.Users;
         }
 
+       
         public IQueryable<User> FindAll()
         {
             return users.OrderBy(u => u.LastName);

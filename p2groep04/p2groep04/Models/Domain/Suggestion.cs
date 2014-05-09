@@ -23,6 +23,7 @@ namespace p2groep04.Models.Domain
         public String Title { get; set; }
         public String[] Keywords { get; set; }
         public String Context { get; set; }
+        public String AdviceBPC { get; set; }
 
         //de probleemstelling
         public String Subject { get; set; }

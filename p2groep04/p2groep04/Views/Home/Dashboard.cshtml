@@ -20,7 +20,6 @@
                 } 
                 else if (Html.User().GetType() == typeof (Promotor))
                 {
-                    <li>@Html.ActionLink("Voorstel Aanmaken", "Create", "Suggestion")</li>
                     <li>@Html.ActionLink("Voorstellen Weergeven", "Index", "Suggestion")</li>
                 }
                 else if (Html.User().GetType() == typeof(BPCoordinator))

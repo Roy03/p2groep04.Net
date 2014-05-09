@@ -11,6 +11,7 @@ using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Ajax.Utilities;
 using Microsoft.Web.WebPages.OAuth;
+using p2groep04.Controllers.Filters;
 using p2groep04.Helpers;
 using p2groep04.Models.DAL;
 using p2groep04.Models.Domain;
