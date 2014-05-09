@@ -14,7 +14,7 @@ using p2groep04.ViewModels;
 using p2groep04.ViewModels.UserViewModels;
 
 namespace p2groep04.Controllers
-{
+{   [Authorize]
     public class SuggestionController : Controller
     {
         private readonly ISuggestionRepository _suggestionRepository;
