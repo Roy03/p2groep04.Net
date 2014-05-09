@@ -42,9 +42,15 @@ namespace p2groep04.Controllers
 
         public ActionResult Index(Student student)
         {
-            return View(_suggestionRepository.FindByUser(student.Id));
+            if (student != null)
+            {
+                return View(_suggestionRepository.FindByUser(student.Id));    
+            }
+            
+            return View(_suggestionRepository.FindAll());
         }
 
+        
         [HttpPost]
         public ActionResult Create(CreateViewModel model, User user, string buttonSave, string buttonSaveSend)
         {

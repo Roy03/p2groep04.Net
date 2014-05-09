@@ -79,7 +79,8 @@ namespace p2groep04.Models.DAL
                     Email = "roy.hollaners.t9164@student.hogent.be",
                     FirstName = "Jan",
                     LastName = "Jaap",
-                    Password = "58dce73824cc8ddb13adaad2481525e0a1eaeb874fe7c525401e5adcb084367e544dc82bc40701fe96481f59ffc33e0a925ec762087d7b8ff4f8935d408b3247",
+                    //promotor
+                    Password = "5d3bf4ca34663abbfff43e116c726c65ec100797678c66a61c6cfdee85a6b837192a24b9864fd70c1acfd1881fb7490b52d52683782def7e399b8ecbba8f5c77",
                     Salt = "Unknown",
                     Username = "JanJaap",
                     CreationDate = new DateTime(2014, 4, 23),

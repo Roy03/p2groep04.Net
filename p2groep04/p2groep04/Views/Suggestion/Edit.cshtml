@@ -3,7 +3,7 @@
 @model p2groep04.ViewModels.EditViewModel
 
 @{
-    ViewBag.Title = "Submit";
+    ViewBag.Title = "Edit";
 }
 
 <h2>Submit</h2>
@@ -45,7 +45,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CoPromotor.FirstName)
 
-            @Html.TextBoxFor(model => model.CoPromotor.FirstName, new { @class = "form-control"})
+            @Html.TextBoxFor(model => model.CoPromotor.FirstName, new { @class = "form-control", @value = Html.})
             @Html.ValidationMessageFor(model => model.CoPromotor.FirstName)
         </div>
 
