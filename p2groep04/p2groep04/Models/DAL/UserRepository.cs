@@ -28,7 +28,7 @@ namespace p2groep04.Models.DAL
             return users.FirstOrDefault(u => u.Id == id);
         }
 
-        public User FindBy(string name)
+        public User FindByUsername(string name)
         {
             return users.FirstOrDefault(u => u.Username.ToLower() == name.ToLower());
         }
@@ -57,7 +57,7 @@ namespace p2groep04.Models.DAL
 
         public bool ChangePassword(string username, string newpass)
         {
-            User user = FindBy(username);
+            User user = FindByUsername(username);
 
             if (user == null)
                 return false;

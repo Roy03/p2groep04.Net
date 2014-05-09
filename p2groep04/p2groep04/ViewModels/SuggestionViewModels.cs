@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using p2groep04.Models.Domain;
 using p2groep04.ViewModels.UserViewModels;
 
 namespace p2groep04.ViewModels
@@ -43,6 +44,9 @@ namespace p2groep04.ViewModels
 
         [Display(Name = "Referenties")]
         public String[] References { get; set; }
+
+        [Display(Name = "Researchdomein")]
+        public ResearchDomain[] ResearchDomains { get; set; }
 
         [Display(Name = "ID")]
         public int Id { get; set; }

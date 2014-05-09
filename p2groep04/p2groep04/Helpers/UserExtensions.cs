@@ -15,7 +15,7 @@ namespace p2groep04.Helpers
             if (identity.IsAuthenticated)
             {
                 IUserRepository repos = (IUserRepository)DependencyResolver.Current.GetService(typeof(IUserRepository));
-                return repos.FindBy(htmlHelper.ViewContext.HttpContext.User.Identity.Name);
+                return repos.FindByUsername(htmlHelper.ViewContext.HttpContext.User.Identity.Name);
             }
             return null;
         }

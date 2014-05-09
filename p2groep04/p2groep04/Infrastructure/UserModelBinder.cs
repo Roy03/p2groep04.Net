@@ -16,7 +16,7 @@ namespace p2groep04.Infrastructure
             {
                 IUserRepository repos =
                     (IUserRepository) DependencyResolver.Current.GetService(typeof (IUserRepository));
-                return repos.FindBy(controllerContext.HttpContext.User.Identity.Name);
+                return repos.FindByUsername(controllerContext.HttpContext.User.Identity.Name);
             }
             return null;
         }

@@ -14,7 +14,7 @@ namespace p2groep04.Infrastructure
             if (controllerContext.HttpContext.User.Identity.IsAuthenticated)
             {
                 IUserRepository repos = (IUserRepository)DependencyResolver.Current.GetService(typeof(IUserRepository));
-                User user = repos.FindBy(controllerContext.HttpContext.User.Identity.Name);
+                User user = repos.FindByUsername(controllerContext.HttpContext.User.Identity.Name);
                 if (user.GetType() == typeof (Student))
                 {
                     return (Student) user;

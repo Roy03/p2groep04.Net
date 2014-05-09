@@ -20,12 +20,14 @@ namespace p2groep04.Controllers
         private readonly ISuggestionRepository _suggestionRepository;
         private readonly IUserRepository _userRepository;
         private readonly StudentRepository _studentRepository;
+        private readonly IResearchDomainRepository _researchDomainRepository;
 
-        public SuggestionController(SuggestionRepository suggestionRepository, UserRepository userRepository, StudentRepository studentRepository)
+        public SuggestionController(SuggestionRepository suggestionRepository, UserRepository userRepository, StudentRepository studentRepository, ResearchDomainRepository researchDomainRepository)
         {
             this._suggestionRepository = suggestionRepository;
             this._userRepository = userRepository;
             this._studentRepository = studentRepository;
+            this._researchDomainRepository = researchDomainRepository;
         }
 
         public ActionResult SubmitSuggestion()

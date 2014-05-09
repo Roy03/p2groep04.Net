@@ -15,8 +15,12 @@ namespace p2groep04.Models.Domain
     {
         public Promotor Promotor { get; set; }
         public Promotor CoPromotor { get; set; }
-        public ICollection<Suggestion> Suggestions { get; set; } 
+        public ICollection<Suggestion> Suggestions { get; set; }
 
+        public Student()
+        {
+            Suggestions = new Collection<Suggestion>();
+        }
         
         public void ChangeDeadline(DateTime newDeadline, DateTime oldDeadline)
         {

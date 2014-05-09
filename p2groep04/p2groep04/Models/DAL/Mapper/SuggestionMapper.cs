@@ -15,11 +15,11 @@ namespace p2groep04.Models.DAL.Mapper
             HasKey(s => s.Id);
 
             //Properties
-            Property(s => s.Title).IsRequired().HasMaxLength(50);
-            Property(s => s.Subject).IsRequired().HasMaxLength(100);
-            Property(s => s.Goal).IsRequired().HasMaxLength(50);
-            Property(s => s.ResearchQuestion).IsRequired().HasMaxLength(100);
-            Property(s => s.Motivation).IsRequired().HasMaxLength(150);
+            Property(s => s.Title).HasMaxLength(50);
+            Property(s => s.Subject).HasMaxLength(100);
+            Property(s => s.Goal).HasMaxLength(50);
+            Property(s => s.ResearchQuestion).HasMaxLength(100);
+            Property(s => s.Motivation).HasMaxLength(150);
             HasRequired(s => s.Student).WithMany(s => s.Suggestions);
 
             //Property(s => s.CurrentState).IsRequired();
