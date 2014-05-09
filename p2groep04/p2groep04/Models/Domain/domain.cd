@@ -13,7 +13,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AYgCEAAAQgQCAEBAAIECECAggAAQBABJBCGCARIAgIA=</HashCode>
+      <HashCode>AYgCEAAAQgQCAEBAAIECECAigAAQBABJBCGCARIAgIA=</HashCode>
       <FileName>Models\Domain\Suggestion.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -46,14 +46,14 @@
   <Class Name="p2groep04.Models.Domain.BPCoordinator">
     <Position X="5.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\BPCoordinator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="p2groep04.Models.Domain.Promotor">
     <Position X="7.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAIAAAAAAAIAEAAAAAACAAAAAAAAJCAAAAA=</HashCode>
+      <HashCode>IAIAAAAAAAIAAAAAAAIAEAAAAAACAAAAAAAAJCAAACA=</HashCode>
       <FileName>Models\Domain\Promotor.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -116,7 +116,7 @@
     <Position X="7" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAgAAAAAAAAAAAAAAAAAAAAAAAAAAiAAAAAAAAAA=</HashCode>
-      <FileName>Feedback.cs</FileName>
+      <FileName>Models\Domain\Feedback.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="p2groep04.Models.Domain.Dossier">

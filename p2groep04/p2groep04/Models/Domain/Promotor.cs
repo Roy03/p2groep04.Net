@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
+using System.Web.UI.WebControls;
+using p2groep04.Helpers;
 
 namespace p2groep04.Models.Domain
 {
@@ -14,69 +16,70 @@ namespace p2groep04.Models.Domain
     {
         public ICollection<Student> Students = new Collection<Student>();
         public String Company { get; set; }
-
+        public List<User> users = new List<User>();
+        private String message;
     
         public List<String> GetFeedbackList(Student student)
         {
             return (from s in Students where s.FirstName == student.FirstName && s.LastName == student.LastName from suggestion in s.Suggestions from feedback in suggestion.Feedbacks select feedback.Inhoud).ToList();
         }
 
-        public void GiveFeedback(Feedback feedback, Student student, Suggestion suggestion)
+        public void GiveFeedback(Feedback feedback, Student student, Suggestion suggestion, String state)
         {
-            foreach (var eenSuggestion in student.Suggestions)
+
+            //Put all other feedbacks to not visable
+            foreach (var f in suggestion.Feedbacks)
             {
-                if (eenSuggestion == suggestion)
-                {
-                    eenSuggestion.Feedbacks.Add(feedback);
-                    eenSuggestion.ToApprovedState();
-                }
+                feedback.Visable = false;
+            }
+            //Add the new feedback
+            suggestion.Feedbacks.Add(feedback);
+            //add stakeholders
+            users.Add(student);
+            //message
+            message = feedback.Inhoud;
+            //Send notification
+            UserHelper.NotifyUsers(users, message, "Feedback");
+
+            //If state is approved the do this
+            if (state == "Approve")
+            {
+                message = "Uw voorstel is geaccepteerd";
+                suggestion.ToApprovedState();
+                UserHelper.NotifyUsers(users, message, "Voorstel geaccepteerd");
             }
 
         }
 
         public void AskAdviseBpc(Student student, Suggestion suggestion)
         {
-            foreach (var eenSuggestion in student.Suggestions)
-            {
-                if (eenSuggestion == suggestion)
-                {
-                    eenSuggestion.ToAdviceBpcState();
-                }
-            }
+            //Set state 
+            suggestion.ToAdviceBpcState();
+
+            //INSERT NOTIFY STAKEHOLDERS HERE
+
         }
 
         public void SuggestionDoesNotComply(Student student, Suggestion suggestion)
         {
-            foreach (var eenSuggestion in student.Suggestions)
-            {
-                if (eenSuggestion == suggestion)
-                {
-                    eenSuggestion.ToNewState();
-                }
-            }
+            //Put suggestion in new state
+            suggestion.ToNewState();
+
+            //add student to list for notifycation
+            users.Add(student);
+            //message
+            message = "Uw voorstel is geweigerd";
+            //send for notivication
+            UserHelper.NotifyUsers(users, message, "Voorstel geweigerd");
         }
 
         public void SuggestionAcceptedButWithRemark(Student student, Suggestion suggestion, Feedback remark)
         {
-            foreach (var eenSuggestion in student.Suggestions)
-            {
-                if (eenSuggestion == suggestion)
-                {
-                    eenSuggestion.Feedbacks.Add(remark);
-                    eenSuggestion.ToApprovedWithRemarksState();
-                }
-            }
-        }
+            suggestion.Feedbacks.Add(remark);
 
-        public void SuggestionWithBuildingFeedback(Student student, Suggestion suggestion, Feedback feedback)
-        {
-            foreach (var eenSuggestion in student.Suggestions)
-            {
-                if (eenSuggestion == suggestion)
-                {
-                    eenSuggestion.Feedbacks.Add(feedback);
-                }
-            }
+            users.Add(student);
+            message = "Uw voorstel is geaccepteerd maar er zijn opmerkingen";
+            UserHelper.NotifyUsers(users, message, "Voorstel geaccepteerd met opmerkingen");
         }
 
         //    public List<Feedback> GetFeedbackList(Student student)

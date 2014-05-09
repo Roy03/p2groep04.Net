@@ -14,10 +14,16 @@ namespace p2groep04
         public String Inhoud { get; set; }
         
 
-        public int Created_On { get; set; }
+        public DateTime Created_On { get; set; }
         
 
         public Boolean Visable { get; set; }
+
+        public Feedback()
+        {
+            Visable = true;
+            Created_On = DateTime.Now;
+        }
         
     }
 }
