@@ -1,4 +1,5 @@
 ﻿@using System.Web.Mvc.Html
+@using System.Web.Routing
 @using p2groep04.Helpers
 @using p2groep04.Models.Domain
 @model IEnumerable<p2groep04.Models.Domain.Suggestion>
@@ -24,10 +25,17 @@
                 <td>@Html.DisplayFor(modelItem => suggestion.Subject)</td>
                 
                 <td>@Html.ActionLink("Bewerk/Bekijken", "Edit", new { id = suggestion.Id }) </td>
-                <td>@Html.ActionLink("Bewerk/Bekijken", "Detail", new { id = suggestion.Id }) </td>
+                
+                @if (Html.User().GetType() == typeof (Student))
+                {
+                    <td>@Html.ActionLink("Bekijk feedback", "Detail", new { id = suggestion.Id }) </td>
+                }
+                    
+                                  
+
                 @if (Html.User().GetType() == typeof (Promotor))
                 {
-                   
+                   <td>@Html.ActionLink("Geef feedback", "PromotorFeedback", new { id = suggestion.Id }) </td>
                 }
             </tr>
         }

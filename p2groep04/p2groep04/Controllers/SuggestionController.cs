@@ -208,10 +208,46 @@ namespace p2groep04.Controllers
             return View();
         }
 
-        public ActionResult Detail(int id)
+        public ActionResult PromotorFeedback(int id)
         {
             Suggestion suggestion = _suggestionRepository.FindBy(id);
             return View(suggestion);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult PromotorFeedback(int id, EditViewModel model, User user, string buttonSendFeedback, string buttonApprove, string buttonDecline)
+        {
+            Suggestion suggestion = _suggestionRepository.FindBy(id);
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Promotor promotor = (Promotor)user;
+
+
+                    
+
+                    if()
+                    
+
+                    
+
+                    _suggestionRepository.SaveChanges();
+
+                    
+                    TempData["Success"] = "Uw feedback is verzonden";
+                    
+
+                    return RedirectToAction("Index", "Suggestion");
+                }
+                catch (ApplicationException e)
+                {
+                    ModelState.AddModelError("", e.Message); // shows in summary
+                }
+            }
+            return View();
         }
 
     }
