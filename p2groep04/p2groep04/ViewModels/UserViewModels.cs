@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using p2groep04.Models.Domain;
 
 namespace p2groep04.ViewModels.UserViewModels
 {
@@ -41,10 +42,18 @@ namespace p2groep04.ViewModels.UserViewModels
 
     public class StudentViewModel : UserViewModel
     {
-    
+        [Display(Name = "Promotor")]
+        public Promotor Promotor { get; set; }
+        [Display(Name = "Co-promotor")]
+        public Promotor CoPromotor { get; set; }
     }
 
     public class PromotorViewModel : UserViewModel
+    {
+        
+    }
+
+    public class CoPromotorViewModel : UserViewModel
     {
         [Display(Name = "Organisatie")]
         public String Organisation { get; set; }
