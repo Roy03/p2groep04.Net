@@ -46,19 +46,7 @@ namespace p2groep04.Models.DAL
                     LastPasswordChangedDate = new DateTime(2014, 4, 23)
                 };
 
-                Student studentBram = new Student()
-                {
-                    Id = 3,
-                    Email = "bram.baert.t9197@student.hogent.be",
-                    FirstName = "Bram",
-                    LastName = "Baert",
-                    //Wanker123
-                    Password = "b34d2be9a8389c0ff5d7ce828caccdc66d3278cbba0bed41f39bde5f3ec91f72681c518b6c7e8654bde1c99a150fbdac2eae7415e54bc7cfad41522f7dde7df1",
-                    Salt = "Unknown",
-                    Username = "209197bb",
-                    CreationDate = new DateTime(2014, 4, 23),
-                    LastPasswordChangedDate = new DateTime(2014, 4, 23)
-                };
+                
 
                 Student studentRoy = new Student()
                 {
@@ -97,6 +85,21 @@ namespace p2groep04.Models.DAL
                     Password = "5d3bf4ca34663abbfff43e116c726c65ec100797678c66a61c6cfdee85a6b837192a24b9864fd70c1acfd1881fb7490b52d52683782def7e399b8ecbba8f5c77",
                     Salt = "Unknown",
                     Username = "Soldier",
+                    CreationDate = new DateTime(2014, 4, 23),
+                    LastPasswordChangedDate = new DateTime(2014, 4, 23)
+                };
+
+                Student studentBram = new Student()
+                {
+                    Id = 3,
+                    Email = "bram.baert.t9197@student.hogent.be",
+                    FirstName = "Bram",
+                    LastName = "Baert",
+                    //Wanker123
+                    Password = "b34d2be9a8389c0ff5d7ce828caccdc66d3278cbba0bed41f39bde5f3ec91f72681c518b6c7e8654bde1c99a150fbdac2eae7415e54bc7cfad41522f7dde7df1",
+                    Salt = "Unknown",
+                    Username = "209197bb",
+                    Promotor = promotor1,
                     CreationDate = new DateTime(2014, 4, 23),
                     LastPasswordChangedDate = new DateTime(2014, 4, 23)
                 };

@@ -15,7 +15,8 @@ using p2groep04.ViewModels;
 using p2groep04.ViewModels.UserViewModels;
 
 namespace p2groep04.Controllers
-{   [Authorize]
+{
+    [Authorize]
     public class SuggestionController : Controller
     {
         private readonly ISuggestionRepository _suggestionRepository;
@@ -48,13 +49,13 @@ namespace p2groep04.Controllers
         {
             if (student != null)
             {
-                return View(_suggestionRepository.FindByUser(student.Id));    
+                return View(_suggestionRepository.FindByUser(student.Id));
             }
-            
+
             return View(_suggestionRepository.FindAll());
         }
 
-        
+
         [HttpPost]
         public ActionResult Create(CreateViewModel model, User user, string buttonSave, string buttonSaveSend)
         {
@@ -62,14 +63,14 @@ namespace p2groep04.Controllers
             {
                 try
                 {
-                    Student student = (Student) user;
-                  
+                    Student student = (Student)user;
+
                     Suggestion suggestion = new Suggestion();
                     suggestion.Title = model.Suggestion.Title;
                     suggestion.Keywords = model.Suggestion.Keywords;
                     suggestion.Context = model.Suggestion.Context;
                     suggestion.Subject = model.Suggestion.Subject;
-                    suggestion.Goal = model.Suggestion.Goal;                    
+                    suggestion.Goal = model.Suggestion.Goal;
                     suggestion.ResearchQuestion = model.Suggestion.ResearchQuestion;
                     suggestion.Motivation = model.Suggestion.Motivation;
                     suggestion.References = model.Suggestion.References;
@@ -86,7 +87,7 @@ namespace p2groep04.Controllers
                                   " heeft zijn voorstel ingediend";
                         UserHelper.NotifyUsers(stakeholdersList, message, "Voorstel ingedient");
                     }
-                    
+
                     student.Suggestions.Add(suggestion);
                     _userRepository.SaveChanges();
 
@@ -96,9 +97,9 @@ namespace p2groep04.Controllers
                     }
                     else
                     {
-                        TempData["Success"] = "Uw voorstel werd aangemaakt!";    
+                        TempData["Success"] = "Uw voorstel werd aangemaakt!";
                     }
-                    
+
 
                     return RedirectToAction("DashBoard", "Home");
                 }
@@ -115,13 +116,13 @@ namespace p2groep04.Controllers
         public ActionResult Edit(int id, EditViewModel model, User user, string buttonSave, string buttonSaveSend)
         {
             Suggestion suggestion = _suggestionRepository.FindBy(id);
-            
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     Student student = (Student)user;
-                    
+
 
                     suggestion.Title = model.Suggestion.Title;
                     suggestion.Keywords = model.Suggestion.Keywords;
@@ -167,7 +168,7 @@ namespace p2groep04.Controllers
             return View();
         }
 
-        [Authorize]        
+        [Authorize]
         public ActionResult Edit(int id)
         {
             Suggestion suggestion = _suggestionRepository.FindBy(id);
@@ -206,5 +207,12 @@ namespace p2groep04.Controllers
             IEnumerable<Suggestion> suggestions = _suggestionRepository.FindByUser(id).ToList();
             return View();
         }
+
+        public ActionResult Detail(int id)
+        {
+            Suggestion suggestion = _suggestionRepository.FindBy(id);
+            return View(suggestion);
+        }
+
     }
 }

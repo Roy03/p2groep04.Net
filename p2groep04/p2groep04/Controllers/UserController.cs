@@ -30,13 +30,22 @@ namespace p2groep04.Controllers
             student1.FirstName = "Roy";
             student1.LastName = "Hollanders";
             student1.Email = "roy_9852@hotmail.com";
-            student1.Id = 1;
+            student1.Id = 4;
 
             promotor = (Promotor) userRepository.FindBy(user.Id);
             promotor.Students.Add(student1);
             IEnumerable<Student> studenten = promotor.Students;
             return View(studenten);
         }
+
+        public ActionResult Detail(int id)
+        {
+            User user = userRepository.FindBy(id);
+            return View(user);
+        }
+
+
+
 
     }
 }

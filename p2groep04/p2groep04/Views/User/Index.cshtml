@@ -1,9 +1,10 @@
 ﻿@using System.Web.Mvc.Html
 @model IEnumerable<p2groep04.Models.Domain.User>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
+
 <table class="table">
     <tr>
         <th>
@@ -66,9 +67,11 @@
             @Html.DisplayFor(modelItem => item.PlainPassword)
         </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |*@
+
+            @Html.ActionLink("Details", "Detail", new { id=item.Id })
+
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
         </td>
     </tr>
 }

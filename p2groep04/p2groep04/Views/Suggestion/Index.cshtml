@@ -24,9 +24,10 @@
                 <td>@Html.DisplayFor(modelItem => suggestion.Subject)</td>
                 
                 <td>@Html.ActionLink("Bewerk/Bekijken", "Edit", new { id = suggestion.Id }) </td>
+                <td>@Html.ActionLink("Bewerk/Bekijken", "Detail", new { id = suggestion.Id }) </td>
                 @if (Html.User().GetType() == typeof (Promotor))
                 {
-                    <td>@Html.ActionLink("Bewerk/Bekijken", "Evaluate", new { id = suggestion.Id }) </td>
+                   
                 }
             </tr>
         }

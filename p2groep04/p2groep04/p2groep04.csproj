@@ -367,11 +367,12 @@
     <Content Include="Content\plugins\tag-input\bower.json" />
     <Content Include="Content\plugins\tag-input\README.md" />
     <Content Include="Views\Suggestion\Edit.cshtml" />
-    <Content Include="Views\Suggestion\View.cshtml" />
+    <Content Include="Views\Suggestion\Detail.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Views\User\Detail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

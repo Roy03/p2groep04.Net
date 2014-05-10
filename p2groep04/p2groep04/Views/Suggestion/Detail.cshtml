@@ -13,23 +13,26 @@
     <div>
         <span>ID: </span>
         <p>@Html.DisplayFor(model => model.Id)</p>
-    </div>  
+    </div>
     <div>
         <span>Title: </span>
         <p>@Html.DisplayFor(model => model.Title)</p>
-    </div> 
+    </div>
     <div>
         <span>Subject: </span>
         <p>@Html.DisplayFor(model => model.Subject)</p>
-    </div>  
+    </div>
 </div>
 
+
 <div id="feedback">
+    <h2>Feedback</h2>
     @*feedback geven*@
-    @if (Html.User().GetType() != typeof (Student))
+    <p>Boxes</p>
+    @* @if (Html.User().GetType() != typeof (Student))
     {
         
-    }
+    }*@
 </div>
 
 <div id="actions">
