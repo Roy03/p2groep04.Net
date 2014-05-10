@@ -38,6 +38,31 @@
         </div>
 
         @*------------------------*@
+        @*        PROMOTOR        *@
+        @*------------------------*@
+        <h3>Promotor</h3>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Promotor.FirstName)
+
+            @Html.TextBoxFor(model => model.Promotor.FirstName, new { @class = "form-control", @Value = Html.User().FirstName, @disabled = "disabled"})
+            @Html.ValidationMessageFor(model => model.Promotor.FirstName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Promotor.LastName)
+
+            @Html.TextBoxFor(model => model.Promotor.LastName, new { @class = "form-control", @Value = Html.User().LastName, @disabled = "disabled" })
+            @Html.ValidationMessageFor(model => model.Promotor.LastName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Promotor.Email)
+
+            @Html.TextBoxFor(model => model.Promotor.Email, new { @class = "form-control", @Value = Html.User().Email, @disabled = "disabled" })
+            @Html.ValidationMessageFor(model => model.Promotor.Email)
+        </div>
+
+        @*------------------------*@
         @*       CO PROMOTOR      *@
         @*------------------------*@
 
@@ -81,7 +106,14 @@
             @Html.ValidationMessageFor(model => model.Suggestion.Title)
         </div>
 
-        @* PLACEHOLDER FOR RESEARCHDOMAINS *@  
+        @* PLACEHOLDER FOR RESEARCHDOMAINS *@
+        <!--<div class="form-group">
+            @Html.LabelFor(model => model.Suggestion.ResearchDomains)
+             
+            @Html.TextBoxFor(model => model.Suggestion.ResearchDomains, new { @class = "form-control tags"})
+            @Html.ValidationMessageFor(model => model.Suggestion.ResearchDomains)
+        </div>-->    
+
         <div class="form-group">
             @Html.LabelFor(model => model.Suggestion.Keywords)
              
