@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -227,20 +228,37 @@ namespace p2groep04.Controllers
                     Promotor promotor = (Promotor)user;
 
 
-                    
-
-                    if()
-                    
-
-                    
-
                     _suggestionRepository.SaveChanges();
 
-                    
-                    TempData["Success"] = "Uw feedback is verzonden";
+                    if (buttonApprove != null)
+                    {
+                        suggestion.ToApprovedState();
+                        //notifieer stakeholder
+                        TempData["Success"] = "Het voorstel is geaccepteerd";
+
+                    }
+                    else if(buttonDecline != null)
+                    {
+                        suggestion.ToNewState();
+                        //notifieer stakeholder
+                        TempData["Success"] = "Het voorstel is afgekeurd";
+                    }
+                    else if (buttonSendFeedback != null)
+                    {
+                        //notifeer stakeholder
+                        TempData["Success"] = "Uw feedback is verzonden";    
+                    }
+
+
                     
 
-                    return RedirectToAction("Index", "Suggestion");
+                    
+
+                    
+                    
+                    
+
+                    
                 }
                 catch (ApplicationException e)
                 {
