@@ -158,22 +158,6 @@ namespace p2groep04.Controllers
                 FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                 User user = userRepository.FindByUsername(model.UserName);
 
-                /*if (user.GetType() == typeof (Student))
-                {
-                    Role.se
-                }
-                else
-                {
-                    if (user.GetType() == typeof (Promotor))
-                    {
-                        
-                    }
-                    else
-                    {
-                        Role.
-                    }
-                }*/
-
                 if (user.LastPasswordChangedDate == user.CreationDate)
                 {
                     return RedirectToAction("ChangePassword", "Account");
