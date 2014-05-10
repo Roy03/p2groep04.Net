@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
+using p2groep04.Helpers;
 using p2groep04.Models;
 using p2groep04.Models.DAL;
 using p2groep04.Models.Domain;
@@ -21,6 +22,8 @@ namespace p2groep04.Controllers
         private readonly IUserRepository _userRepository;
         private readonly StudentRepository _studentRepository;
         private readonly IResearchDomainRepository _researchDomainRepository;
+        private List<User> stakeholdersList;
+        private string message;
 
         public SuggestionController(SuggestionRepository suggestionRepository, UserRepository userRepository, StudentRepository studentRepository, ResearchDomainRepository researchDomainRepository)
         {
@@ -28,6 +31,7 @@ namespace p2groep04.Controllers
             this._userRepository = userRepository;
             this._studentRepository = studentRepository;
             this._researchDomainRepository = researchDomainRepository;
+            stakeholdersList = new List<User>();
         }
 
         public ActionResult SubmitSuggestion()
@@ -59,7 +63,7 @@ namespace p2groep04.Controllers
                 try
                 {
                     Student student = (Student) user;
-
+                  
                     Suggestion suggestion = new Suggestion();
                     suggestion.Title = model.Suggestion.Title;
                     suggestion.Keywords = model.Suggestion.Keywords;
@@ -77,6 +81,10 @@ namespace p2groep04.Controllers
                     {
                         suggestion.ToSubmittedState();
                         //notifieer stakeholders
+                        stakeholdersList.Add(student.Promotor);
+                        message = "Student " + student.FirstName + " " + student.LastName +
+                                  " heeft zijn voorstel ingediend";
+                        UserHelper.NotifyUsers(stakeholdersList, message, "Voorstel ingedient");
                     }
                     
                     student.Suggestions.Add(suggestion);
@@ -107,12 +115,13 @@ namespace p2groep04.Controllers
         public ActionResult Edit(int id, EditViewModel model, User user, string buttonSave, string buttonSaveSend)
         {
             Suggestion suggestion = _suggestionRepository.FindBy(id);
-
+            
             if (ModelState.IsValid)
             {
                 try
                 {
                     Student student = (Student)user;
+                    
 
                     suggestion.Title = model.Suggestion.Title;
                     suggestion.Keywords = model.Suggestion.Keywords;
@@ -130,6 +139,10 @@ namespace p2groep04.Controllers
                     {
                         suggestion.ToSubmittedState();
                         //notifieer stakeholders
+                        stakeholdersList.Add(student.Promotor);
+                        message = "Student " + student.FirstName + " " + student.LastName +
+                                  " heeft zijn voorstel ingediend";
+                        UserHelper.NotifyUsers(stakeholdersList, message, "Voorstel ingedient");
                     }
 
                     _suggestionRepository.SaveChanges();

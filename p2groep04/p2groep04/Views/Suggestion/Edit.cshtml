@@ -1,5 +1,7 @@
 ﻿@using System.Web.Mvc.Html
+@using Microsoft.Ajax.Utilities
 @using p2groep04.Helpers
+@using p2groep04.Models.Domain
 @model p2groep04.ViewModels.EditViewModel
 
 @{
@@ -52,21 +54,21 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CoPromotor.LastName)
 
-            @Html.TextBoxFor(model => model.CoPromotor.LastName, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.CoPromotor.LastName, new { @class = "form-control"})
             @Html.ValidationMessageFor(model => model.CoPromotor.LastName)
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.CoPromotor.Email)
 
-            @Html.TextBoxFor(model => model.CoPromotor.Email, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.CoPromotor.Email, new { @class = "form-control"})
             @Html.ValidationMessageFor(model => model.CoPromotor.Email)
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.CoPromotor.Organisation)
 
-            @Html.TextBoxFor(model => model.CoPromotor.Organisation, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.CoPromotor.Organisation, new { @class = "form-control"})
             @Html.ValidationMessageFor(model => model.CoPromotor.Organisation)
         </div>
 
@@ -77,7 +79,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Suggestion.Title)
 
-            @Html.TextBoxFor(model => model.Suggestion.Title, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.Suggestion.Title, new { @class = "form-control", @Value = Model.Suggestion.Title})
             @Html.ValidationMessageFor(model => model.Suggestion.Title)
         </div>
 
@@ -85,49 +87,49 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Suggestion.Keywords)
 
-            @Html.TextBoxFor(model => model.Suggestion.Keywords, new { @class = "form-control tags", @id = "suggestion-keywords" })
+            @Html.TextBoxFor(model => model.Suggestion.Keywords, new { @class = "form-control tags", @id = "suggestion-keywords",@Value = Model.Suggestion.Keywords })
             @Html.ValidationMessageFor(model => model.Suggestion.Keywords)
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Suggestion.Subject)
 
-            @Html.TextBoxFor(model => model.Suggestion.Subject, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.Suggestion.Subject, new { @class = "form-control", @Value = Model.Suggestion.Subject})
             @Html.ValidationMessageFor(model => model.Suggestion.Subject)
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Suggestion.Goal)
 
-            @Html.TextAreaFor(model => model.Suggestion.Goal, new { @class = "form-control" })
+            @Html.TextAreaFor(model => model.Suggestion.Goal, new { @class = "form-control",@Value = Model.Suggestion.Goal })
             @Html.ValidationMessageFor(model => model.Suggestion.Goal)
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Suggestion.Context)
 
-            @Html.TextAreaFor(model => model.Suggestion.Context, new { @class = "form-control" })
+            @Html.TextAreaFor(model => model.Suggestion.Context, new { @class = "form-control",@Value = Model.Suggestion.Context })
             @Html.ValidationMessageFor(model => model.Suggestion.Context)
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Suggestion.ResearchQuestion)
 
-            @Html.TextBoxFor(model => model.Suggestion.ResearchQuestion, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.Suggestion.ResearchQuestion, new { @class = "form-control",@Value = Model.Suggestion.ResearchQuestion })
             @Html.ValidationMessageFor(model => model.Suggestion.ResearchQuestion)
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Suggestion.Motivation)
 
-            @Html.TextAreaFor(model => model.Suggestion.Motivation, new { @class = "form-control" })
+            @Html.TextAreaFor(model => model.Suggestion.Motivation, new { @class = "form-control", @Value = Model.Suggestion.Motivation  })
             @Html.ValidationMessageFor(model => model.Suggestion.Motivation)
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Suggestion.References)
 
-            @Html.TextBoxFor(model => model.Suggestion.References, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.Suggestion.References, new { @class = "form-control", @Value = Model.Suggestion.References  })
             @Html.ValidationMessageFor(model => model.Suggestion.References)
         </div>
 

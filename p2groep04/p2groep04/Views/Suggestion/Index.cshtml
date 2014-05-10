@@ -1,4 +1,6 @@
 ﻿@using System.Web.Mvc.Html
+@using p2groep04.Helpers
+@using p2groep04.Models.Domain
 @model IEnumerable<p2groep04.Models.Domain.Suggestion>
 
 @{
@@ -21,7 +23,11 @@
                 <td>@Html.DisplayFor(modelItem => suggestion.Title)</td>
                 <td>@Html.DisplayFor(modelItem => suggestion.Subject)</td>
                 
-                <td>@Html.ActionLink("Bewerk", "Edit", new { id = suggestion.Id }) </td>
+                <td>@Html.ActionLink("Bewerk/Bekijken", "Edit", new { id = suggestion.Id }) </td>
+                @if (Html.User().GetType() == typeof (Promotor))
+                {
+                    <td>@Html.ActionLink("Bewerk/Bekijken", "Evaluate", new { id = suggestion.Id }) </td>
+                }
             </tr>
         }
     </table>
