@@ -68,7 +68,7 @@ namespace p2groep04.Controllers
 
                     string username = HttpContext.User.Identity.Name;
                     if (ModelState.IsValid && userHelper.IsValidPassword(username, model.OldPlainPassword) &&
-                        model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword) && conditionCount >= 3)
+                        model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword) && conditionCount >= 3 && !model.OldPlainPassword.Equals(model.NewPlainPassword))
                     {
                         if (conditionCount >= 3)
                         {
@@ -128,7 +128,7 @@ namespace p2groep04.Controllers
                                     }
                                     else
                                     {
-                                        if(model.OldPlainPassword.Equals(model.NewPlainPassword) == true)
+                                        if(model.OldPlainPassword.Equals(model.NewPlainPassword))
                                             ModelState.AddModelError("",
                                             "Uw nieuw wachtwoord mag niet hetzelfde zijn als het oude wachtwoord.");
                                     }    
