@@ -33,11 +33,9 @@ namespace p2groep04.Models.Domain
             }
         }
 
-        public List<String> GetFeedbackListStudent()
+        public Feedback GetFeedbackListStudent()
         {
-
-            return (from suggestion in Suggestions from feedback in suggestion.Feedbacks where feedback.Visable == true select feedback.Inhoud).ToList();
-
+            return (from suggestion in Suggestions from feedback in suggestion.Feedbacks where feedback.Visable == true select feedback).FirstOrDefault();
         }
 
         

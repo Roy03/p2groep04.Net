@@ -217,7 +217,7 @@ namespace p2groep04.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult PromotorFeedback(int id, EditViewModel model, User user, string buttonSendFeedback, string buttonApprove, string buttonDecline)
+        public ActionResult PromotorFeedback(int id, EditViewModel model, User user, string buttonSendFeedback, string buttonApprove, string buttonDecline, string buttonBack)
         {
             Suggestion suggestion = _suggestionRepository.FindBy(id);
 
@@ -250,10 +250,11 @@ namespace p2groep04.Controllers
                     }
 
 
-                    
 
-                    
-
+                    if (buttonBack != null)
+                    {
+                        return RedirectToAction("Index", "Suggestion");
+                    }
                     
                     
                     
@@ -266,6 +267,16 @@ namespace p2groep04.Controllers
                 }
             }
             return View();
+        }
+
+        public ActionResult Detail(int id)
+        {
+            Suggestion suggestion = _suggestionRepository.FindBy(id);
+            Feedback feedback;
+
+            feedback = suggestion.Student.GetFeedbackListStudent();
+
+            return View(suggestion);
         }
 
     }
