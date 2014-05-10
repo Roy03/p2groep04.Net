@@ -122,8 +122,17 @@ namespace p2groep04.Controllers
                                 {
                                     //password same
                                     if (!model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
+                                    {
                                         ModelState.AddModelError("",
                                             "Uw bevestiging van het nieuwe wachtwoord is incorrect.");
+                                    }
+                                    else
+                                    {
+                                        if(model.OldPlainPassword.Equals(model.NewPlainPassword) == true)
+                                            ModelState.AddModelError("",
+                                            "Uw nieuw wachtwoord mag niet hetzelfde zijn als het oude wachtwoord.");
+                                    }    
+
                                 }
 
                             }
