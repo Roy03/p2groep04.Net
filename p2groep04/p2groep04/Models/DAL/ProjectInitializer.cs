@@ -87,11 +87,27 @@ namespace p2groep04.Models.DAL
                     LastPasswordChangedDate = new DateTime(2014, 4, 23)
                 };
 
+                BPCoordinator bpc1 = new BPCoordinator()
+                {
+                    Id = 6,
+                    Email = "roy.hollaners.t9164@student.hogent.be",
+                    FirstName = "Jane",
+                    LastName = "Doe",
+                    //promotor
+                    Password = "5d3bf4ca34663abbfff43e116c726c65ec100797678c66a61c6cfdee85a6b837192a24b9864fd70c1acfd1881fb7490b52d52683782def7e399b8ecbba8f5c77",
+                    Salt = "Unknown",
+                    Username = "Soldier",
+                    CreationDate = new DateTime(2014, 4, 23),
+                    LastPasswordChangedDate = new DateTime(2014, 4, 23)
+                };
+
                 List<Student> studenten = (new Student[] {studentMaxim, studentLogan, studentBram,studentRoy}).ToList();
                 studenten.ForEach(s => context.Users.Add(s));
                 studenten.ForEach(s => promotor1.Students.Add(s));
                 List<Promotor> promotors = (new Promotor[] { promotor1 }).ToList();
                 promotors.ForEach(p => context.Users.Add(p));
+                List<BPCoordinator> bpCoordinators = (new BPCoordinator[] {bpc1}).ToList();
+                bpCoordinators.ForEach(c => context.Users.Add(c));
                 context.SaveChanges();
                 System.Diagnostics.Debug.WriteLine("Database created!");                                
 

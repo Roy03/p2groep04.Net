@@ -26,10 +26,14 @@
 
 <div id="feedback">
     @*feedback geven*@
+    @if (Html.User().GetType() != typeof (Student))
+    {
+        
+    }
 </div>
 
 <div id="actions">
-    @if (Html.User().GetType() == typeof(BPCoordinator))
+    @if (Html.User().GetType() == typeof(Promotor))
     {
         //button voor status --> goedgekeurd (approve of approve with feedback)
         //button voor status --> naar nieuw voorstel (decline)
