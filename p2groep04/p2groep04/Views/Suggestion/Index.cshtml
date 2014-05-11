@@ -24,19 +24,20 @@
                 <td>@Html.DisplayFor(modelItem => suggestion.Title)</td>
                 <td>@Html.DisplayFor(modelItem => suggestion.Subject)</td>
                 
-                <td>@Html.ActionLink("Bewerk/Bekijken", "Edit", new { id = suggestion.Id }) </td>
+                <td>@Html.ActionLink("Bewerk/Bekijken", "Edit", new { id = suggestion.Id }) | 
                 
                 @if (Html.User().GetType() == typeof (Student))
                 {
-                    <td>@Html.ActionLink("Bekijk feedback", "Detail", new { id = suggestion.Id }) </td>
+                    @Html.ActionLink("Bekijk feedback", "Detail", new { id = suggestion.Id }) 
                 }
                     
                                   
 
                 @if (Html.User().GetType() == typeof (Promotor))
                 {
-                   <td>@Html.ActionLink("Geef feedback", "PromotorFeedback", new { id = suggestion.Id }) </td>
+                    @Html.ActionLink("Geef feedback", "PromotorFeedback", new { id = suggestion.Id })
                 }
+                </td>
             </tr>
         }
     </table>

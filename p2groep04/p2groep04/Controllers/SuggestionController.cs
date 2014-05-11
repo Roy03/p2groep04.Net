@@ -221,14 +221,22 @@ namespace p2groep04.Controllers
         {
             Suggestion suggestion = _suggestionRepository.FindBy(id);
 
+            //Student student = (Student)_userRepository.FindBy(suggestion.Student.Id);
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     Promotor promotor = (Promotor)user;
 
-
+                    
                     _suggestionRepository.SaveChanges();
+
+                    if (buttonSendFeedback != null)
+                    {
+                        //notifeer stakeholder
+                        TempData["Success"] = "Uw feedback is verzonden";
+                    }
 
                     if (buttonApprove != null)
                     {
@@ -237,26 +245,18 @@ namespace p2groep04.Controllers
                         TempData["Success"] = "Het voorstel is geaccepteerd";
 
                     }
-                    else if(buttonDecline != null)
+                    
+                    if(buttonDecline != null)
                     {
                         suggestion.ToNewState();
                         //notifieer stakeholder
                         TempData["Success"] = "Het voorstel is afgekeurd";
                     }
-                    else if (buttonSendFeedback != null)
-                    {
-                        //notifeer stakeholder
-                        TempData["Success"] = "Uw feedback is verzonden";    
-                    }
-
-
-
+                    
                     if (buttonBack != null)
                     {
                         return RedirectToAction("Index", "Suggestion");
                     }
-                    
-                    
                     
 
                     
