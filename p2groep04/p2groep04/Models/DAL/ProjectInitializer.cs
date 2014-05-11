@@ -50,7 +50,7 @@ namespace p2groep04.Models.DAL
 
                 Student studentRoy = new Student()
                 {
-                    Id = 4,
+                    Id = 3,
                     Email = "roy.hollaners.t9164@student.hogent.be",
                     FirstName = "Roy",
                     LastName = "Hollanders",
@@ -63,7 +63,7 @@ namespace p2groep04.Models.DAL
 
                 Promotor promotor1 = new Promotor()
                 {
-                    Id = 5,
+                    Id = 4,
                     Email = "roy.hollaners.t9164@student.hogent.be",
                     FirstName = "Jan",
                     LastName = "Jaap",
@@ -77,7 +77,7 @@ namespace p2groep04.Models.DAL
 
                 BPCoordinator bpc1 = new BPCoordinator()
                 {
-                    Id = 6,
+                    Id = 5,
                     Email = "roy.hollaners.t9164@student.hogent.be",
                     FirstName = "Jane",
                     LastName = "Doe",
@@ -91,7 +91,7 @@ namespace p2groep04.Models.DAL
 
                 Student studentBram = new Student()
                 {
-                    Id = 3,
+                    Id = 6,
                     Email = "bram.baert.t9197@student.hogent.be",
                     FirstName = "Bram",
                     LastName = "Baert",

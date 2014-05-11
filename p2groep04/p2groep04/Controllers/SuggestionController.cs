@@ -269,12 +269,15 @@ namespace p2groep04.Controllers
             return View();
         }
 
-        public ActionResult Detail(int id)
+        public ActionResult Detail(int id, User user)
         {
-            Suggestion suggestion = _suggestionRepository.FindBy(id);
-            Feedback feedback;
+            Student student = (Student) user;
 
-            feedback = suggestion.Student.GetFeedbackListStudent();
+            Suggestion suggestion = _suggestionRepository.FindBy(id);
+            
+            String feedback;
+
+            feedback = suggestion.Student.GetFeedbackStudent();
 
             return View(suggestion);
         }
