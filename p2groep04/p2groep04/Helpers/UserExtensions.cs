@@ -19,5 +19,17 @@ namespace p2groep04.Helpers
             }
             return null;
         }
+
+       /*public static Student Student(this HtmlHelper htmlHelper)
+        {
+            User user = User(htmlHelper);
+            if (user.GetType() == typeof(Student))
+            {
+                Student student = (Student) user;
+                return student;
+            }
+            return null;
+        }*/
+
     }
 }
