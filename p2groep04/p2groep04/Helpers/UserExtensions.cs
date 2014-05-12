@@ -20,7 +20,7 @@ namespace p2groep04.Helpers
             return null;
         }
 
-       /*public static Student Student(this HtmlHelper htmlHelper)
+      public static Student Student(this HtmlHelper htmlHelper)
         {
             User user = User(htmlHelper);
             if (user.GetType() == typeof(Student))
@@ -29,7 +29,7 @@ namespace p2groep04.Helpers
                 return student;
             }
             return null;
-        }*/
+        }
 
     }
 }

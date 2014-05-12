@@ -32,20 +32,6 @@ namespace p2groep04.Models.DAL
                     CreationDate = new DateTime(2014, 4, 23),
                     LastPasswordChangedDate = new DateTime(2014, 4, 23)
                 };
-
-                Student studentLogan = new Student()
-                {
-                    Id = 2,
-                    Email = "logan.dupont.t8134@student.hogent.be",
-                    FirstName = "Logan",
-                    LastName = "Dupont",
-                    Password = "ef3c52f55940f352278b8595073c074ea91507b06e429892d8b116b90d4dbdb6d986870cec242e584327bda2a53d4174f52fe799207495101fccf2191ed38675",
-                    Salt = "Unknown",
-                    Username = "208134ld",
-                    CreationDate = new DateTime(2014, 4, 23),
-                    LastPasswordChangedDate = new DateTime(2014, 4, 23)
-                };
-
                 
 
                 Student studentRoy = new Student()
@@ -85,6 +71,20 @@ namespace p2groep04.Models.DAL
                     Password = "5d3bf4ca34663abbfff43e116c726c65ec100797678c66a61c6cfdee85a6b837192a24b9864fd70c1acfd1881fb7490b52d52683782def7e399b8ecbba8f5c77",
                     Salt = "Unknown",
                     Username = "Soldier",
+                    CreationDate = new DateTime(2014, 4, 23),
+                    LastPasswordChangedDate = new DateTime(2014, 4, 23)
+                };
+
+                Student studentLogan = new Student()
+                {
+                    Id = 2,
+                    Email = "logan.dupont.t8134@student.hogent.be",
+                    FirstName = "Logan",
+                    LastName = "Dupont",
+                    Password = "ef3c52f55940f352278b8595073c074ea91507b06e429892d8b116b90d4dbdb6d986870cec242e584327bda2a53d4174f52fe799207495101fccf2191ed38675",
+                    Salt = "Unknown",
+                    Promotor = promotor1,
+                    Username = "208134ld",
                     CreationDate = new DateTime(2014, 4, 23),
                     LastPasswordChangedDate = new DateTime(2014, 4, 23)
                 };

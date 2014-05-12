@@ -13,6 +13,8 @@ namespace p2groep04.Controllers
 {   [Authorize]
     public class HomeController : Controller
     {  
+
+        
         // GET: /Home/
         //[SecurityFilter]
         public ViewResult Dashboard()

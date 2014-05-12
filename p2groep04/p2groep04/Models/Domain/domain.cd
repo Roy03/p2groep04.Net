@@ -35,13 +35,16 @@
   <Class Name="p2groep04.Models.Domain.Student">
     <Position X="10.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAIAAAAAAQBAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAIAAAAAAQBAAAAAAAAAIAAAAAAAAAAA=</HashCode>
       <FileName>Models\Domain\Student.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Promotor" />
       <Property Name="CoPromotor" />
     </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Suggestions" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="p2groep04.Models.Domain.BPCoordinator">
     <Position X="5.5" Y="5.5" Width="1.5" />
@@ -53,7 +56,7 @@
   <Class Name="p2groep04.Models.Domain.Promotor">
     <Position X="7.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAIAAAAAAAIAAAAAAAIAEAAAAAACAAAAAAAAJCAAACA=</HashCode>
+      <HashCode>IAIAAAAAAAIAAAAAAAAAEAAAAAACAAAAAAAAJCAAACA=</HashCode>
       <FileName>Models\Domain\Promotor.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>

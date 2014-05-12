@@ -214,7 +214,6 @@
     <Compile Include="Infrastructure\UserModelBinder.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
     <Compile Include="Models\DAL\CreateAndMigrateDatabaseInitializer.cs" />
-    <Compile Include="Models\DAL\FeedbackRepository.cs" />
     <Compile Include="Models\DAL\Mapper\FeedbackMapper.cs" />
     <Compile Include="Models\DAL\StudentRepository.cs" />
     <Compile Include="Models\Domain\AdviceBPCState.cs" />
@@ -223,7 +222,6 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\DAL\Mapper\ResearchDomainMapper.cs" />
-    <Compile Include="Models\DAL\Mapper\StudentMapper.cs" />
     <Compile Include="Models\DAL\Mapper\SuggestionMapper.cs" />
     <Compile Include="Models\DAL\Mapper\UserMapper.cs" />
     <Compile Include="Models\DAL\ProjectContext.cs" />
