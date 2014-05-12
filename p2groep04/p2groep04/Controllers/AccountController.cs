@@ -1,24 +1,10 @@
 ﻿using System;
-using System.Activities.Statements;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Transactions;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using DotNetOpenAuth.AspNet;
-using Microsoft.Ajax.Utilities;
-using Microsoft.Web.WebPages.OAuth;
-using p2groep04.Controllers.Filters;
 using p2groep04.Helpers;
-using p2groep04.Models.DAL;
 using p2groep04.Models.Domain;
-using WebMatrix.WebData;
 using p2groep04.Models;
-using IsolationLevel = System.Transactions.IsolationLevel;
-using TransactionScope = System.Transactions.TransactionScope;
 
 namespace p2groep04.Controllers
 {
@@ -40,7 +26,7 @@ namespace p2groep04.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        /* Change password */
+
         [Authorize]
         public ActionResult ChangePassword()
         {
@@ -51,55 +37,41 @@ namespace p2groep04.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChangePassword(ChangePasswordModel model)
         {
-            HashSet<char> specialCharacters = userHelper.GiveSpecialCharacters();
-
             string newPassword = model.NewPlainPassword;
                 if (newPassword != null)
                 {
-                    int conditionCount = 0;
-                    if (newPassword.Any(char.IsLower))
-                        conditionCount++;
-                    if (newPassword.Any(char.IsUpper))
-                        conditionCount++;
-                    if (newPassword.Any(char.IsDigit))
-                        conditionCount++;
-                    if (newPassword.Any(specialCharacters.Contains))
-                        conditionCount++;
-
+                    int conditionCount = userHelper.giveCondition(newPassword);
                     string username = HttpContext.User.Identity.Name;
+
                     if (ModelState.IsValid && userHelper.IsValidPassword(username, model.OldPlainPassword) &&
                         model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword) && conditionCount >= 3 && !model.OldPlainPassword.Equals(model.NewPlainPassword))
                     {
-                        if (conditionCount >= 3)
+                        try
                         {
-                            try
+                            String salt = userRepository.FindSaltByUsername(username);
+                            string newPassHash = UserHelper.Encrypt(model.NewPlainPassword + salt);
+                            User user = userRepository.FindByUsername(username);
+                            user.LastPasswordChangedDate = DateTime.Now;
+                            bool success = userRepository.ChangePassword(username, newPassHash);
+
+
+                            if (!success)
                             {
-                                String salt = userRepository.FindSaltByUsername(username);
-                                string newPassHash = UserHelper.Encrypt(model.NewPlainPassword + salt);
-                                User user = userRepository.FindByUsername(username);
-                                user.LastPasswordChangedDate = DateTime.Now;
-
-                                bool success = userRepository.ChangePassword(username, newPassHash);
-
-
-                                if (!success)
-                                {
-                                    //failed to change pass
-                                    TempData["Error"] = "Failed to change password";
-                                }
-                                else
-                                {
-                                    TempData["Success"] = "Your password has been changed succesfully";
-                                }
-
-                                return RedirectToAction("Dashboard", "Home");
+                                //failed to change pass
+                                TempData["Error"] = "Failed to change password";
                             }
-                            catch (Exception ex)
+                            else
                             {
-                                Console.WriteLine(ex.Message);
+                                TempData["Success"] = "Your password has been changed succesfully";
                             }
+
+                            return RedirectToAction("Dashboard", "Home");
                         }
-
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+          
                     }
                     else
                     {

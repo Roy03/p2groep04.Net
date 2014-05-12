@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using System.Linq;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
 using p2groep04.Helpers;
-using p2groep04.Models;
 using p2groep04.Models.DAL;
 using p2groep04.Models.Domain;
 using System.Web.Mvc;
 using p2groep04.ViewModels;
-using p2groep04.ViewModels.UserViewModels;
 
 namespace p2groep04.Controllers
 {
@@ -87,7 +79,7 @@ namespace p2groep04.Controllers
                         stakeholdersList.Add(student.Promotor);
                         message = "Student " + student.FirstName + " " + student.LastName +
                                   " heeft zijn voorstel ingediend";
-                        UserHelper.NotifyUsers(stakeholdersList, message, "Voorstel ingedient");
+                        UserHelper.NotifyUsers(stakeholdersList, message, "Voorstel ingediend");
                     }
 
                     student.Suggestions.Add(suggestion);
@@ -145,7 +137,8 @@ namespace p2groep04.Controllers
                         stakeholdersList.Add(student.Promotor);
                         message = "Student " + student.FirstName + " " + student.LastName +
                                   " heeft zijn voorstel ingediend";
-                        UserHelper.NotifyUsers(stakeholdersList, message, "Voorstel ingedient");
+                        UserHelper.NotifyUsers(stakeholdersList, message, "Voorstel ingediend");
+
                     }
 
                     _suggestionRepository.SaveChanges();
@@ -276,10 +269,8 @@ namespace p2groep04.Controllers
             Student student = (Student) user;
 
             Suggestion suggestion = _suggestionRepository.FindBy(id);
-            
-            String feedback;
 
-            feedback = suggestion.Student.GetFeedbackStudent();
+            String feedback = suggestion.Student.GetFeedbackStudent();
 
             return View(suggestion);
         }

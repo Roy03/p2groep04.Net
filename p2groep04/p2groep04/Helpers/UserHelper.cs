@@ -173,6 +173,22 @@ namespace p2groep04.Helpers
 
         }
 
+        public int giveCondition(string password)
+        {  
+            HashSet<char> specialCharacters = GiveSpecialCharacters();
+            string newPassword = password;
 
+            int conditionCount = 0;
+            if (newPassword.Any(char.IsLower))
+                conditionCount++;
+            if (newPassword.Any(char.IsUpper))
+                conditionCount++;
+            if (newPassword.Any(char.IsDigit))
+                conditionCount++;
+            if (newPassword.Any(specialCharacters.Contains))
+                conditionCount++;
+
+            return conditionCount;
+        }
     }
 }
