@@ -66,6 +66,7 @@ namespace p2groep04.Controllers
                 {
                     Student student = (Student)user;
 
+
                     Suggestion suggestion = new Suggestion();
                     suggestion.Title = model.Suggestion.Title;
                     suggestion.Keywords = model.Suggestion.Keywords;
@@ -172,6 +173,7 @@ namespace p2groep04.Controllers
         [Authorize]
         public ActionResult Edit(int id)
         {
+
             Suggestion suggestion = _suggestionRepository.FindBy(id);
             EditViewModel suggestionViewModel = new EditViewModel()
             {

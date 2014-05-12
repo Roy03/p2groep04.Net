@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using p2groep04.Models.Domain;
 using p2groep04.ViewModels.UserViewModels;
@@ -10,7 +11,7 @@ namespace p2groep04.ViewModels
         public SuggestionViewModel Suggestion { get; set; }
         public StudentViewModel Student { get; set; }
         public PromotorViewModel Promotor { get; set; }
-
+        public CoPromotorViewModel CoPromotor { get; set; }
     }
 
     public class EditViewModel
@@ -18,6 +19,7 @@ namespace p2groep04.ViewModels
         public SuggestionViewModel Suggestion { get; set; }
         public StudentViewModel Student { get; set; }
         public PromotorViewModel Promotor { get; set; }
+        public CoPromotorViewModel CoPromotor { get; set; }
     }
 
     public class SuggestionViewModel
@@ -52,9 +54,9 @@ namespace p2groep04.ViewModels
         [Required]
         [Display(Name = "Referenties")]
         public String[] References { get; set; }
-
+        
         [Display(Name = "Onderzoeksdomein")]
-        public ResearchDomain[] ResearchDomains { get; set; }
+        public IEnumerable<ResearchDomain> ResearchDomains { get; set; }
 
         [Display(Name = "ID")]
         public int Id { get; set; }

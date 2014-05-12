@@ -44,12 +44,19 @@ namespace p2groep04.ViewModels.UserViewModels
     {
         [Display(Name = "Promotor")]
         public Promotor Promotor { get; set; }
+        [Display(Name = "Co-promotor")]
+        public Promotor CoPromotor { get; set; }
     }
 
     public class PromotorViewModel : UserViewModel
     {
-
+        
     }
 
+    public class CoPromotorViewModel : UserViewModel
+    {
+        [Display(Name = "Organisatie")]
+        public String Organisation { get; set; }
+    }
 
 }
