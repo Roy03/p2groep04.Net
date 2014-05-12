@@ -29,7 +29,6 @@ namespace p2groep04.Models.DAL
             modelBuilder.Configurations.Add(new ResearchDomainMapper());
             modelBuilder.Configurations.Add(new SuggestionMapper());
             modelBuilder.Configurations.Add(new UserMapper());
-            modelBuilder.Configurations.Add(new StudentMapper());
             modelBuilder.Configurations.Add(new FeedbackMapper());
         }
     }
