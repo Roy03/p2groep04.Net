@@ -155,6 +155,8 @@ namespace p2groep04.Helpers
 
         }
 
+
+        //People to notify: Student
         public static void NotifyStakeholderSuggestionAccepted(User user)
         {
             var fromAddress = new MailAddress("project2hogent@gmail.com");
@@ -181,6 +183,7 @@ namespace p2groep04.Helpers
                 smtp.Send(message);
         }
 
+        //People to notify: Student
         public static void NotifyStakeholderSuggestionDeclined(User user)
         {
             var fromAddress = new MailAddress("project2hogent@gmail.com");
@@ -207,6 +210,7 @@ namespace p2groep04.Helpers
                 smtp.Send(message);
         }
 
+        //People to notify: BPC
         public static void NotifyStakeholderAdviceBpcNeeded(User user)
         {
             var fromAddress = new MailAddress("project2hogent@gmail.com");
@@ -233,6 +237,7 @@ namespace p2groep04.Helpers
                 smtp.Send(message);
         }
 
+        //People to notify: Student
         public static void NotifyStakeholderSuggestionAcceptedWithRemarks(User user)
         {
             var fromAddress = new MailAddress("project2hogent@gmail.com");
@@ -259,6 +264,7 @@ namespace p2groep04.Helpers
                 smtp.Send(message);
         }
 
+        //People to notify: Student and Promotor
         public static void NotifyStakeholdersBpcHasGivenAdvice(User user)
         {
             var fromAddress = new MailAddress("project2hogent@gmail.com");
@@ -293,6 +299,7 @@ namespace p2groep04.Helpers
             }
         }
 
+        //People to notify: Student
         public static void NotifyStakeholderFeedbackGiven(User user)
         {
             var fromAddress = new MailAddress("project2hogent@gmail.com");
