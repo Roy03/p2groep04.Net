@@ -371,6 +371,7 @@
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Views\User\Detail.cshtml" />
     <Content Include="Views\Suggestion\Detail.cshtml" />
+    <Content Include="Views\Suggestion\Advice.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -37,6 +37,11 @@
                 {
                     @Html.ActionLink("Geef feedback", "PromotorFeedback", new { id = suggestion.Id })
                 }
+
+                @if (Html.User().GetType() == typeof (BPCoordinator))
+                {
+                    @Html.ActionLink("Geef advies", "Advice", new { id = suggestion.Id })
+                }
                 </td>
             </tr>
         }

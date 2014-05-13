@@ -1,0 +1,38 @@
+﻿@using System.Web.Mvc.Html
+@using p2groep04.Helpers
+@model p2groep04.ViewModels.AdviceViewModel
+
+
+<!DOCTYPE html>
+@{
+    ViewBag.Title = "Voorstel";
+}
+<div class="pane">
+    <h2>Advies geven</h2>
+    <div id="suggestion-view">
+        <p>
+            <span>Title: @Html.DisplayFor(model => model.Suggestion.Title)</span>
+        </p>
+        <p>
+            <span>Subject: @Html.DisplayFor(model => model.Suggestion.Subject)</span>
+        </p>
+
+        @using (Html.BeginForm())
+        {
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <h2>Advies</h2>
+
+            @Html.TextAreaFor(model => model.Suggestion.Advice, new { @class = "form-control"})
+            @Html.ValidationMessageFor(model => model.Suggestion.Advice)
+        </div>
+
+
+        <div class="form-group">
+            <input type="submit" name="btnGiveAdvice" value="Geef advies" class="button" />
+            <input type="submit" name="btnBack" value="Terug" class="button" />
+        </div>
+
+        }
+    </div>
+</div>

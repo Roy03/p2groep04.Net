@@ -22,6 +22,13 @@ namespace p2groep04.ViewModels
         public CoPromotorViewModel CoPromotor { get; set; }
     }
 
+    public class AdviceViewModel
+    {
+        public SuggestionViewModel Suggestion { get; set; }
+        public StudentViewModel Student { get; set; }
+        public PromotorViewModel Promotor { get; set; }
+    }
+
     public class SuggestionViewModel
     {
         [Required]
@@ -60,5 +67,8 @@ namespace p2groep04.ViewModels
 
         [Display(Name = "ID")]
         public int Id { get; set; }
+
+        [Display(Name = "Advies")]
+        public String Advice { get; set; }
     }
 }

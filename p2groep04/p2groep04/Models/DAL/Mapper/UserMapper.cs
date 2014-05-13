@@ -8,7 +8,7 @@ using p2groep04.Models.Domain;
 
 namespace p2groep04.Models.DAL.Mapper
 {
-    public class UserMapper: EntityTypeConfiguration<User>
+    public class UserMapper : EntityTypeConfiguration<User>
     {
         public UserMapper()
         {
@@ -27,9 +27,6 @@ namespace p2groep04.Models.DAL.Mapper
             Property(u => u.LastIp);
             Property(u => u.CreationDate).IsRequired();
             Property(u => u.LastPasswordChangedDate).IsRequired();
-
-           
-
-        }        
+        }
     }
 }
