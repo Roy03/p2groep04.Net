@@ -13,7 +13,7 @@ namespace p2groep04.Models.Domain
 {
     public class Student : User
     {
-        public Promotor Promotor { get; set; }
+        public virtual Promotor Promotor { get; set; }
         public Promotor CoPromotor { get; set; }
         public ICollection<Suggestion> Suggestions { get; set; }
 

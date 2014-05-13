@@ -24,7 +24,7 @@
                 <td>@Html.DisplayFor(modelItem => suggestion.Title)</td>
                 <td>@Html.DisplayFor(modelItem => suggestion.Subject)</td>
                 
-                <td>@Html.ActionLink("Bewerk/Bekijken", "Edit", new { id = suggestion.Id }) | 
+                <td>@Html.ActionLink("Bewerk", "Edit", new { id = suggestion.Id }) | 
                 
                 @if (Html.User().GetType() == typeof (Student))
                 {

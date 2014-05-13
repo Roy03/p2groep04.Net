@@ -30,10 +30,10 @@ namespace p2groep04.Controllers
             stakeholdersList = new List<User>();
         }
 
-        public ActionResult SubmitSuggestion()
-        {
-            return View("SubmitSuggestion");
-        }
+        //public ActionResult SubmitSuggestion()
+        //{
+        //    return View("SubmitSuggestion");
+        //}
 
         public ViewResult Create(User user)
         {
@@ -196,11 +196,11 @@ namespace p2groep04.Controllers
             return View(suggestionViewModel);
         }
 
-        public ActionResult Suggestions(int id)
-        {
-            IEnumerable<Suggestion> suggestions = _suggestionRepository.FindByUser(id).ToList();
-            return View();
-        }
+        //public ActionResult Suggestions(int id)
+        //{
+        //    IEnumerable<Suggestion> suggestions = _suggestionRepository.FindByUser(id).ToList();
+        //    return View();
+        //}
 
         public ActionResult Evaluate(int id)
         {
@@ -214,8 +214,8 @@ namespace p2groep04.Controllers
             string buttonApprove, string buttonDecline, string buttonBack)
         {
             Suggestion suggestion = _suggestionRepository.FindBy(id);
-            
-            //Student student = (Student)_userRepository.FindBy(suggestion.Student.Id);
+
+            var student = suggestion.Student;
 
             if (ModelState.IsValid)
             {
@@ -227,7 +227,7 @@ namespace p2groep04.Controllers
 
                     if (buttonSendFeedback != null)
                     {
-                        //notifeer stakeholder
+                        //UserHelper.NotifyStakeholderFeedbackGiven();
                         TempData["Success"] = "Uw feedback is verzonden";
                     }
 
@@ -322,7 +322,9 @@ namespace p2groep04.Controllers
             {
                 bpCoordinator.GiveAdvice(suggestion, model.Suggestion.Advice);
                 TempData["Success"] = "Het advies is verzonden";
+                _suggestionRepository.SaveChanges();
                 return RedirectToAction("Index", "Suggestion");
+                
             }
 
 

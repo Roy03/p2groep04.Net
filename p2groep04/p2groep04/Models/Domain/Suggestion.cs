@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -59,6 +60,9 @@ namespace p2groep04.Models.Domain
             _newState = new NewState(this);
 
             CurrentState = _newState;
+
+            ResearchDomains = new Collection<ResearchDomain>();
+            Feedbacks = new Collection<Feedback>();
         }
 
         public void ToNewState()
