@@ -8,13 +8,14 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Security;
+using System.Web.UI.WebControls.WebParts;
 using p2groep04.Models.Domain;
 
 namespace p2groep04.Helpers
 {
     public class UserHelper
     {
-        private readonly IUserRepository _userRepository ;
+        private readonly IUserRepository _userRepository;
 
         public UserHelper(IUserRepository userRepository)
         {
@@ -68,7 +69,7 @@ namespace p2groep04.Helpers
             string password;
             while (true)
             {
-                int length = generator.Next(6,20);
+                int length = generator.Next(6, 20);
                 int numberOfNonAlphanumericCharacters = generator.Next(1, length);
                 password = Membership.GeneratePassword(length, numberOfNonAlphanumericCharacters);
 
@@ -150,8 +151,147 @@ namespace p2groep04.Helpers
                     smtp.Send(message);
                 }
             }
-            
+
         }
+
+        public static void NotifyStakeholderSuggestionAccepted(User user)
+        {
+            var fromAddress = new MailAddress("project2hogent@gmail.com");
+            const string fromPassword = "C#Project";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+
+
+            var toAddress = new MailAddress(user.Email);
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = "Voorstel geaccepteerd",
+                Body = "Uw voorstel is geaccepteerd"
+            })
+
+                smtp.Send(message);
+        }
+
+        public static void NotifyStakeholderSuggestionDeclined(User user)
+        {
+            var fromAddress = new MailAddress("project2hogent@gmail.com");
+            const string fromPassword = "C#Project";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+
+
+            var toAddress = new MailAddress(user.Email);
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = "Voorstel geweigerd",
+                Body = "Uw voorstel is geweigerd"
+            })
+
+                smtp.Send(message);
+        }
+
+        public static void NotifyStakeholderAdviceBpcNeeded(User user)
+        {
+            var fromAddress = new MailAddress("project2hogent@gmail.com");
+            const string fromPassword = "C#Project";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+
+
+            var toAddress = new MailAddress(user.Email);
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = "Advies gevraagd",
+                Body = "Er wordt gevraagd voor advies"
+            })
+
+                smtp.Send(message);
+        }
+
+        public static void NotifyStakeholderSuggestionAcceptedWithRemarks(User user)
+        {
+            var fromAddress = new MailAddress("project2hogent@gmail.com");
+            const string fromPassword = "C#Project";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+
+
+            var toAddress = new MailAddress(user.Email);
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = "Voorstel geaccepteerd met opmerkingen",
+                Body = "Uw voorstel is geaccepteerd maar er zijn opmerkingen"
+            })
+
+                smtp.Send(message);
+        }
+
+        public static void NotifyStakeholdersBpcHasGivenAdvice(User user)
+        {
+            var fromAddress = new MailAddress("project2hogent@gmail.com");
+            const string fromPassword = "C#Project";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+
+            var users = new List<User>();
+            Student student = (Student) user;
+            users.Add(student);
+            users.Add(student.Promotor);
+
+            foreach (var aUser in users)
+            {
+                var toAddress = new MailAddress(aUser.Email);
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = "BPC advies",
+                    Body = "De BPC heeft advies gegeven"
+                })
+                {
+                    smtp.Send(message);
+                }
+            }
+        }
+
 
         public HashSet<char> GiveSpecialCharacters()
         {
@@ -174,7 +314,7 @@ namespace p2groep04.Helpers
         }
 
         public int giveCondition(string password)
-        {  
+        {
             HashSet<char> specialCharacters = GiveSpecialCharacters();
             string newPassword = password;
 
