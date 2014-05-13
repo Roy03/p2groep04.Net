@@ -123,7 +123,8 @@ namespace p2groep04.Helpers
                 smtp.Send(message);
             }
         }
-
+        
+        //This is a default made notifyusers, this one can be used. Will be replaced by specific ones
         public static void NotifyUsers(List<User> users, string body, string subject)
         {
             var fromAddress = new MailAddress("project2hogent@gmail.com");
@@ -174,7 +175,7 @@ namespace p2groep04.Helpers
             using (var message = new MailMessage(fromAddress, toAddress)
             {
                 Subject = "Voorstel geaccepteerd",
-                Body = "Uw voorstel is geaccepteerd"
+                Body = "Uw voorstel is geaccepteerd."
             })
 
                 smtp.Send(message);
@@ -200,7 +201,7 @@ namespace p2groep04.Helpers
             using (var message = new MailMessage(fromAddress, toAddress)
             {
                 Subject = "Voorstel geweigerd",
-                Body = "Uw voorstel is geweigerd"
+                Body = "Uw voorstel is geweigerd."
             })
 
                 smtp.Send(message);
@@ -226,7 +227,7 @@ namespace p2groep04.Helpers
             using (var message = new MailMessage(fromAddress, toAddress)
             {
                 Subject = "Advies gevraagd",
-                Body = "Er wordt gevraagd voor advies"
+                Body = "Er wordt gevraagd voor advies."
             })
 
                 smtp.Send(message);
@@ -252,7 +253,7 @@ namespace p2groep04.Helpers
             using (var message = new MailMessage(fromAddress, toAddress)
             {
                 Subject = "Voorstel geaccepteerd met opmerkingen",
-                Body = "Uw voorstel is geaccepteerd maar er zijn opmerkingen"
+                Body = "Uw voorstel is geaccepteerd maar er zijn opmerkingen."
             })
 
                 smtp.Send(message);
@@ -284,7 +285,7 @@ namespace p2groep04.Helpers
                 using (var message = new MailMessage(fromAddress, toAddress)
                 {
                     Subject = "BPC advies",
-                    Body = "De BPC heeft advies gegeven"
+                    Body = "De BPC heeft advies gegeven."
                 })
                 {
                     smtp.Send(message);
@@ -292,6 +293,31 @@ namespace p2groep04.Helpers
             }
         }
 
+        public static void NotifyStakeholderFeedbackGiven(User user)
+        {
+            var fromAddress = new MailAddress("project2hogent@gmail.com");
+            const string fromPassword = "C#Project";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+
+
+            var toAddress = new MailAddress(user.Email);
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = "Feedback voorstel",
+                Body = "Er is feedback op uw voorstel gegeven."
+            })
+
+                smtp.Send(message);
+        }
 
         public HashSet<char> GiveSpecialCharacters()
         {
