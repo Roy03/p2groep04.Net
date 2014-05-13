@@ -14,16 +14,10 @@ namespace p2groep04.Models.Domain
 {
     public class Promotor : User
     {
-        public virtual ICollection<Student> Students;
-        public String Company { get; set; }
+        public ICollection<Student> Students = new Collection<Student>();
         public List<User> users = new List<User>();
         private String message;
-
-        public Promotor()
-        {
-            Students = new Collection<Student>();
-        }
-
+    
         public List<String> GetFeedbackList(Student student)
         {
             return (from s in Students where s.FirstName == student.FirstName && s.LastName == student.LastName from suggestion in s.Suggestions from feedback in suggestion.Feedbacks select feedback.Inhoud).ToList();

@@ -1,6 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
-using Microsoft.Ajax.Utilities;
+﻿using System.Web.Optimization;
 
 namespace p2groep04
 {

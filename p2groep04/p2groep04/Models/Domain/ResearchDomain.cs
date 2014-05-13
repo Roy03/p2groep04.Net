@@ -13,5 +13,7 @@ namespace p2groep04.Models.Domain
         public int Id { get; set; }
 
         public String Name {get;set;}
+
+        public ICollection<Suggestion> Suggestions { get; set; }
     }
 }

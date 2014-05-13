@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Web;
 
 namespace p2groep04.Models.DAL.Mapper
 {
@@ -10,7 +7,16 @@ namespace p2groep04.Models.DAL.Mapper
     {
         public FeedbackMapper()
         {
+            // Primary key
             HasKey(f => f.Id);
+
+            // Properties
+            Property(f => f.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            Property(f => f.Inhoud).IsRequired();
+            Property(f => f.Created_On).IsRequired();
+            Property(f => f.Visable).IsRequired();
+            
+            HasRequired(f => f.Suggestion).WithMany(f => f.Feedbacks);
         }
     }
 }

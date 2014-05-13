@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity.ModelConfiguration;
 using p2groep04.Models.Domain;
 
 namespace p2groep04.Models.DAL.Mapper
@@ -14,8 +10,9 @@ namespace p2groep04.Models.DAL.Mapper
             ToTable("researchdomains");
 
             HasKey(r => r.Id);
-            Property(t => t.Name).IsRequired();
-             
+            Property(r => r.Name).IsRequired();
+
+            HasMany(r => r.Suggestions).WithMany(r => r.ResearchDomains);
         }
     }
 }

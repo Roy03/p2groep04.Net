@@ -1,9 +1,6 @@
 ﻿using p2groep04.Models.Domain;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 
 namespace p2groep04.Models.DAL
 {

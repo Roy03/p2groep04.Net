@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity.ModelConfiguration;
 using p2groep04.Models.Domain;
 
 namespace p2groep04.Models.DAL.Mapper
@@ -21,7 +17,10 @@ namespace p2groep04.Models.DAL.Mapper
             Property(s => s.ResearchQuestion);
             Property(s => s.Motivation);
             Property(s => s.AdviceBPC).IsOptional();
+
             HasRequired(s => s.Student).WithMany(s => s.Suggestions);
+            HasMany(s => s.ResearchDomains).WithMany(s => s.Suggestions);
+            HasMany(s => s.Feedbacks).WithRequired(s => s.Suggestion);
 
             //Property(s => s.CurrentState).IsRequired();
 
@@ -33,7 +32,7 @@ namespace p2groep04.Models.DAL.Mapper
                 m.MapRightKey("researchdomain_id");
             });   */
 
-            //HasMany(s => s.Feedbacks).WithMany(t => t.Suggestions);
+            
 
 
         }

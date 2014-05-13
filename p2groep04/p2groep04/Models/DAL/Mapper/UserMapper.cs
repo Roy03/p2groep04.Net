@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Web;
@@ -27,6 +28,8 @@ namespace p2groep04.Models.DAL.Mapper
             Property(u => u.LastIp);
             Property(u => u.CreationDate).IsRequired();
             Property(u => u.LastPasswordChangedDate).IsRequired();
+
+            ToTable("user");
         }
     }
 }

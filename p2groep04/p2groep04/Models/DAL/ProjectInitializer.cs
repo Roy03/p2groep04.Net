@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
-using System.Web.Security;
 using p2groep04.Models.Domain;
-using WebMatrix.WebData;
 
 namespace p2groep04.Models.DAL
 {
