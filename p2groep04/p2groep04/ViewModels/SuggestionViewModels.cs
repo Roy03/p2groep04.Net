@@ -29,6 +29,13 @@ namespace p2groep04.ViewModels
         public PromotorViewModel Promotor { get; set; }
     }
 
+    public class DetailViewModel
+    {
+        public SuggestionViewModel Suggestion { get; set; }
+        public StudentViewModel Student { get; set; }
+        public PromotorViewModel Promotor { get; set; }
+    }
+
     public class SuggestionViewModel
     {
         [Required]

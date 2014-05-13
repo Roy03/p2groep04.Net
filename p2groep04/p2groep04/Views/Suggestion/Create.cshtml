@@ -8,7 +8,7 @@
 
 <h2>Submit</h2>
 <div class="pane">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create", "Suggestion", FormMethod.Post))
     {
         @Html.ValidationSummary(true)
 

@@ -364,7 +364,7 @@
     <Content Include="Content\plugins\tag-input\bower.json" />
     <Content Include="Content\plugins\tag-input\README.md" />
     <Content Include="Views\Suggestion\Edit.cshtml" />
-    <Content Include="Views\Suggestion\PromotorFeedback.cshtml" />
+    <Content Include="Views\Suggestion\Evaluate.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />

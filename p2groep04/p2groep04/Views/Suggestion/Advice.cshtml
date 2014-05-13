@@ -1,4 +1,5 @@
 ﻿@using System.Web.Mvc.Html
+@using System.Web.UI.WebControls.Expressions
 @using p2groep04.Helpers
 @model p2groep04.ViewModels.AdviceViewModel
 
@@ -17,7 +18,7 @@
             <span>Subject: @Html.DisplayFor(model => model.Suggestion.Subject)</span>
         </p>
 
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Advice", "Suggestion", FormMethod.Post))
         {
         @Html.ValidationSummary(true)
         <div class="form-group">

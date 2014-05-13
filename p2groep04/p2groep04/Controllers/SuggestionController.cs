@@ -83,13 +83,6 @@ namespace p2groep04.Controllers
                         message = "Student " + student.FirstName + " " + student.LastName +
                                   " heeft zijn voorstel ingediend";
                         UserHelper.NotifyUsers(stakeholdersList, message, "Voorstel ingediend");
-                    }
-
-                    student.Suggestions.Add(suggestion);
-                    _userRepository.SaveChanges();
-
-                    if (buttonSaveSend != null)
-                    {
                         TempData["Success"] = "Uw voorstel werd aangemaakt en ingediend!";
                     }
                     else
@@ -97,7 +90,9 @@ namespace p2groep04.Controllers
                         TempData["Success"] = "Uw voorstel werd aangemaakt!";
                     }
 
-
+                    student.Suggestions.Add(suggestion);
+                    _userRepository.SaveChanges();
+                    
                     return RedirectToAction("DashBoard", "Home");
                 }
                 catch (ApplicationException e)
@@ -207,7 +202,7 @@ namespace p2groep04.Controllers
             return View();
         }
 
-        public ActionResult PromotorFeedback(int id)
+        public ActionResult Evaluate(int id)
         {
             Suggestion suggestion = _suggestionRepository.FindBy(id);
             return View(suggestion);
@@ -215,20 +210,19 @@ namespace p2groep04.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult PromotorFeedback(int id, EditViewModel model, User user, string buttonSendFeedback,
+        public ActionResult Evaluate(int id, EditViewModel model, User user, string buttonSendFeedback,
             string buttonApprove, string buttonDecline, string buttonBack)
         {
             Suggestion suggestion = _suggestionRepository.FindBy(id);
-
+            
             //Student student = (Student)_userRepository.FindBy(suggestion.Student.Id);
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    Promotor promotor = (Promotor)user;
-
-
+                    var promotor = (Promotor)user;
+                    
                     _suggestionRepository.SaveChanges();
 
                     if (buttonSendFeedback != null)
@@ -268,15 +262,29 @@ namespace p2groep04.Controllers
             return View();
         }
 
-        public ActionResult Detail(int id, User user)
+        public ActionResult Detail(int id, User user, DetailViewModel model)
         {
             Student student = (Student)user;
 
             Suggestion suggestion = _suggestionRepository.FindBy(id);
-
+            DetailViewModel suggestionViewModel = new DetailViewModel()
+            {
+                Suggestion = new SuggestionViewModel()
+                {
+                    Id = suggestion.Id,
+                    Context = suggestion.Context,
+                    Goal = suggestion.Goal,
+                    Keywords = suggestion.Keywords,
+                    Motivation = suggestion.Motivation,
+                    References = suggestion.References,
+                    Subject = suggestion.Subject,
+                    ResearchQuestion = suggestion.ResearchQuestion,
+                    Title = suggestion.Title
+                }
+            };
             String feedback = suggestion.Student.GetFeedbackStudent();
 
-            return View(suggestion);
+            return View(suggestionViewModel);
         }
 
         public ActionResult Advice(int id)
@@ -308,12 +316,11 @@ namespace p2groep04.Controllers
         {
             Suggestion suggestion = _suggestionRepository.FindBy(id);
 
-            BPCoordinator bpCoordinator = (BPCoordinator)user;
-
-            bpCoordinator.GiveAdvice(suggestion, model.Suggestion.Advice);
-
+            var bpCoordinator = (BPCoordinator)user;
+            
             if (buttonGiveAdvice != null)
             {
+                bpCoordinator.GiveAdvice(suggestion, model.Suggestion.Advice);
                 TempData["Success"] = "Het advies is verzonden";
                 return RedirectToAction("Index", "Suggestion");
             }

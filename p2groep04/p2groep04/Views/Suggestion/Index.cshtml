@@ -35,7 +35,7 @@
 
                 @if (Html.User().GetType() == typeof (Promotor))
                 {
-                    @Html.ActionLink("Geef feedback", "PromotorFeedback", new { id = suggestion.Id })
+                    @Html.ActionLink("Geef feedback", "Evaluate", new { id = suggestion.Id })
                 }
 
                 @if (Html.User().GetType() == typeof (BPCoordinator))

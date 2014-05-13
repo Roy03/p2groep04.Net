@@ -2,7 +2,8 @@
 @using System.Web.Mvc.Html
 @using p2groep04.Helpers
 @using p2groep04.Models.Domain
-@model p2groep04.Models.Domain.Suggestion
+@model p2groep04.ViewModels.DetailViewModel
+
 
 @{
     ViewBag.Title = "Voorstel";
@@ -11,19 +12,19 @@
     <h2>Voorstel</h2>
     <div id="suggestion-view">
         <p>
-            <span>Title: @Html.DisplayFor(model => model.Title)</span>
+            <span>Title: @Html.DisplayFor(model => model.Suggestion.Title)</span>
         </p>
         <p>
-            <span>Subject: @Html.DisplayFor(model => model.Subject)</span>
+            <span>Subject: @Html.DisplayFor(model => model.Suggestion.Subject)</span>
         </p>
 
-        <p>
-            <span>Status: @Html.DisplayFor(model => model.CurrentState)</span>
-        </p>
+        @*<p>
+            <span>Status: @Html.DisplayFor(model => model.Suggestion.State)</span>
+        </p>*@
 
         <h2>Feedback</h2>
 
-        @Html.DisplayFor(model => model.Feedbacks, new { @class = "form-control"})
+        @Html.DisplayFor(model => model.Suggestion.Feedbacks, new { @class = "form-control"})
           
         
     </div>
