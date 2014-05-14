@@ -75,46 +75,45 @@ namespace p2groep04.Controllers
                     }
                     else
                     {
-                        if (ModelState.IsValid)
+                        if (!ModelState.IsValid)
                         {
-                            //verify old password
-                            if (!userHelper.IsValidPassword(username, model.OldPlainPassword))
+                            //exceptie of lege view returne
+                            return View(model);
+                        }
+
+                        //verify old password
+                        if (!userHelper.IsValidPassword(username, model.OldPlainPassword))
+                        {
+                            ModelState.AddModelError("", "Uw huidig paswoord is incorrect.");
+                        }
+                        else
+                        {
+
+                            if (conditionCount < 3)
                             {
-                                ModelState.AddModelError("", "Uw huidig paswoord is incorrect.");
+                                ModelState.AddModelError("",
+                                    "Uw nieuw wachtwoord moet een combinatie zijn van tenminste 3 van de volgende karakters: hoofdletters, kleine letters, getallen en overige symbolen.");
                             }
                             else
                             {
-
-                                if (conditionCount < 3)
+                                //password same
+                                if (!model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
                                 {
                                     ModelState.AddModelError("",
-                                        "Uw nieuw wachtwoord moet een combinatie zijn van tenminste 3 van de volgende karakters: hoofdletters, kleine letters, getallen en overige symbolen.");
+                                        "Uw bevestiging van het nieuwe wachtwoord is incorrect.");
                                 }
                                 else
                                 {
-                                    //password same
-                                    if (!model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
-                                    {
+                                    if(model.OldPlainPassword.Equals(model.NewPlainPassword))
                                         ModelState.AddModelError("",
-                                            "Uw bevestiging van het nieuwe wachtwoord is incorrect.");
-                                    }
-                                    else
-                                    {
-                                        if(model.OldPlainPassword.Equals(model.NewPlainPassword))
-                                            ModelState.AddModelError("",
-                                            "Uw nieuw wachtwoord mag niet hetzelfde zijn als het oude wachtwoord.");
-                                    }    
-
-                                }
+                                        "Uw nieuw wachtwoord mag niet hetzelfde zijn als het oude wachtwoord.");
+                                }    
 
                             }
+
                         }
 
                     }
-                    return View(model);
-                }
-                else if (!ModelState.IsValid)
-                {
                     return View(model);
                 }
             

@@ -8,10 +8,13 @@ namespace p2groep04.Helpers
         public static User User(this HtmlHelper htmlHelper)
         {
             var identity = htmlHelper.ViewContext.HttpContext.User.Identity;
+            
+            
             if (identity.IsAuthenticated)
             {
                 IUserRepository repos = (IUserRepository)DependencyResolver.Current.GetService(typeof(IUserRepository));
-                return repos.FindByUsername(htmlHelper.ViewContext.HttpContext.User.Identity.Name);
+                User user = repos.FindByUsername(htmlHelper.ViewContext.HttpContext.User.Identity.Name);
+                return user;
             }
             return null;
         }

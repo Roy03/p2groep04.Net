@@ -29,8 +29,7 @@ namespace p2groep04
             Database.SetInitializer<ProjectContext>(new ProjectInitializer());
             new ProjectContext().Database.Initialize(true);
             
-            ModelBinders.Binders.Add(typeof(User), new UserModelBinder());
-            ModelBinders.Binders.Add(typeof(Student), new StudentModelBinder());
+            ModelBinders.Binders.Add(typeof(User), new UserModelBinder());          
         }
     }
 }
