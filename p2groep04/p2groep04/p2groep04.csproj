@@ -207,7 +207,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Filters\SecurityFilter.cs" />
+    <Compile Include="Models\DAL\Mapper\BPCoordinatorMapper.cs" />
     <Compile Include="Models\DAL\Mapper\CoPromotorMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\PromotorMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\StudentMapper.cs" />
     <Compile Include="Models\Domain\CoPromotor.cs" />
     <Compile Include="Models\Domain\Feedback.cs" />
     <Compile Include="Helpers\UserExtensions.cs" />
