@@ -15,7 +15,7 @@ namespace p2groep04.Controllers
     {
         private readonly ISuggestionRepository _suggestionRepository;
         private readonly IUserRepository _userRepository;
-        
+
         private readonly IResearchDomainRepository _researchDomainRepository;
         private List<User> stakeholdersList;
         private string message;
@@ -25,7 +25,7 @@ namespace p2groep04.Controllers
         {
             this._suggestionRepository = suggestionRepository;
             this._userRepository = userRepository;
-           
+
             this._researchDomainRepository = researchDomainRepository;
             stakeholdersList = new List<User>();
         }
@@ -55,48 +55,55 @@ namespace p2groep04.Controllers
         public ActionResult Create(CreateViewModel model, User user, string buttonSave, string buttonSaveSend)
         {
             Student student = (Student)user;
-
-            if (ModelState.IsValid)
+            if (UserHelper.Checksuggestions(student) == false)
             {
-                try
+                if (ModelState.IsValid)
                 {
-                    Suggestion suggestion = new Suggestion();
-                    suggestion.Title = model.Suggestion.Title;
-                    suggestion.Keywords = model.Suggestion.Keywords;
-                    suggestion.Context = model.Suggestion.Context;
-                    suggestion.Subject = model.Suggestion.Subject;
-                    suggestion.Goal = model.Suggestion.Goal;
-                    suggestion.ResearchQuestion = model.Suggestion.ResearchQuestion;
-                    suggestion.Motivation = model.Suggestion.Motivation;
-                    suggestion.References = model.Suggestion.References;
-
-                    //researchdomains
-                    suggestion.Student = student;
-
-                    if (buttonSaveSend != null)
+                    try
                     {
-                        suggestion.ToSubmittedState();
-                        //notifieer stakeholders
-                        stakeholdersList.Add(student.Promotor);
-                        message = "Student " + student.FirstName + " " + student.LastName +
-                                  " heeft zijn voorstel ingediend";
-                        UserHelper.NotifyUsers(stakeholdersList, message, "Voorstel ingediend");
-                        TempData["Success"] = "Uw voorstel werd aangemaakt en ingediend!";
-                    }
-                    else
-                    {
-                        TempData["Success"] = "Uw voorstel werd aangemaakt!";
-                    }
+                        Suggestion suggestion = new Suggestion();
+                        suggestion.Title = model.Suggestion.Title;
+                        suggestion.Keywords = model.Suggestion.Keywords;
+                        suggestion.Context = model.Suggestion.Context;
+                        suggestion.Subject = model.Suggestion.Subject;
+                        suggestion.Goal = model.Suggestion.Goal;
+                        suggestion.ResearchQuestion = model.Suggestion.ResearchQuestion;
+                        suggestion.Motivation = model.Suggestion.Motivation;
+                        suggestion.References = model.Suggestion.References;
 
-                    student.Suggestions.Add(suggestion);
-                    _userRepository.SaveChanges();
-                    
-                    return RedirectToAction("DashBoard", "Home");
+                        //researchdomains
+                        suggestion.Student = student;
+
+                        if (buttonSaveSend != null)
+                        {
+                            suggestion.ToSubmittedState();
+                            //notifieer stakeholders
+                            stakeholdersList.Add(student.Promotor);
+                            message = "Student " + student.FirstName + " " + student.LastName +
+                                      " heeft zijn voorstel ingediend";
+                            UserHelper.NotifyUsers(stakeholdersList, message, "Voorstel ingediend");
+                            TempData["Success"] = "Uw voorstel werd aangemaakt en ingediend!";
+                        }
+                        else
+                        {
+                            TempData["Success"] = "Uw voorstel werd aangemaakt!";
+                        }
+
+                        student.Suggestions.Add(suggestion);
+                        _userRepository.SaveChanges();
+
+                        return RedirectToAction("DashBoard", "Home");
+                    }
+                    catch (ApplicationException e)
+                    {
+                        ModelState.AddModelError("", e.Message); // shows in summary
+                    }
                 }
-                catch (ApplicationException e)
-                {
-                    ModelState.AddModelError("", e.Message); // shows in summary
-                }
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "Er staat al een voorstel open");
             }
             return View();
         }
@@ -214,19 +221,19 @@ namespace p2groep04.Controllers
             Suggestion suggestion = _suggestionRepository.FindBy(id);
 
             var student = suggestion.Student;
-            
+
 
             if (ModelState.IsValid)
             {
                 try
                 {
                     var promotor = (Promotor)user;
-                    
+
                     _suggestionRepository.SaveChanges();
 
                     if (buttonSendFeedback != null)
                     {
-                        promotor.GiveFeedback(model.Suggestion.Feedback, student ,suggestion, "");
+                        promotor.GiveFeedback(model.Suggestion.Feedback, student, suggestion, "");
                         TempData["Success"] = "Uw feedback is verzonden";
                     }
 
@@ -316,13 +323,13 @@ namespace p2groep04.Controllers
             Suggestion suggestion = _suggestionRepository.FindBy(id);
 
             var bpCoordinator = (BPCoordinator)user;
-            
-           
-                bpCoordinator.GiveAdvice(suggestion, model.Suggestion.Advice);
-                TempData["Success"] = "Het advies is verzonden";
-                _suggestionRepository.SaveChanges();
-                return RedirectToAction("Index", "Suggestion");
-                
+
+
+            bpCoordinator.GiveAdvice(suggestion, model.Suggestion.Advice);
+            TempData["Success"] = "Het advies is verzonden";
+            _suggestionRepository.SaveChanges();
+            return RedirectToAction("Index", "Suggestion");
+
 
 
             return View();

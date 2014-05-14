@@ -363,5 +363,17 @@ namespace p2groep04.Helpers
 
             return conditionCount;
         }
+
+        public static bool Checksuggestions(Student student)
+        {
+            foreach (var s in student.Suggestions)
+            {
+                if (s.CurrentState.GetType() == typeof(NewState))
+                {
+                    return true;
+                }
+            }
+            return false;   
+        }
     }
 }
