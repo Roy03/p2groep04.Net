@@ -44,14 +44,13 @@ namespace p2groep04.Models.Domain
             //message
             message = feedback.Inhoud;
             //Send notification
-            UserHelper.NotifyUsers(users, message, "Feedback");
+            UserHelper.NotifyStakeholderFeedbackGiven(student);
 
             //If state is approved the do this
             if (state == "Approve")
             {
-                message = "Uw voorstel is geaccepteerd";
                 suggestion.ToApprovedState();
-                UserHelper.NotifyUsers(users, message, "Voorstel geaccepteerd");
+                UserHelper.NotifyStakeholderSuggestionAccepted(student);
             }
 
         }
@@ -62,6 +61,8 @@ namespace p2groep04.Models.Domain
             suggestion.ToAdviceBpcState();
 
             //INSERT NOTIFY STAKEHOLDERS HERE
+            //UserHelper.NotifyStakeholderAdviceBpcNeeded(BPC);
+            
 
         }
 
@@ -75,16 +76,13 @@ namespace p2groep04.Models.Domain
             //message
             message = "Uw voorstel is geweigerd";
             //send for notivication
-            UserHelper.NotifyUsers(users, message, "Voorstel geweigerd");
+            UserHelper.NotifyStakeholderSuggestionDeclined(student);
         }
 
-        public void SuggestionAcceptedButWithRemark(Student student, Suggestion suggestion, Feedback remark)
+        public void SuggestionAcceptedButWithRemark(Student student, Suggestion suggestion)
         {
-            suggestion.Feedbacks.Add(remark);
-
-            users.Add(student);
             message = "Uw voorstel is geaccepteerd maar er zijn opmerkingen";
-            UserHelper.NotifyUsers(users, message, "Voorstel geaccepteerd met opmerkingen");
+            UserHelper.NotifyStakeholderSuggestionAcceptedWithRemarks(student);
         }
 
         //    public List<Feedback> GetFeedbackList(Student student)

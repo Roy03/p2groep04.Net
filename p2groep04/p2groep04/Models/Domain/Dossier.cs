@@ -2,6 +2,7 @@
 {
     public class Dossier
     {
-        public int Id { get; set; }        
+        public int Id { get; set; }
+        public Suggestion Suggestion { get; set; }
     }
 }
