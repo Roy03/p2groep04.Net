@@ -29,20 +29,17 @@ namespace p2groep04.Models.Domain
             return (from s in Students where s.FirstName == student.FirstName && s.LastName == student.LastName from suggestion in s.Suggestions from feedback in suggestion.Feedbacks select feedback.Inhoud).ToList();
         }
 
-        public void GiveFeedback(Feedback feedback, Student student, Suggestion suggestion, String state)
+        public void GiveFeedback(String feedback, Student student, Suggestion suggestion, String state)
         {
 
             //Put all other feedbacks to not visable
             foreach (var f in suggestion.Feedbacks)
             {
-                feedback.Visable = false;
+                f.Visable = false;
             }
             //Add the new feedback
-            suggestion.Feedbacks.Add(feedback);
-            //add stakeholders
-            users.Add(student);
-            //message
-            message = feedback.Inhoud;
+            suggestion.Feedbacks.Add(new Feedback(feedback));
+            
             //Send notification
             UserHelper.NotifyStakeholderFeedbackGiven(student);
 
@@ -59,9 +56,9 @@ namespace p2groep04.Models.Domain
         {
             //Set state 
             suggestion.ToAdviceBpcState();
-
+            BPCoordinator bpc = new BPCoordinator();
             //INSERT NOTIFY STAKEHOLDERS HERE
-            //UserHelper.NotifyStakeholderAdviceBpcNeeded(BPC);
+            UserHelper.NotifyStakeholderAdviceBpcNeeded(bpc);
             
 
         }
