@@ -46,8 +46,8 @@ namespace p2groep04.Models.Domain
             //If state is approved the do this
             if (state == "Approve")
             {
-                suggestion.ToApprovedState();
-                UserHelper.NotifyStakeholderSuggestionAccepted(student);
+                suggestion.ToApprovedWithRemarksState();
+                UserHelper.NotifyStakeholderSuggestionAcceptedWithRemarks(student);
             }
 
         }
@@ -76,10 +76,10 @@ namespace p2groep04.Models.Domain
             UserHelper.NotifyStakeholderSuggestionDeclined(student);
         }
 
-        public void SuggestionAcceptedButWithRemark(Student student, Suggestion suggestion)
+        public void SuggestionAccepted(Student student, Suggestion suggestion)
         {
-            message = "Uw voorstel is geaccepteerd maar er zijn opmerkingen";
-            UserHelper.NotifyStakeholderSuggestionAcceptedWithRemarks(student);
+            suggestion.ToApprovedState();
+            UserHelper.NotifyStakeholderSuggestionAccepted(student);
         }
 
         //    public List<Feedback> GetFeedbackList(Student student)

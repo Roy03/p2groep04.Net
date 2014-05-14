@@ -226,13 +226,13 @@ namespace p2groep04.Controllers
 
                     if (buttonSendFeedback != null)
                     {
-                        promotor.GiveFeedback();
+                        promotor.GiveFeedback(model.Suggestion.Feedback, student ,suggestion, "");
                         TempData["Success"] = "Uw feedback is verzonden";
                     }
 
                     if (buttonApprove != null)
                     {
-                        suggestion.ToApprovedState();
+                        promotor.GiveFeedback(model.Suggestion.Feedback, student, suggestion, "Approved");
                         //notifieer stakeholder
                         TempData["Success"] = "Het voorstel is geaccepteerd";
 
@@ -240,7 +240,7 @@ namespace p2groep04.Controllers
 
                     if (buttonDecline != null)
                     {
-                        suggestion.ToNewState();
+                        promotor.SuggestionDoesNotComply(student, suggestion);
                         //notifieer stakeholder
                         TempData["Success"] = "Het voorstel is afgekeurd";
                     }
