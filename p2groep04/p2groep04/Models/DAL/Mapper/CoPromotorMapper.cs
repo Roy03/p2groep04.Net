@@ -21,7 +21,8 @@ namespace p2groep04.Models.DAL.Mapper
             Property(c => c.LastName).IsRequired();
             Property(c => c.Email).IsRequired();
             Property(c => c.Company).IsRequired();
-            HasMany(c => c.Students).WithOptional(c => c.CoPromotor);
+
+            this.HasMany(c => c.Students).WithOptional(c => c.CoPromotor);
         }
         
     }

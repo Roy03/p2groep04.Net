@@ -44,7 +44,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Promotor.FirstName)
 
-            @Html.TextBoxFor(model => model.Promotor.FirstName, new { @class = "form-control", @Value =  @Html.Student().Promotor.FirstName, @disabled = "disabled"})
+            @Html.TextBoxFor(model => model.Promotor.FirstName, new { @class = "form-control", @Value = "/", @disabled = "disabled"})
             @Html.ValidationMessageFor(model => model.Promotor.FirstName)
         </div>
 
