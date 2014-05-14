@@ -67,7 +67,6 @@ namespace p2groep04.App_Start
         {
             kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
             kernel.Bind<ISuggestionRepository>().To<SuggestionRepository>().InRequestScope();
-            kernel.Bind<StudentRepository>().ToSelf().InRequestScope();
             kernel.Bind<ProjectContext>().ToSelf().InRequestScope();
             kernel.Bind<UserHelper>().ToSelf().InRequestScope();
         }        

@@ -15,17 +15,17 @@ namespace p2groep04.Controllers
     {
         private readonly ISuggestionRepository _suggestionRepository;
         private readonly IUserRepository _userRepository;
-        private readonly StudentRepository _studentRepository;
+        
         private readonly IResearchDomainRepository _researchDomainRepository;
         private List<User> stakeholdersList;
         private string message;
 
         public SuggestionController(SuggestionRepository suggestionRepository, UserRepository userRepository,
-            StudentRepository studentRepository, ResearchDomainRepository researchDomainRepository)
+             ResearchDomainRepository researchDomainRepository)
         {
             this._suggestionRepository = suggestionRepository;
             this._userRepository = userRepository;
-            this._studentRepository = studentRepository;
+           
             this._researchDomainRepository = researchDomainRepository;
             stakeholdersList = new List<User>();
         }

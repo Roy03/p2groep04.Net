@@ -5,6 +5,7 @@ using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 using p2groep04.Models.Domain;
 
 namespace p2groep04.Models.DAL.Mapper
@@ -29,7 +30,11 @@ namespace p2groep04.Models.DAL.Mapper
             Property(u => u.CreationDate).IsRequired();
             Property(u => u.LastPasswordChangedDate).IsRequired();
 
-            ToTable("user");
+           // ToTable("user");  
+
+            Map<Student>(m => m.Requires("Discriminator").HasValue("Student"));
+            Map<BPCoordinator>(m => m.Requires("Discriminator").HasValue("BPCoordinator"));
+            Map<Promotor>(m => m.Requires("Discriminator").HasValue("Promotor"));
         }
     }
 }
