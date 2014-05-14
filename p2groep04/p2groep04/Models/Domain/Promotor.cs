@@ -56,7 +56,7 @@ namespace p2groep04.Models.Domain
         {
             //Set state 
             suggestion.ToAdviceBpcState();
-            BPCoordinator bpc = new BPCoordinator();
+            var bpc = new BPCoordinator();
             //INSERT NOTIFY STAKEHOLDERS HERE
             UserHelper.NotifyStakeholderAdviceBpcNeeded(bpc);
             
@@ -65,14 +65,10 @@ namespace p2groep04.Models.Domain
 
         public void SuggestionDoesNotComply(Student student, Suggestion suggestion)
         {
-            //Put suggestion in new state
+            
             suggestion.ToNewState();
 
-            //add student to list for notifycation
-            users.Add(student);
-            //message
-            message = "Uw voorstel is geweigerd";
-            //send for notivication
+           //send for notivication
             UserHelper.NotifyStakeholderSuggestionDeclined(student);
         }
 

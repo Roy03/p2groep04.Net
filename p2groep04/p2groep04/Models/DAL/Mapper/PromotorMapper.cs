@@ -11,7 +11,6 @@ namespace p2groep04.Models.DAL.Mapper
     {
         public PromotorMapper()
         {  
-
             HasMany(p => p.Students).WithRequired(p => p.Promotor);
             ToTable("user");
         }
