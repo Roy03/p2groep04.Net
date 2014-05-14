@@ -13,7 +13,7 @@ namespace p2groep04.Models.DAL.Mapper
             // Properties
             Property(f => f.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(f => f.Inhoud).IsRequired();
-            Property(f => f.Created_On).IsRequired();
+            Property(f => f.CreatedOn).IsRequired();
             Property(f => f.Visable).IsRequired();
             
             HasRequired(f => f.Suggestion).WithMany(f => f.Feedbacks);

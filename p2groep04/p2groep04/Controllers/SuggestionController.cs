@@ -214,6 +214,7 @@ namespace p2groep04.Controllers
             Suggestion suggestion = _suggestionRepository.FindBy(id);
 
             var student = suggestion.Student;
+            
 
             if (ModelState.IsValid)
             {
@@ -225,7 +226,7 @@ namespace p2groep04.Controllers
 
                     if (buttonSendFeedback != null)
                     {
-                        //UserHelper.NotifyStakeholderFeedbackGiven();
+                        promotor.GiveFeedback();
                         TempData["Success"] = "Uw feedback is verzonden";
                     }
 

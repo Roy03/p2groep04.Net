@@ -77,5 +77,8 @@ namespace p2groep04.ViewModels
 
         [Display(Name = "Advies")]
         public String Advice { get; set; }
+
+        [Display(Name = "Feedback")]
+        public String Feedback { get; set; }
     }
 }

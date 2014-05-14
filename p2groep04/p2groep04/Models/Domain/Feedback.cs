@@ -15,17 +15,18 @@ namespace p2groep04
         public String Inhoud { get; set; }
         
 
-        public DateTime Created_On { get; set; }
+        public DateTime CreatedOn { get; set; }
         
 
         public Boolean Visable { get; set; }
 
         public Suggestion Suggestion { get; set; }
 
-        public Feedback()
+        public Feedback(String inhoud)
         {
             Visable = true;
-            Created_On = DateTime.Now;
+            CreatedOn = DateTime.Now;
+            Inhoud = inhoud;
         }
         
     }
