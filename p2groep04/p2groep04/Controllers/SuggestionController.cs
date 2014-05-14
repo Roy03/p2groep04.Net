@@ -60,8 +60,6 @@ namespace p2groep04.Controllers
             {
                 try
                 {
-
-
                     Suggestion suggestion = new Suggestion();
                     suggestion.Title = model.Suggestion.Title;
                     suggestion.Keywords = model.Suggestion.Keywords;
@@ -318,14 +316,12 @@ namespace p2groep04.Controllers
 
             var bpCoordinator = (BPCoordinator)user;
             
-            if (buttonGiveAdvice != null)
-            {
+           
                 bpCoordinator.GiveAdvice(suggestion, model.Suggestion.Advice);
                 TempData["Success"] = "Het advies is verzonden";
                 _suggestionRepository.SaveChanges();
                 return RedirectToAction("Index", "Suggestion");
                 
-            }
 
 
             return View();

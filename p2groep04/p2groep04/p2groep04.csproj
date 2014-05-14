@@ -207,6 +207,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Filters\SecurityFilter.cs" />
+    <Compile Include="Models\DAL\Mapper\CoPromotorMapper.cs" />
     <Compile Include="Models\Domain\CoPromotor.cs" />
     <Compile Include="Models\Domain\Feedback.cs" />
     <Compile Include="Helpers\UserExtensions.cs" />
@@ -364,13 +365,14 @@
     <Content Include="Content\plugins\tag-input\bower.json" />
     <Content Include="Content\plugins\tag-input\README.md" />
     <Content Include="Views\Suggestion\Edit.cshtml" />
-    <Content Include="Views\Suggestion\PromotorFeedback.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Views\User\Detail.cshtml" />
     <Content Include="Views\Suggestion\Detail.cshtml" />
+    <Content Include="Views\Suggestion\Evaluate.cshtml" />
+    <Content Include="Views\Suggestion\Advice.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
