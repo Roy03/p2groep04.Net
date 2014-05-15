@@ -20,7 +20,7 @@ namespace p2groep04.Models.DAL
         {
             return users.OrderBy(u => u.LastName);
         }
-
+         
         public User FindBy(int id)
         {
             return users.FirstOrDefault(u => u.Id == id);

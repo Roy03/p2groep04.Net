@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
+using DotNetOpenAuth.OpenId.Extensions.AttributeExchange;
 using p2groep04.Models.Domain;
 
 namespace p2groep04.Models.DAL
@@ -101,6 +102,16 @@ namespace p2groep04.Models.DAL
                     LastPasswordChangedDate = new DateTime(2014, 4, 23)
                 };
 
+                var programmeren = new ResearchDomain(){Name = "Programmeren"};
+                
+                var chemie = new ResearchDomain(){Name = "Chemie"};
+             
+                var mechanica = new ResearchDomain(){Name = "Mechanica"};
+             
+                var talen = new ResearchDomain(){Name = "Talen"};
+                
+
+
                 List<Student> studenten = (new Student[] {studentMaxim, studentLogan, studentBram,studentRoy}).ToList();
                 studenten.ForEach(s => context.Users.Add(s));
                 studenten.ForEach(s => promotor1.Students.Add(s));
@@ -108,6 +119,8 @@ namespace p2groep04.Models.DAL
                 promotors.ForEach(p => context.Users.Add(p));
                 List<BPCoordinator> bpCoordinators = (new BPCoordinator[] {bpc1}).ToList();
                 bpCoordinators.ForEach(c => context.Users.Add(c));
+                List<ResearchDomain> researchDomains = (new ResearchDomain[] {programmeren, chemie, mechanica, talen}).ToList();
+                researchDomains.ForEach(r => context.ResearchDomains.Add(r));
                 context.SaveChanges();
                 System.Diagnostics.Debug.WriteLine("Database created!");                                
 
