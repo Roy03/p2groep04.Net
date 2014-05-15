@@ -45,7 +45,7 @@ namespace p2groep04.ViewModels.UserViewModels
         [Display(Name = "Promotor")]
         public Promotor Promotor { get; set; }
         [Display(Name = "Co-promotor")]
-        public Promotor CoPromotor { get; set; }
+        public CoPromotor CoPromotor { get; set; }
     }
 
     public class PromotorViewModel : UserViewModel

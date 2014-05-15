@@ -14,6 +14,7 @@ namespace p2groep04.Models.DAL.Mapper
     {
         public UserMapper()
         {
+            ToTable("user");  
             // Primary key
             HasKey(u => u.Id);
 
@@ -34,7 +35,7 @@ namespace p2groep04.Models.DAL.Mapper
             Map<BPCoordinator>(m => m.Requires("Discriminator").HasValue("BPCoordinator"));
             Map<Promotor>(m => m.Requires("Discriminator").HasValue("Promotor"));
 
-            ToTable("user");  
+          
         }
     }
 }

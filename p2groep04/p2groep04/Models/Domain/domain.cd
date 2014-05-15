@@ -56,11 +56,11 @@
   <Class Name="p2groep04.Models.Domain.Promotor">
     <Position X="7.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAIAAAAAAAIAAAAAAAAAEAAAAAACAAAAAAAAICAAACA=</HashCode>
+      <HashCode>IAIAAAAAAAIAAAAAAAAAEAAAAAAAIAAAAAAAICAAACA=</HashCode>
       <FileName>Models\Domain\Promotor.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Field Name="Students" />
+      <Property Name="Students" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="p2groep04.Models.Domain.ResearchDomain">
@@ -72,6 +72,11 @@
   </Class>
   <Class Name="p2groep04.Models.Domain.SuggestionState">
     <Position X="17.75" Y="7.25" Width="2" />
+    <AssociationLine Name="Suggestion" Type="p2groep04.Models.Domain.Suggestion">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.119" Y="0.06" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAQAAAAAAAEAEAAAAAAAAAAAAAAAAQIAgIA=</HashCode>
       <FileName>Models\Domain\SuggestionState.cs</FileName>
@@ -118,7 +123,7 @@
   <Class Name="p2groep04.Feedback">
     <Position X="7" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAgAAAAAAAAAAAAAAAAAAAAAAAAAAiAAAAAAAgAA=</HashCode>
+      <HashCode>AAACAgAAAAAAAAAAAAAAAAAAAAACAAAACAAAAAAAgAA=</HashCode>
       <FileName>Models\Domain\Feedback.cs</FileName>
     </TypeIdentifier>
   </Class>

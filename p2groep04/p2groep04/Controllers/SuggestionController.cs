@@ -37,6 +37,7 @@ namespace p2groep04.Controllers
 
         public ViewResult Create(User user)
         {
+            Student student = (Student) user;
             return View();
         }
 

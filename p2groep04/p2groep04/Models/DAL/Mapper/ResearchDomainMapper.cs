@@ -12,7 +12,7 @@ namespace p2groep04.Models.DAL.Mapper
             HasKey(r => r.Id);
             Property(r => r.Name).IsRequired();
 
-            HasMany(r => r.Suggestions).WithMany(r => r.ResearchDomains);
+            //HasMany(r => r.Suggestions).WithMany(r => r.ResearchDomains);
         }
     }
 }

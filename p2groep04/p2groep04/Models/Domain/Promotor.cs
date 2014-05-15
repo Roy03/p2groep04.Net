@@ -14,7 +14,7 @@ namespace p2groep04.Models.Domain
 {
     public class Promotor : User
     {
-        public ICollection<Student> Students;
+        public ICollection<Student> Students { get; set; }
         public List<User> users;
         private String message;
 

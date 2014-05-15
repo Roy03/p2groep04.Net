@@ -12,8 +12,8 @@ namespace p2groep04.Models.DAL.Mapper
         public StudentMapper()
         {
             HasMany(s => s.Suggestions).WithRequired(s => s.Student);
-            HasRequired(s => s.Promotor).WithMany();
-            HasOptional(s => s.CoPromotor).WithMany();
+            HasRequired(s => s.Promotor).WithMany(s => s.Students);
+            //HasOptional(s => s.CoPromotor).WithMany();
             
              
         }

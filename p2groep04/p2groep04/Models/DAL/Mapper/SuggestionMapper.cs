@@ -18,7 +18,7 @@ namespace p2groep04.Models.DAL.Mapper
             Property(s => s.Motivation);
             Property(s => s.AdviceBPC).IsOptional();
 
-            HasRequired(s => s.Student).WithMany(s => s.Suggestions);
+            //HasRequired(s => s.Student).WithMany(s => s.Suggestions);
             HasMany(s => s.ResearchDomains).WithMany(s => s.Suggestions);
             HasMany(s => s.Feedbacks).WithRequired(s => s.Suggestion);
 
