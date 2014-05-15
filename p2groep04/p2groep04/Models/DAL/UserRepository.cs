@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using p2groep04.Models.Domain;
 
@@ -33,12 +34,8 @@ namespace p2groep04.Models.DAL
 
         public string FindSaltByUsername(string username)
         {
-            User user = users.FirstOrDefault(u => u.Username.ToLower().Equals(username.ToLower()));
-            if (user == null)
-            {
-                return null;
-            }
-            return user.Salt;            
+            var user = users.FirstOrDefault(u => u.Username.ToLower().Equals(username.ToLower()));
+            return user == null ? null : user.Salt;
         }
 
         public User FindByUsernameAndPassword(string username, string password)

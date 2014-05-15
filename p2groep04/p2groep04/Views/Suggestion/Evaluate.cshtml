@@ -50,7 +50,8 @@
                     <th>Volledig</th>
                 </tr>
 
-@* <tr>
+                @*
+                <tr>
                     <td>Is de titel speciek?</td>
                     <td>@Html.RadioButton()</td>
                     <td>@Html.RadioButton()</td>
@@ -111,16 +112,22 @@
                     <td>@Html.RadioButton()</td>
                     <td>@Html.RadioButton()</td>
                     <td>@Html.RadioButton()</td>
-                </tr>*@
+                </tr>
+                *@
             </table>
-            
+
         </div>
 
     <div class="form-group">
-        <input type="submit" name="btnSend" value="Geef feedback" class="button" />
+        @*<input type="submit" name="btnSend" value="Geef feedback" class="button" />
         <input type="submit" name="btnAccept" value="Goedkeuren" class="button" />
         <input type="submit" name="btnDecline" value="Afwijzen" class="button" />
-        <input type="submit" name="btnBack" value="Terug" class="button" />
+        <input type="submit" name="btnBack" value="Terug" class="button" />*@
+
+        <button name="btnSend" value="save" class="button">Geef feedback</button>
+        <button name="btnAccept" value="save" class="button">Goedkeuren</button>
+        <button name="btnDecline" value="save" class="button">Afwijzen</button>
+        <button name="btnBack" value="save" class="button">Terug</button>
 
     </div>
 
