@@ -11,13 +11,10 @@ namespace p2groep04
     {
         public int Id { get; set; }
    
-
         public String Inhoud { get; set; }
         
-
         public DateTime CreatedOn { get; set; }
         
-
         public Boolean Visable { get; set; }
 
         public Suggestion Suggestion { get; set; }

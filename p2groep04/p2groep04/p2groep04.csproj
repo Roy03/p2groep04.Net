@@ -209,6 +209,7 @@
     <Compile Include="Controllers\Filters\SecurityFilter.cs" />
     <Compile Include="Models\DAL\Mapper\BPCoordinatorMapper.cs" />
     <Compile Include="Models\DAL\Mapper\CoPromotorMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\DossierMapper.cs" />
     <Compile Include="Models\DAL\Mapper\PromotorMapper.cs" />
     <Compile Include="Models\DAL\Mapper\StudentMapper.cs" />
     <Compile Include="Models\Domain\CoPromotor.cs" />
