@@ -15,6 +15,7 @@ namespace p2groep04.Models.DAL.Mapper
         public UserMapper()
         {
             ToTable("user");  
+            
             // Primary key
             HasKey(u => u.Id);
 
@@ -31,9 +32,9 @@ namespace p2groep04.Models.DAL.Mapper
             Property(u => u.CreationDate).IsRequired();
             Property(u => u.LastPasswordChangedDate).IsRequired();
 
-            Map<Student>(m => m.Requires("Discriminator").HasValue("Student"));
-            Map<BPCoordinator>(m => m.Requires("Discriminator").HasValue("BPCoordinator"));
-            Map<Promotor>(m => m.Requires("Discriminator").HasValue("Promotor"));
+            //Map<Student>(m => m.Requires("Discriminator").HasValue("Student"));
+            //Map<BPCoordinator>(m => m.Requires("Discriminator").HasValue("BPCoordinator"));
+            //Map<Promotor>(m => m.Requires("Discriminator").HasValue("Promotor"));
 
           
         }

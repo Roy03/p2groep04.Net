@@ -57,6 +57,12 @@ namespace p2groep04.Models.Domain
             //return (from suggestion in Suggestions from feedback in suggestion.Feedbacks where feedback.Visable == true select feedback).FirstOrDefault();
         }
 
+        public void GiveInSuggestion(Student student, Suggestion suggestion)
+        {
+            suggestion.ToSubmittedState();
+            UserHelper.NotifyStudentGivenSuggestion(student.Promotor);
+        }
+
         
     }
 }

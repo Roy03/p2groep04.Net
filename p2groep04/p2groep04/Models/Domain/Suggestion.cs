@@ -49,7 +49,7 @@ namespace p2groep04.Models.Domain
         
         public int CurrentStateId { get; set; }
 
-        public Student Student { get; set; }
+        public virtual Student Student { get; set; }
 
         public Suggestion()
         {
@@ -125,55 +125,56 @@ namespace p2groep04.Models.Domain
             CurrentState.ApproveWithRemarks(feedback);
         }
 
-        public void ChangeResearchDomain(ResearchDomain newResearchDomain, ResearchDomain oldResearchDomain)
-        {
-            foreach (var researchDomain in ResearchDomains)
-            {
-                if (researchDomain.Name == oldResearchDomain.Name)
-                {
-                    researchDomain.Id = newResearchDomain.Id;
-                    researchDomain.Name = newResearchDomain.Name;
-                }
-            }
-            NotifyStakeHolderChangeResearchDomain(newResearchDomain, oldResearchDomain);
+        //public void ChangeResearchDomain(ResearchDomain newResearchDomain, ResearchDomain oldResearchDomain)
+        //{
+        //    foreach (var researchDomain in ResearchDomains)
+        //    {
+        //        if (researchDomain.Name == oldResearchDomain.Name)
+        //        {
+        //            researchDomain.Id = newResearchDomain.Id;
+        //            researchDomain.Name = newResearchDomain.Name;
+        //        }
+        //    }
+        //    NotifyStakeHolderChangeResearchDomain(newResearchDomain, oldResearchDomain);
 
-        }
+        //}
 
-        public void ChangePromotor(Promotor newPromotor)
-        {
-            Promotor oldPromotor = Student.Promotor;
-            Student.Promotor = newPromotor;
+        //public void ChangePromotor(Promotor newPromotor)
+        //{
+        //    Promotor oldPromotor = Student.Promotor;
+        //    Student.Promotor = newPromotor;
 
-            NotifyStakeHolderChangePromotor(oldPromotor, newPromotor);
-        }
+        //    //ChangePromotor(oldPromotor, newPromotor);
+        //}
 
-        public void NotifyStakeHolderChangeResearchDomain(ResearchDomain newResearchDomain,
-            ResearchDomain oldResearchDomain)
-        {
-            List<User> stakeHoldersList = new List<User>();
-            stakeHoldersList.Add(Student);
-            stakeHoldersList.Add(Student.Promotor);
+        //public void NotifyStakeHolderChangeResearchDomain(ResearchDomain newResearchDomain,
+        //    ResearchDomain oldResearchDomain)
+        //{
+        //    List<User> stakeHoldersList = new List<User>();
+        //    stakeHoldersList.Add(Student);
+        //    stakeHoldersList.Add(Student.Promotor);
 
-            string body = "Het onderzoeksdomein van " + Student.FirstName + " " + Student.LastName + " is gewijzigd van " + oldResearchDomain.Name +
-            " naar " + newResearchDomain.Name + ".";
-            const string subject = "Wijziging onderzoeksdomein";
+        //    string body = "Het onderzoeksdomein van " + Student.FirstName + " " + Student.LastName + " is gewijzigd van " + oldResearchDomain.Name +
+        //    " naar " + newResearchDomain.Name + ".";
+        //    const string subject = "Wijziging onderzoeksdomein";
 
-            UserHelper.NotifyUsers(stakeHoldersList, body, subject);
-        }
+        //    //UserHelper.NotifyUsers(stakeHoldersList, body, subject);
+        //}
 
-        public void NotifyStakeHolderChangePromotor(Promotor oldPromotor, Promotor newPromotor)
-        {
-            List<User> stakeHoldersList = new List<User>();
-            stakeHoldersList.Add(Student);
-            stakeHoldersList.Add(oldPromotor);
-            stakeHoldersList.Add(newPromotor);
 
-            string body = "De promotor van " + Student.FirstName + " " + Student.LastName + " is gewijzigd van " + oldPromotor.FirstName + " " + oldPromotor.LastName + 
-            " naar " + newPromotor.FirstName + " " + newPromotor.LastName + ".";
-            const string subject = "Wijziging promotor";
+        //public void ChangePromotor(Promotor oldPromotor, Promotor newPromotor)
+        //{
+        //    List<User> stakeHoldersList = new List<User>();
+        //    stakeHoldersList.Add(Student);
+        //    stakeHoldersList.Add(oldPromotor);
+        //    stakeHoldersList.Add(newPromotor);
 
-            UserHelper.NotifyUsers(stakeHoldersList, body, subject);
-        }
+        //    string body = "De promotor van " + Student.FirstName + " " + Student.LastName + " is gewijzigd van " + oldPromotor.FirstName + " " + oldPromotor.LastName + 
+        //    " naar " + newPromotor.FirstName + " " + newPromotor.LastName + ".";
+        //    const string subject = "Wijziging promotor";
+
+        //    //UserHelper.NotifyUsers(stakeHoldersList, body, subject);
+        //}
 
     }
 }

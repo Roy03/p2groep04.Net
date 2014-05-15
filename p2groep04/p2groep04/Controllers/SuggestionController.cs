@@ -7,6 +7,7 @@ using p2groep04.Models.DAL;
 using p2groep04.Models.Domain;
 using System.Web.Mvc;
 using p2groep04.ViewModels;
+using p2groep04.ViewModels.UserViewModels;
 
 namespace p2groep04.Controllers
 {
@@ -71,17 +72,18 @@ namespace p2groep04.Controllers
                     suggestion.Motivation = model.Suggestion.Motivation;
                     suggestion.References = model.Suggestion.References;
 
+                    CoPromotor coPromotor = new CoPromotor();
+                    coPromotor.FirstName = model.CoPromotor.FirstName;
+                    coPromotor.LastName = model.CoPromotor.LastName;
+                    coPromotor.Email = model.CoPromotor.Email;
+                    coPromotor.Company = model.CoPromotor.Organisation;
+
                     //researchdomains
                     suggestion.Student = student;
 
                     if (buttonSaveSend != null)
                     {
-                        suggestion.ToSubmittedState();
-                        //notifieer stakeholders
-                        stakeholdersList.Add(student.Promotor);
-                        message = "Student " + student.FirstName + " " + student.LastName +
-                                  " heeft zijn voorstel ingediend";
-                        UserHelper.NotifyUsers(stakeholdersList, message, "Voorstel ingediend");
+                        student.GiveInSuggestion(student, suggestion);
                         TempData["Success"] = "Uw voorstel werd aangemaakt en ingediend!";
                     }
                     else
@@ -89,6 +91,7 @@ namespace p2groep04.Controllers
                         TempData["Success"] = "Uw voorstel werd aangemaakt!";
                     }
 
+                    student.CoPromotor = coPromotor;
                     student.Suggestions.Add(suggestion);
                     _userRepository.SaveChanges();
                     
@@ -129,26 +132,17 @@ namespace p2groep04.Controllers
 
                     if (buttonSaveSend != null)
                     {
-                        suggestion.ToSubmittedState();
-                        //notifieer stakeholders
-                        stakeholdersList.Add(student.Promotor);
-                        message = "Student " + student.FirstName + " " + student.LastName +
-                                  " heeft zijn voorstel ingediend";
-                        UserHelper.NotifyUsers(stakeholdersList, message, "Voorstel ingediend");
-
-                    }
-
-                    _suggestionRepository.SaveChanges();
-
-                    if (buttonSaveSend != null)
-                    {
+                        student.GiveInSuggestion(student, suggestion);
                         TempData["Success"] = "Uw voorstel werd aangepast en ingediend!";
+
                     }
                     else
                     {
                         TempData["Success"] = "Uw voorstel werd aangepast!";
                     }
 
+                    _suggestionRepository.SaveChanges();
+                    
 
                     return RedirectToAction("DashBoard", "Home");
                 }
@@ -179,7 +173,15 @@ namespace p2groep04.Controllers
                     ResearchQuestion = suggestion.ResearchQuestion,
                     Title = suggestion.Title
                 },
-                /*
+
+                /*CoPromotor = new CoPromotorViewModel()
+                {
+                    FirstName = suggestion.Student.CoPromotor.FirstName,
+                    LastName = suggestion.Student.CoPromotor.LastName,
+                    Email = suggestion.Student.CoPromotor.Email,
+                    Organisation = suggestion.Student.CoPromotor.Company
+                }
+                
                  * HIER!
                  * 
                  * Student = new StudentViewModel()

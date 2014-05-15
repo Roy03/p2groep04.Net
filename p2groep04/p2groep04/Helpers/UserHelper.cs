@@ -125,35 +125,35 @@ namespace p2groep04.Helpers
         }
         
         //This is a default made notifyusers, this one can be used. Will be replaced by specific ones
-        public static void NotifyUsers(List<User> users, string body, string subject)
-        {
-            var fromAddress = new MailAddress("project2hogent@gmail.com");
-            const string fromPassword = "C#Project";
+        //public static void NotifyUsers(List<User> users, string body, string subject)
+        //{
+        //    var fromAddress = new MailAddress("project2hogent@gmail.com");
+        //    const string fromPassword = "C#Project";
 
-            var smtp = new SmtpClient
-            {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            };
+        //    var smtp = new SmtpClient
+        //    {
+        //        Host = "smtp.gmail.com",
+        //        Port = 587,
+        //        EnableSsl = true,
+        //        DeliveryMethod = SmtpDeliveryMethod.Network,
+        //        UseDefaultCredentials = false,
+        //        Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+        //    };
 
-            foreach (var user in users)
-            {
-                var toAddress = new MailAddress(user.Email);
-                using (var message = new MailMessage(fromAddress, toAddress)
-                {
-                    Subject = subject,
-                    Body = body
-                })
-                {
-                    smtp.Send(message);
-                }
-            }
+        //    foreach (var user in users)
+        //    {
+        //        var toAddress = new MailAddress(user.Email);
+        //        using (var message = new MailMessage(fromAddress, toAddress)
+        //        {
+        //            Subject = subject,
+        //            Body = body
+        //        })
+        //        {
+        //            smtp.Send(message);
+        //        }
+        //    }
 
-        }
+        //}
 
 
         //People to notify: Student
@@ -321,6 +321,32 @@ namespace p2groep04.Helpers
             {
                 Subject = "Feedback voorstel",
                 Body = "Er is feedback op uw voorstel gegeven."
+            })
+
+                smtp.Send(message);
+        }
+
+        public static void NotifyStudentGivenSuggestion(User user)
+        {
+            var fromAddress = new MailAddress("project2hogent@gmail.com");
+            const string fromPassword = "C#Project";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+
+
+            var toAddress = new MailAddress(user.Email);
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = "Voorstel ingeven",
+                Body = "Een student heeft zijn voorstel ingegeven."
             })
 
                 smtp.Send(message);

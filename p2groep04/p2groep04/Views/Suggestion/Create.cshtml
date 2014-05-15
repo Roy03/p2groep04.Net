@@ -1,5 +1,6 @@
 ﻿@using System.Web.Mvc.Html
 @using p2groep04.Helpers
+@using WebGrease.Css.Extensions
 @model p2groep04.ViewModels.CreateViewModel
 
 @{
@@ -110,8 +111,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Suggestion.ResearchDomains)
              
-            @*@Html.DropDownListFor()*@
-            @*@Html.ValidationMessageFor(model => model.Suggestion.ResearchDomains)*@
+            @*@Html.DropDownListFor()
+            @Html.ValidationMessageFor(model => model.Suggestion.ResearchDomains)*@
         </div>   
 
         <div class="form-group">
