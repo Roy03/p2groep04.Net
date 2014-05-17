@@ -70,6 +70,7 @@ namespace p2groep04.Controllers
                     suggestion.ResearchQuestion = model.Suggestion.ResearchQuestion;
                     suggestion.Motivation = model.Suggestion.Motivation;
                     suggestion.References = model.Suggestion.References;
+                    suggestion.Student = student;
 
                     CoPromotor coPromotor = new CoPromotor();
                     coPromotor.FirstName = model.CoPromotor.FirstName;
@@ -78,7 +79,7 @@ namespace p2groep04.Controllers
                     coPromotor.Company = model.CoPromotor.Organisation;
 
                     //researchdomains
-                    suggestion.Student = student;
+                   
 
                     if (btnSaveSend != null)
                     {
@@ -126,9 +127,10 @@ namespace p2groep04.Controllers
                     suggestion.ResearchQuestion = model.Suggestion.ResearchQuestion;
                     suggestion.Motivation = model.Suggestion.Motivation;
                     suggestion.References = model.Suggestion.References;
+                    suggestion.Student = student;
 
                     //researchdomains
-                    suggestion.Student = student;
+                    
 
                     if (btnSaveSend != null)
                     {
@@ -279,7 +281,7 @@ namespace p2groep04.Controllers
                     ModelState.AddModelError("", e.Message); // shows in summary
                 }
             }
-            TempData["Failure"] = "Uw verzoek is niet gelukt";
+            TempData["Error"] = "Uw verzoek is niet gelukt";
             return View();
         }
 

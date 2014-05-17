@@ -29,6 +29,7 @@
                 @if (Html.User().GetType() == typeof (Student))
                 {
                     @Html.ActionLink("Bewerk", "Edit", new { id = suggestion.Id }) 
+                    <span> | </span>
                     @Html.ActionLink("Bekijk feedback", "Detail", new { id = suggestion.Id }) 
                 }
                     
