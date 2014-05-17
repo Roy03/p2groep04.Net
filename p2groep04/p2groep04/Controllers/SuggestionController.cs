@@ -37,8 +37,8 @@ namespace p2groep04.Controllers
 
         public ViewResult Create(User user)
         {
-            Student student = (Student)user;
-            return View();
+           var student = (Student)user;
+           return View();
         }
 
         public ActionResult Index(Student student)
@@ -55,28 +55,32 @@ namespace p2groep04.Controllers
         [HttpPost]
         public ActionResult Create(CreateViewModel model, User user, string btnSaveSend)
         {
-            Student student = (Student)user;
+            var student = (Student)user;
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    Suggestion suggestion = new Suggestion();
-                    suggestion.Title = model.Suggestion.Title;
-                    suggestion.Keywords = model.Suggestion.Keywords;
-                    suggestion.Context = model.Suggestion.Context;
-                    suggestion.Subject = model.Suggestion.Subject;
-                    suggestion.Goal = model.Suggestion.Goal;
-                    suggestion.ResearchQuestion = model.Suggestion.ResearchQuestion;
-                    suggestion.Motivation = model.Suggestion.Motivation;
-                    suggestion.References = model.Suggestion.References;
-                    suggestion.Student = student;
+                    var suggestion = new Suggestion
+                    {
+                        Title = model.Suggestion.Title,
+                        Keywords = model.Suggestion.Keywords,
+                        Context = model.Suggestion.Context,
+                        Subject = model.Suggestion.Subject,
+                        Goal = model.Suggestion.Goal,
+                        ResearchQuestion = model.Suggestion.ResearchQuestion,
+                        Motivation = model.Suggestion.Motivation,
+                        References = model.Suggestion.References,
+                        Student = student
+                    };
 
-                    CoPromotor coPromotor = new CoPromotor();
-                    coPromotor.FirstName = model.CoPromotor.FirstName;
-                    coPromotor.LastName = model.CoPromotor.LastName;
-                    coPromotor.Email = model.CoPromotor.Email;
-                    coPromotor.Company = model.CoPromotor.Organisation;
+                    var coPromotor = new CoPromotor
+                    {
+                        FirstName = model.CoPromotor.FirstName,
+                        LastName = model.CoPromotor.LastName,
+                        Email = model.CoPromotor.Email,
+                        Company = model.CoPromotor.Organisation
+                    };
 
                     //researchdomains
                    
@@ -117,8 +121,7 @@ namespace p2groep04.Controllers
                 try
                 {
                     Student student = (Student)user;
-
-
+                    
                     suggestion.Title = model.Suggestion.Title;
                     suggestion.Keywords = model.Suggestion.Keywords;
                     suggestion.Context = model.Suggestion.Context;
@@ -127,6 +130,7 @@ namespace p2groep04.Controllers
                     suggestion.ResearchQuestion = model.Suggestion.ResearchQuestion;
                     suggestion.Motivation = model.Suggestion.Motivation;
                     suggestion.References = model.Suggestion.References;
+                    
                     suggestion.Student = student;
 
                     //researchdomains
@@ -144,7 +148,7 @@ namespace p2groep04.Controllers
                     }
 
                     _userRepository.SaveChanges();
-                    _suggestionRepository.SaveChanges();
+                    
 
 
                     return RedirectToAction("DashBoard", "Home");

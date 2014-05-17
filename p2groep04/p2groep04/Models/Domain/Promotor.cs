@@ -14,7 +14,7 @@ namespace p2groep04.Models.Domain
 {
     public class Promotor : User
     {
-        public ICollection<Student> Students { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
         public List<User> users;
         private String message;
 
@@ -31,7 +31,6 @@ namespace p2groep04.Models.Domain
 
         public void GiveFeedback(String feedback, Student student, Suggestion suggestion, String state)
         {
-
             //Put all other feedbacks to not visable
             foreach (var f in suggestion.Feedbacks)
             {
@@ -39,14 +38,16 @@ namespace p2groep04.Models.Domain
             }
             //Add the new feedback
             suggestion.Feedbacks.Add(new Feedback(feedback));
-            
+
             //Send notification
             UserHelper.NotifyStakeholderFeedbackGiven(student);
 
             //If state is approved the do this
             if (state == "Approve")
             {
+                //To apprived state
                 suggestion.ToApprovedWithRemarksState();
+                //Send notification
                 UserHelper.NotifyStakeholderSuggestionAcceptedWithRemarks(student);
             }
 
@@ -59,16 +60,15 @@ namespace p2groep04.Models.Domain
             var bpc = new BPCoordinator();
             //INSERT NOTIFY STAKEHOLDERS HERE
             UserHelper.NotifyStakeholderAdviceBpcNeeded(bpc);
-            
+
 
         }
 
         public void SuggestionDoesNotComply(Student student, Suggestion suggestion)
         {
-            
             suggestion.ToNewState();
 
-           //send for notivication
+            //send for notivication
             UserHelper.NotifyStakeholderSuggestionDeclined(student);
         }
 
