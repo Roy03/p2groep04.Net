@@ -1,8 +1,7 @@
 ﻿@using System.Activities.Statements
 @using System.Web.Mvc.Html
 @using p2groep04.Helpers
-@using p2groep04.Models.Domain
-@model p2groep04.Models.Domain.Suggestion
+@model p2groep04.ViewModels.EvaluateViewModel
 
 @{
     ViewBag.Title = "Voorstel";
@@ -17,14 +16,28 @@
             <span>Achternaam student: @Html.DisplayFor(model => model.Student.LastName)</span>
         </p>
         <p>
-            <span>Title: @Html.DisplayFor(model => model.Title)</span>
+            <span>Title: @Html.DisplayFor(model => model.Suggestion.Title)</span>
         </p>
         <p>
-            <span>Subject: @Html.DisplayFor(model => model.Subject)</span>
+            <span>Context: @Html.DisplayFor(model => model.Suggestion.Context)</span>
         </p>
         <p>
-            <span>Status: @Html.DisplayFor(model => model.CurrentState)</span>
+            <span>Probleemstelling: @Html.DisplayFor(model => model.Suggestion.Subject)</span>
         </p>
+        <p>
+            <span>Doelstelling: @Html.DisplayFor(model => model.Suggestion.Goal)</span>
+        </p>
+        <p>
+            <span>Onderzoeksvraag: @Html.DisplayFor(model => model.Suggestion.ResearchQuestion)</span>
+        </p>
+        <p>
+            <span>Plan van aanpak: @Html.DisplayFor(model => model.Suggestion.Motivation)</span>
+        </p>
+       
+        @*<p>
+            <span>Status: @Html.DisplayFor(model => model.Suggestion.)</span>
+        </p>
+        *@
 
     </div>
 
@@ -35,8 +48,8 @@
         <div class="form-group">
             <h2>Feedback</h2>
 
-            @Html.TextAreaFor(model => model.Feedbacks, new { @class = "form-control"})
-            @Html.ValidationMessageFor(model => model.Feedbacks)
+            @Html.TextAreaFor(model => model.Suggestion.Feedback, new { @class = "form-control"})
+            @Html.ValidationMessageFor(model => model.Suggestion.Feedback)
         
 
             <h2>Likert schaal</h2>
@@ -125,7 +138,7 @@
         <input type="submit" name="btnBack" value="Terug" class="button" />*@
 
         <button name="btnSend" value="save" class="button">Geef feedback</button>
-        <button name="btnAccept" value="save" class="button">Goedkeuren</button>
+        <button name="btnAccept" value="Approved" class="button">Goedkeuren</button>
         <button name="btnDecline" value="save" class="button">Afwijzen</button>
         <button name="btnBack" value="save" class="button">Terug</button>
 

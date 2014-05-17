@@ -51,7 +51,7 @@ namespace p2groep04.Models.Domain
 
         public virtual Student Student { get; set; }
 
-        public Dossier Dossier { get; set; }
+        //public Dossier Dossier { get; set; }
 
         public Suggestion()
         {

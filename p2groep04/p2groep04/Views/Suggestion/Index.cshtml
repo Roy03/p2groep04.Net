@@ -24,10 +24,11 @@
                 <td>@Html.DisplayFor(modelItem => suggestion.Title)</td>
                 <td>@Html.DisplayFor(modelItem => suggestion.Subject)</td>
                 
-                <td>@Html.ActionLink("Bewerk", "Edit", new { id = suggestion.Id }) | 
+                <td> 
                 
                 @if (Html.User().GetType() == typeof (Student))
                 {
+                    @Html.ActionLink("Bewerk", "Edit", new { id = suggestion.Id }) 
                     @Html.ActionLink("Bekijk feedback", "Detail", new { id = suggestion.Id }) 
                 }
                     

@@ -93,6 +93,7 @@ namespace p2groep04.Controllers
                     student.CoPromotor = coPromotor;
                     student.Suggestions.Add(suggestion);
                     _userRepository.SaveChanges();
+                    _suggestionRepository.SaveChanges();
 
                     return RedirectToAction("DashBoard", "Home");
                 }
@@ -140,6 +141,7 @@ namespace p2groep04.Controllers
                         TempData["Success"] = "Uw voorstel werd aangepast!";
                     }
 
+                    _userRepository.SaveChanges();
                     _suggestionRepository.SaveChanges();
 
 
@@ -204,13 +206,30 @@ namespace p2groep04.Controllers
 
         public ActionResult Evaluate(int id)
         {
+
             Suggestion suggestion = _suggestionRepository.FindBy(id);
-            return View(suggestion);
+            EvaluateViewModel suggestionViewModel = new EvaluateViewModel()
+            {
+                Suggestion = new SuggestionViewModel()
+                {
+                    Id = suggestion.Id,
+                    Context = suggestion.Context,
+                    Goal = suggestion.Goal,
+                    Keywords = suggestion.Keywords,
+                    Motivation = suggestion.Motivation,
+                    References = suggestion.References,
+                    Subject = suggestion.Subject,
+                    ResearchQuestion = suggestion.ResearchQuestion,
+                    Title = suggestion.Title
+                }
+            };
+
+            return View(suggestionViewModel);
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult Evaluate(int id, EditViewModel model, User user, string btnSend,
+        public ActionResult Evaluate(int id, EvaluateViewModel model, User user, string btnSend,
             string btnAccept, string btnDecline, string btnBack)
         {
             Suggestion suggestion = _suggestionRepository.FindBy(id);
@@ -224,7 +243,7 @@ namespace p2groep04.Controllers
                 {
                     var promotor = (Promotor)user;
 
-                    _suggestionRepository.SaveChanges();
+
 
                     if (btnSend != null)
                     {
@@ -234,7 +253,7 @@ namespace p2groep04.Controllers
 
                     if (btnAccept != null)
                     {
-                        promotor.GiveFeedback(model.Suggestion.Feedback, student, suggestion, "Approved");
+                        promotor.GiveFeedback(model.Suggestion.Feedback, student, suggestion, btnAccept);
                         //notifieer stakeholder
                         TempData["Success"] = "Het voorstel is geaccepteerd";
 
@@ -247,12 +266,12 @@ namespace p2groep04.Controllers
                         TempData["Success"] = "Het voorstel is afgekeurd";
                     }
 
+                    _suggestionRepository.SaveChanges();
+
                     if (btnBack != null)
                     {
                         return RedirectToAction("Index", "Suggestion");
                     }
-
-
 
                 }
                 catch (ApplicationException e)
@@ -260,6 +279,7 @@ namespace p2groep04.Controllers
                     ModelState.AddModelError("", e.Message); // shows in summary
                 }
             }
+            TempData["Failure"] = "Uw verzoek is niet gelukt";
             return View();
         }
 
@@ -325,7 +345,7 @@ namespace p2groep04.Controllers
                 TempData["Success"] = "Het advies is verzonden";
                 _suggestionRepository.SaveChanges();
             }
-            
+
             return RedirectToAction("Index", "Suggestion");
         }
 

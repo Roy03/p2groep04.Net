@@ -12,7 +12,7 @@ namespace p2groep04.Models.DAL.Mapper
         public DossierMapper()
         {
             HasKey(d => d.Id);
-            HasOptional(s => s.Suggestion).WithOptionalDependent(s => s.Dossier);
+            //HasOptional(s => s.Suggestion).WithOptionalDependent(s => s.Dossier);
         }
     }
 }

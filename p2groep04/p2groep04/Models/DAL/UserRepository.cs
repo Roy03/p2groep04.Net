@@ -16,7 +16,6 @@ namespace p2groep04.Models.DAL
             users = context.Users;
         }
 
-       
         public IQueryable<User> FindAll()
         {
             return users.OrderBy(u => u.LastName);
@@ -47,9 +46,7 @@ namespace p2groep04.Models.DAL
         {
             return users.FirstOrDefault(u => u.Email.ToLower().Equals(email.ToLower()));
         }
-
         
-
         public bool ChangePassword(string username, string newpass)
         {
             User user = FindByUsername(username);

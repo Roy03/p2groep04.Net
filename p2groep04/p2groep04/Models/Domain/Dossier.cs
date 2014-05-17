@@ -3,6 +3,6 @@
     public class Dossier
     {
         public int Id { get; set; }
-        public Suggestion Suggestion { get; set; }
+        //public Suggestion Suggestion { get; set; }
     }
 }
