@@ -13,7 +13,7 @@ namespace p2groep04.Models.DAL.Mapper
         {
             HasMany(s => s.Suggestions).WithRequired(s => s.Student);
             HasRequired(s => s.Promotor).WithMany(s => s.Students);
-            //HasOptional(s => s.CoPromotor).WithMany();  
+            //HasOptional(s => s.CoPromotor).WithMany();              
         }
      }
 }

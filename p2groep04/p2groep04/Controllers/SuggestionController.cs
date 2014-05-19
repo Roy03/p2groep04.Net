@@ -55,7 +55,7 @@ namespace p2groep04.Controllers
         [HttpPost]
         public ActionResult Create(CreateViewModel model, User user, string btnSaveSend)
         {
-            var student = (Student)user;
+            Student student = (Student)user;
 
             if (ModelState.IsValid)
             {
@@ -120,7 +120,7 @@ namespace p2groep04.Controllers
             {
                 try
                 {
-                    Student student = (Student)user;
+                    var student = (Student)user;
                     
                     suggestion.Title = model.Suggestion.Title;
                     suggestion.Keywords = model.Suggestion.Keywords;
@@ -189,7 +189,8 @@ namespace p2groep04.Controllers
                     Organisation = suggestion.Student.CoPromotor.Company
                 }
                 
-                 * HIER!
+                 *  HIER!
+                 * 
                  * 
                  * Student = new StudentViewModel()
                 {

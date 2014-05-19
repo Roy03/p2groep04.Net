@@ -19,7 +19,7 @@ namespace p2groep04.Models.Domain
 
         public Student()
         {
-            Suggestions = new Collection<Suggestion>();
+            Suggestions = new List<Suggestion>();
         }
         
         public void ChangeDeadline(DateTime newDeadline, DateTime oldDeadline)

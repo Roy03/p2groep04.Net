@@ -30,7 +30,7 @@ namespace p2groep04.Controllers
         [Authorize]
         public ActionResult ChangePassword()
         {
-            return View();                 
+            return View();
         }
 
         [HttpPost]
@@ -38,87 +38,87 @@ namespace p2groep04.Controllers
         public ActionResult ChangePassword(ChangePasswordModel model)
         {
             string newPassword = model.NewPlainPassword;
-                if (newPassword != null)
+            if (newPassword != null)
+            {
+                int conditionCount = userHelper.giveCondition(newPassword);
+                string username = HttpContext.User.Identity.Name;
+
+                if (ModelState.IsValid && userHelper.IsValidPassword(username, model.OldPlainPassword) &&
+                    model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword) && conditionCount >= 3 && !model.OldPlainPassword.Equals(model.NewPlainPassword))
                 {
-                    int conditionCount = userHelper.giveCondition(newPassword);
-                    string username = HttpContext.User.Identity.Name;
-
-                    if (ModelState.IsValid && userHelper.IsValidPassword(username, model.OldPlainPassword) &&
-                        model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword) && conditionCount >= 3 && !model.OldPlainPassword.Equals(model.NewPlainPassword))
+                    try
                     {
-                        try
-                        {
-                            String salt = userRepository.FindSaltByUsername(username);
-                            string newPassHash = UserHelper.Encrypt(model.NewPlainPassword + salt);
-                            User user = userRepository.FindByUsername(username);
-                            user.LastPasswordChangedDate = DateTime.Now;
-                            bool success = userRepository.ChangePassword(username, newPassHash);
+                        String salt = userRepository.FindSaltByUsername(username);
+                        string newPassHash = UserHelper.Encrypt(model.NewPlainPassword + salt);
+                        User user = userRepository.FindByUsername(username);
+                        user.LastPasswordChangedDate = DateTime.Now;
+                        bool success = userRepository.ChangePassword(username, newPassHash);
 
 
-                            if (!success)
-                            {
-                                //failed to change pass
-                                TempData["Error"] = "Failed to change password";
-                            }
-                            else
-                            {
-                                TempData["Success"] = "Your password has been changed succesfully";
-                            }
-
-                            return RedirectToAction("Dashboard", "Home");
-                        }
-                        catch (Exception ex)
+                        if (!success)
                         {
-                            Console.WriteLine(ex.Message);
-                        }
-          
-                    }
-                    else
-                    {
-                        if (!ModelState.IsValid)
-                        {
-                            //exceptie of lege view returne
-                            return View(model);
-                        }
-
-                        //verify old password
-                        if (!userHelper.IsValidPassword(username, model.OldPlainPassword))
-                        {
-                            ModelState.AddModelError("", "Uw huidig paswoord is incorrect.");
+                            //failed to change pass
+                            TempData["Error"] = "Failed to change password";
                         }
                         else
                         {
+                            TempData["Success"] = "Your password has been changed succesfully";
+                        }
 
-                            if (conditionCount < 3)
+                        return RedirectToAction("Dashboard", "Home");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
+                }
+                else
+                {
+                    if (!ModelState.IsValid)
+                    {
+                        //exceptie of lege view returne
+                        return View(model);
+                    }
+
+                    //verify old password
+                    if (!userHelper.IsValidPassword(username, model.OldPlainPassword))
+                    {
+                        ModelState.AddModelError("", "Uw huidig paswoord is incorrect.");
+                    }
+                    else
+                    {
+
+                        if (conditionCount < 3)
+                        {
+                            ModelState.AddModelError("",
+                                "Uw nieuw wachtwoord moet een combinatie zijn van tenminste 3 van de volgende karakters: hoofdletters, kleine letters, getallen en overige symbolen.");
+                        }
+                        else
+                        {
+                            //password same
+                            if (!model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
                             {
                                 ModelState.AddModelError("",
-                                    "Uw nieuw wachtwoord moet een combinatie zijn van tenminste 3 van de volgende karakters: hoofdletters, kleine letters, getallen en overige symbolen.");
+                                    "Uw bevestiging van het nieuwe wachtwoord is incorrect.");
                             }
                             else
                             {
-                                //password same
-                                if (!model.NewPlainPassword.Equals(model.ConfirmNewPlainPassword))
-                                {
+                                if (model.OldPlainPassword.Equals(model.NewPlainPassword))
                                     ModelState.AddModelError("",
-                                        "Uw bevestiging van het nieuwe wachtwoord is incorrect.");
-                                }
-                                else
-                                {
-                                    if(model.OldPlainPassword.Equals(model.NewPlainPassword))
-                                        ModelState.AddModelError("",
-                                        "Uw nieuw wachtwoord mag niet hetzelfde zijn als het oude wachtwoord.");
-                                }    
-
+                                    "Uw nieuw wachtwoord mag niet hetzelfde zijn als het oude wachtwoord.");
                             }
 
                         }
 
                     }
-                    return View(model);
+
                 }
+                return View(model);
+            }
             
 
-            return null;
+            return View(model);
         }
 
         [AllowAnonymous]
@@ -131,8 +131,8 @@ namespace p2groep04.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model)
-        {   
-            if (ModelState.IsValid && userHelper.IsValidPassword(model.UserName, model.Password) )
+        {
+            if (ModelState.IsValid && userHelper.IsValidPassword(model.UserName, model.Password))
             {
                 System.Diagnostics.Debug.WriteLine("Logged in!");
                 FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
@@ -144,7 +144,7 @@ namespace p2groep04.Controllers
                 }
 
                 return RedirectToAction("DashBoard", "Home");
-                
+
             }
 
             ModelState.AddModelError("", "Uw gebruikersnaam of wachtwoord is incorrect.");

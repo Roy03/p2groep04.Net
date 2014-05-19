@@ -111,16 +111,20 @@ namespace p2groep04.Models.DAL
                 var talen = new ResearchDomain(){Name = "Talen"};
                 
 
+                List<BPCoordinator> bpCoordinators = (new BPCoordinator[] {bpc1}).ToList();
+                bpCoordinators.ForEach(c => context.Users.Add(c));
 
+                List<ResearchDomain> researchDomains = (new ResearchDomain[] {programmeren, chemie, mechanica, talen}).ToList();
+                researchDomains.ForEach(r => context.ResearchDomains.Add(r));
+
+                List<Promotor> promotors = (new Promotor[] { promotor1 }).ToList();
+                promotors.ForEach(p => context.Users.Add(p));
+                
                 List<Student> studenten = (new Student[] {studentMaxim, studentLogan, studentBram,studentRoy}).ToList();
                 studenten.ForEach(s => context.Users.Add(s));
                 studenten.ForEach(s => promotor1.Students.Add(s));
-                List<Promotor> promotors = (new Promotor[] { promotor1 }).ToList();
-                promotors.ForEach(p => context.Users.Add(p));
-                List<BPCoordinator> bpCoordinators = (new BPCoordinator[] {bpc1}).ToList();
-                bpCoordinators.ForEach(c => context.Users.Add(c));
-                List<ResearchDomain> researchDomains = (new ResearchDomain[] {programmeren, chemie, mechanica, talen}).ToList();
-                researchDomains.ForEach(r => context.ResearchDomains.Add(r));
+               
+               
                 context.SaveChanges();
                 System.Diagnostics.Debug.WriteLine("Database created!");                                
 
